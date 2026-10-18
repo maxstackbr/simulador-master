@@ -1,0 +1,305 @@
+{
+  "id": "2026-10-18T18-12-17",
+  "label": "Classificação parcial (18/out)",
+  "generatedAt": "2026-10-18T18:12:17.017Z",
+  "source": "ranking.xlsx",
+  "players": [
+    {
+      "rank": 1,
+      "name": "Ueslen Silva",
+      "status": "Ativo",
+      "games": 13,
+      "wins": 13,
+      "losses": 0,
+      "pct": 100
+    },
+    {
+      "rank": 2,
+      "name": "João Andrade",
+      "status": "Ativo",
+      "games": 12,
+      "wins": 10,
+      "losses": 2,
+      "pct": 83.33
+    },
+    {
+      "rank": 3,
+      "name": "Marinho Schramm",
+      "status": "Ativo",
+      "games": 13,
+      "wins": 5,
+      "losses": 4,
+      "pct": 38.46
+    },
+    {
+      "rank": 4,
+      "name": "Roberto Vilas",
+      "status": "Ativo",
+      "games": 17,
+      "wins": 9,
+      "losses": 8,
+      "pct": 52.94
+    },
+    {
+      "rank": 5,
+      "name": "André Di Celio",
+      "status": "Ativo",
+      "games": 14,
+      "wins": 8,
+      "losses": 6,
+      "pct": 57.14
+    },
+    {
+      "rank": 6,
+      "name": "Leonardo Belchior",
+      "status": "Ativo",
+      "games": 10,
+      "wins": 4,
+      "losses": 4,
+      "pct": 40
+    },
+    {
+      "rank": 7,
+      "name": "Max D'angelo",
+      "status": "Ativo",
+      "games": 14,
+      "wins": 8,
+      "losses": 5,
+      "pct": 57.14
+    },
+    {
+      "rank": 8,
+      "name": "Thiago Atilio",
+      "status": "Ativo",
+      "games": 11,
+      "wins": 2,
+      "losses": 7,
+      "pct": 18.18
+    },
+    {
+      "rank": 9,
+      "name": "Douglas Kuada",
+      "status": "Ativo",
+      "games": 13,
+      "wins": 4,
+      "losses": 8,
+      "pct": 30.77
+    },
+    {
+      "rank": 10,
+      "name": "Fabrício Costa",
+      "status": "Ativo",
+      "games": 12,
+      "wins": 5,
+      "losses": 6,
+      "pct": 41.67
+    },
+    {
+      "rank": 11,
+      "name": "Sergio Trevisan",
+      "status": "Ativo",
+      "games": 5,
+      "wins": 0,
+      "losses": 3,
+      "pct": 0
+    },
+    {
+      "rank": 12,
+      "name": "Franco Gonçales",
+      "status": "Ativo",
+      "games": 6,
+      "wins": 3,
+      "losses": 2,
+      "pct": 50
+    },
+    {
+      "rank": 13,
+      "name": "Marco Tempesta",
+      "status": "Ativo",
+      "games": 12,
+      "wins": 4,
+      "losses": 8,
+      "pct": 33.33
+    },
+    {
+      "rank": 14,
+      "name": "Marcos Nogueira",
+      "status": "Ativo",
+      "games": 12,
+      "wins": 4,
+      "losses": 6,
+      "pct": 33.33
+    },
+    {
+      "rank": 15,
+      "name": "Lucas Claudio",
+      "status": "Ativo",
+      "games": 5,
+      "wins": 3,
+      "losses": 1,
+      "pct": 60
+    },
+    {
+      "rank": 16,
+      "name": "Andre Santana",
+      "status": "Ativo",
+      "games": 8,
+      "wins": 5,
+      "losses": 2,
+      "pct": 62.5
+    },
+    {
+      "rank": 17,
+      "name": "Caio Anjos",
+      "status": "Ativo",
+      "games": 6,
+      "wins": 1,
+      "losses": 3,
+      "pct": 16.67
+    },
+    {
+      "rank": 18,
+      "name": "Henrique Carelli",
+      "status": "Ativo",
+      "games": 13,
+      "wins": 5,
+      "losses": 7,
+      "pct": 38.46
+    },
+    {
+      "rank": 19,
+      "name": "Rafael Patz",
+      "status": "Ativo",
+      "games": 4,
+      "wins": 2,
+      "losses": 1,
+      "pct": 50
+    },
+    {
+      "rank": 20,
+      "name": "Alexandre Scarpato",
+      "status": "Ativo",
+      "games": 9,
+      "wins": 3,
+      "losses": 3,
+      "pct": 33.33
+    },
+    {
+      "rank": 21,
+      "name": "Almir Bortolim",
+      "status": "Ativo",
+      "games": 7,
+      "wins": 3,
+      "losses": 1,
+      "pct": 42.86
+    },
+    {
+      "rank": 22,
+      "name": "Marcelo Zampieri",
+      "status": "Ativo",
+      "games": 5,
+      "wins": 1,
+      "losses": 4,
+      "pct": 20
+    },
+    {
+      "rank": 23,
+      "name": "Hugo Branquinho",
+      "status": "Ativo",
+      "games": 4,
+      "wins": 2,
+      "losses": 2,
+      "pct": 50
+    },
+    {
+      "rank": 24,
+      "name": "Eduardo De Oliveira Barossi",
+      "status": "Ativo",
+      "games": 2,
+      "wins": 0,
+      "losses": 1,
+      "pct": 0
+    },
+    {
+      "rank": 25,
+      "name": "Jader Dias",
+      "status": "Ativo",
+      "games": 8,
+      "wins": 6,
+      "losses": 0,
+      "pct": 75
+    },
+    {
+      "rank": 26,
+      "name": "Leandro Fanti",
+      "status": "Ativo",
+      "games": 12,
+      "wins": 2,
+      "losses": 7,
+      "pct": 16.67
+    },
+    {
+      "rank": 27,
+      "name": "Marcos Hamamura",
+      "status": "Ativo",
+      "games": 2,
+      "wins": 2,
+      "losses": 0,
+      "pct": 100
+    },
+    {
+      "rank": 28,
+      "name": "Evandro Santos",
+      "status": "Ativo",
+      "games": 4,
+      "wins": 0,
+      "losses": 3,
+      "pct": 0
+    },
+    {
+      "rank": 29,
+      "name": "Felipe Uesugui Santana",
+      "status": "Ativo",
+      "games": 7,
+      "wins": 2,
+      "losses": 4,
+      "pct": 28.57
+    },
+    {
+      "rank": 30,
+      "name": "Marcelo Alexandrino",
+      "status": "Ativo",
+      "games": 5,
+      "wins": 0,
+      "losses": 2,
+      "pct": 0
+    },
+    {
+      "rank": 31,
+      "name": "Luis Gustavo Oliveira da Silva",
+      "status": "Ativo",
+      "games": 3,
+      "wins": 1,
+      "losses": 1,
+      "pct": 33.33
+    },
+    {
+      "rank": 32,
+      "name": "Edmur Terruel Manzano",
+      "status": "Ativo",
+      "games": 4,
+      "wins": 2,
+      "losses": 0,
+      "pct": 50
+    },
+    {
+      "rank": 33,
+      "name": "Flávio Malta",
+      "status": "Ativo",
+      "games": 7,
+      "wins": 0,
+      "losses": 4,
+      "pct": 0
+    }
+  ]
+}
