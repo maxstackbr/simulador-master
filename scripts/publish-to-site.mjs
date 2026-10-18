@@ -13,7 +13,8 @@ const destIdx = args.indexOf('--dest')
 const dest = resolve(root, destIdx >= 0 ? args[destIdx + 1] : '../site-maxstack/web/public/ranking')
 const base = `/${dest.split('/').pop()}/`
 
-execSync('npx vite build', { cwd: root, stdio: 'inherit', env: { ...process.env, BASE_PATH: base } })
+const dataUrl = process.env.VITE_DATA_URL ?? 'https://raw.githubusercontent.com/maxstackbr/simulador-master/main/public/data/'
+execSync('npx vite build', { cwd: root, stdio: 'inherit', env: { ...process.env, BASE_PATH: base, VITE_DATA_URL: dataUrl } })
 if (!existsSync(dirname(dest))) {
   console.error(`Pasta de destino não existe: ${dirname(dest)}`)
   process.exit(1)
@@ -21,5 +22,5 @@ if (!existsSync(dirname(dest))) {
 rmSync(dest, { recursive: true, force: true })
 mkdirSync(dest, { recursive: true })
 cpSync(resolve(root, 'dist'), dest, { recursive: true })
-console.log(`✔ Publicado em ${dest} (base ${base})`)
+console.log(`✔ Publicado em ${dest} (base ${base}, dados de ${dataUrl})`)
 console.log('  Próximo passo: commit no site-maxstack e deploy. URL: https://maxstack.com.br' + base)

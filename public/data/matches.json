@@ -1,0 +1,933 @@
+{
+  "updatedAt": "2026-10-18T21:08:51.989Z",
+  "matches": [
+    {
+      "id": 10645381,
+      "round": 9,
+      "date": "17/10/26",
+      "when": "Sábado, 17/10/26",
+      "place": "",
+      "players": [
+        {
+          "name": "Max D'angelo",
+          "won": false,
+          "lost": true,
+          "sets": [
+            {
+              "games": 0,
+              "tb": null
+            },
+            {
+              "games": 3,
+              "tb": null
+            }
+          ]
+        },
+        {
+          "name": "Ueslen Silva",
+          "won": true,
+          "lost": false,
+          "sets": [
+            {
+              "games": 6,
+              "tb": null
+            },
+            {
+              "games": 6,
+              "tb": null
+            }
+          ]
+        }
+      ],
+      "played": true
+    },
+    {
+      "id": 10633582,
+      "round": 9,
+      "date": "10/10/26",
+      "when": "Sábado, 10/10/26 às 16:00hs • Rápida",
+      "place": "Residencial Ibi Aram 1 - Beija-flor (caixa d’água)",
+      "players": [
+        {
+          "name": "Thiago Atilio",
+          "won": false,
+          "lost": true,
+          "sets": [
+            {
+              "games": 6,
+              "tb": 4
+            },
+            {
+              "games": 6,
+              "tb": null
+            },
+            {
+              "games": 6,
+              "tb": null
+            }
+          ]
+        },
+        {
+          "name": "Roberto Vilas",
+          "won": true,
+          "lost": false,
+          "sets": [
+            {
+              "games": 7,
+              "tb": null
+            },
+            {
+              "games": 2,
+              "tb": null
+            },
+            {
+              "games": 10,
+              "tb": null
+            }
+          ]
+        }
+      ],
+      "played": true
+    },
+    {
+      "id": 10509730,
+      "round": 8,
+      "date": "25/09/26",
+      "when": "Sexta, 25/09/26",
+      "place": "",
+      "players": [
+        {
+          "name": "Hugo Branquinho",
+          "won": false,
+          "lost": true,
+          "sets": [
+            {
+              "games": 3,
+              "tb": null
+            },
+            {
+              "games": 2,
+              "tb": null
+            }
+          ]
+        },
+        {
+          "name": "Lucas Claudio",
+          "won": true,
+          "lost": false,
+          "sets": [
+            {
+              "games": 6,
+              "tb": null
+            },
+            {
+              "games": 6,
+              "tb": null
+            }
+          ]
+        }
+      ],
+      "played": true
+    },
+    {
+      "id": 10340985,
+      "round": 8,
+      "date": "26/09/26",
+      "when": "Sábado, 26/09/26",
+      "place": "",
+      "players": [
+        {
+          "name": "Marinho Schramm",
+          "won": true,
+          "lost": false,
+          "sets": [
+            {
+              "games": 7,
+              "tb": null
+            },
+            {
+              "games": 4,
+              "tb": null
+            },
+            {
+              "games": 10,
+              "tb": null
+            }
+          ]
+        },
+        {
+          "name": "André Di_celio",
+          "won": false,
+          "lost": true,
+          "sets": [
+            {
+              "games": 5,
+              "tb": null
+            },
+            {
+              "games": 6,
+              "tb": null
+            },
+            {
+              "games": 8,
+              "tb": null
+            }
+          ]
+        }
+      ],
+      "played": true
+    },
+    {
+      "id": 10340928,
+      "round": 8,
+      "date": "21/09/26",
+      "when": "Segunda, 21/09/26 às 09:30hs • Rápida",
+      "place": "Residencial Ibi Aram 1 - Tucano (bosque)",
+      "players": [
+        {
+          "name": "Fabrício Costa",
+          "won": false,
+          "lost": true,
+          "sets": [
+            {
+              "games": 1,
+              "tb": null
+            },
+            {
+              "games": 2,
+              "tb": null
+            }
+          ]
+        },
+        {
+          "name": "Max D'angelo",
+          "won": true,
+          "lost": false,
+          "sets": [
+            {
+              "games": 6,
+              "tb": null
+            },
+            {
+              "games": 6,
+              "tb": null
+            }
+          ]
+        }
+      ],
+      "played": true
+    },
+    {
+      "id": 10340889,
+      "round": 8,
+      "date": "01/09/26",
+      "when": "Terça, 01/09/26 às 09:30hs • Rápida",
+      "place": "Residencial Ibi Aram 1 - Beija-flor (caixa d’água)",
+      "players": [
+        {
+          "name": "Thiago Atilio",
+          "won": false,
+          "lost": true,
+          "sets": [
+            {
+              "games": 0,
+              "tb": null
+            },
+            {
+              "games": 0,
+              "tb": null
+            }
+          ]
+        },
+        {
+          "name": "Roberto Vilas",
+          "won": true,
+          "lost": false,
+          "sets": [
+            {
+              "games": 0,
+              "tb": null
+            },
+            {
+              "games": 0,
+              "tb": null
+            }
+          ]
+        }
+      ],
+      "played": true
+    },
+    {
+      "id": 10340691,
+      "round": 8,
+      "date": "01/10/26",
+      "when": "Quinta, 01/10/26",
+      "place": "",
+      "players": [
+        {
+          "name": "Henrique Carelli",
+          "won": false,
+          "lost": true,
+          "sets": [
+            {
+              "games": 6,
+              "tb": 6
+            },
+            {
+              "games": 6,
+              "tb": null
+            },
+            {
+              "games": 8,
+              "tb": null
+            }
+          ]
+        },
+        {
+          "name": "Douglas Kuada",
+          "won": true,
+          "lost": false,
+          "sets": [
+            {
+              "games": 7,
+              "tb": null
+            },
+            {
+              "games": 4,
+              "tb": null
+            },
+            {
+              "games": 10,
+              "tb": null
+            }
+          ]
+        }
+      ],
+      "played": true
+    },
+    {
+      "id": 10340542,
+      "round": 8,
+      "date": "27/09/26",
+      "when": "Domingo, 27/09/26",
+      "place": "",
+      "players": [
+        {
+          "name": "Douglas Kuada",
+          "won": false,
+          "lost": true,
+          "sets": [
+            {
+              "games": 6,
+              "tb": null
+            },
+            {
+              "games": 2,
+              "tb": null
+            },
+            {
+              "games": 7,
+              "tb": null
+            }
+          ]
+        },
+        {
+          "name": "Leonardo Belchior",
+          "won": true,
+          "lost": false,
+          "sets": [
+            {
+              "games": 1,
+              "tb": null
+            },
+            {
+              "games": 6,
+              "tb": null
+            },
+            {
+              "games": 10,
+              "tb": null
+            }
+          ]
+        }
+      ],
+      "played": true
+    },
+    {
+      "id": 10340489,
+      "round": 8,
+      "date": "13/09/26",
+      "when": "Domingo, 13/09/26",
+      "place": "",
+      "players": [
+        {
+          "name": "Roberto Vilas",
+          "won": false,
+          "lost": true,
+          "sets": [
+            {
+              "games": 1,
+              "tb": null
+            },
+            {
+              "games": 3,
+              "tb": null
+            }
+          ]
+        },
+        {
+          "name": "João Andrade",
+          "won": true,
+          "lost": false,
+          "sets": [
+            {
+              "games": 6,
+              "tb": null
+            },
+            {
+              "games": 6,
+              "tb": null
+            }
+          ]
+        }
+      ],
+      "played": true
+    },
+    {
+      "id": 10340457,
+      "round": 8,
+      "date": "27/09/26",
+      "when": "Domingo, 27/09/26",
+      "place": "",
+      "players": [
+        {
+          "name": "André Di_celio",
+          "won": false,
+          "lost": true,
+          "sets": [
+            {
+              "games": 0,
+              "tb": null
+            },
+            {
+              "games": 0,
+              "tb": null
+            }
+          ]
+        },
+        {
+          "name": "Ueslen Silva",
+          "won": true,
+          "lost": false,
+          "sets": [
+            {
+              "games": 0,
+              "tb": null
+            },
+            {
+              "games": 0,
+              "tb": null
+            }
+          ]
+        }
+      ],
+      "played": true
+    },
+    {
+      "id": 10340441,
+      "round": 8,
+      "date": "23/09/26",
+      "when": "Quarta, 23/09/26 às 09:00hs • Rápida",
+      "place": "Residencial Ibi Aram 1 - Beija-flor (caixa d’água)",
+      "players": [
+        {
+          "name": "Max D'angelo",
+          "won": true,
+          "lost": false,
+          "sets": [
+            {
+              "games": 0,
+              "tb": null
+            },
+            {
+              "games": 0,
+              "tb": null
+            }
+          ]
+        },
+        {
+          "name": "Thiago Atilio",
+          "won": false,
+          "lost": true,
+          "sets": [
+            {
+              "games": 0,
+              "tb": null
+            },
+            {
+              "games": 0,
+              "tb": null
+            }
+          ]
+        }
+      ],
+      "played": true
+    },
+    {
+      "id": 10340440,
+      "round": 8,
+      "date": "17/09/26",
+      "when": "Quinta, 17/09/26 às 09:00hs • Rápida",
+      "place": "Residencial Ibi Aram 1 - Beija-flor (caixa d’água)",
+      "players": [
+        {
+          "name": "Marco Tempesta",
+          "won": true,
+          "lost": false,
+          "sets": [
+            {
+              "games": 0,
+              "tb": null
+            },
+            {
+              "games": 0,
+              "tb": null
+            }
+          ]
+        },
+        {
+          "name": "Marcos Nogueira",
+          "won": false,
+          "lost": true,
+          "sets": [
+            {
+              "games": 0,
+              "tb": null
+            },
+            {
+              "games": 0,
+              "tb": null
+            }
+          ]
+        }
+      ],
+      "played": true
+    },
+    {
+      "id": 10086303,
+      "round": 7,
+      "date": "01/09/26",
+      "when": "Terça, 01/09/26",
+      "place": "",
+      "players": [
+        {
+          "name": "Leandro Fanti",
+          "won": false,
+          "lost": false,
+          "sets": [
+            {
+              "games": 0,
+              "tb": null
+            },
+            {
+              "games": 0,
+              "tb": null
+            },
+            {
+              "games": 0,
+              "tb": null
+            }
+          ]
+        },
+        {
+          "name": "Marcelo Lima",
+          "won": false,
+          "lost": false,
+          "sets": [
+            {
+              "games": 0,
+              "tb": null
+            },
+            {
+              "games": 0,
+              "tb": null
+            },
+            {
+              "games": 0,
+              "tb": null
+            }
+          ]
+        }
+      ],
+      "played": false
+    },
+    {
+      "id": 10071099,
+      "round": 7,
+      "date": "01/09/26",
+      "when": "Terça, 01/09/26",
+      "place": "",
+      "players": [
+        {
+          "name": "Alexandre Scarpato",
+          "won": false,
+          "lost": false,
+          "sets": [
+            {
+              "games": 0,
+              "tb": null
+            },
+            {
+              "games": 0,
+              "tb": null
+            },
+            {
+              "games": 0,
+              "tb": null
+            }
+          ]
+        },
+        {
+          "name": "Andre Santana",
+          "won": false,
+          "lost": false,
+          "sets": [
+            {
+              "games": 0,
+              "tb": null
+            },
+            {
+              "games": 0,
+              "tb": null
+            },
+            {
+              "games": 0,
+              "tb": null
+            }
+          ]
+        }
+      ],
+      "played": false
+    },
+    {
+      "id": 10065672,
+      "round": 7,
+      "date": "19/08/26",
+      "when": "Quarta, 19/08/26 às 15:00hs • Rápida",
+      "place": "Residencial Ibi Aram 1 - Beija-flor (caixa d’água)",
+      "players": [
+        {
+          "name": "Marco Tempesta",
+          "won": false,
+          "lost": true,
+          "sets": [
+            {
+              "games": 3,
+              "tb": null
+            },
+            {
+              "games": 6,
+              "tb": 2
+            }
+          ]
+        },
+        {
+          "name": "Marinho Schramm",
+          "won": true,
+          "lost": false,
+          "sets": [
+            {
+              "games": 6,
+              "tb": null
+            },
+            {
+              "games": 7,
+              "tb": null
+            }
+          ]
+        }
+      ],
+      "played": true
+    },
+    {
+      "id": 10064332,
+      "round": 7,
+      "date": "19/08/26",
+      "when": "Quarta, 19/08/26",
+      "place": "",
+      "players": [
+        {
+          "name": "Marcos Hamamura",
+          "won": true,
+          "lost": false,
+          "sets": [
+            {
+              "games": 6,
+              "tb": null
+            },
+            {
+              "games": 6,
+              "tb": null
+            }
+          ]
+        },
+        {
+          "name": "Evandro Santos",
+          "won": false,
+          "lost": true,
+          "sets": [
+            {
+              "games": 4,
+              "tb": null
+            },
+            {
+              "games": 0,
+              "tb": null
+            }
+          ]
+        }
+      ],
+      "played": true
+    },
+    {
+      "id": 10060597,
+      "round": 7,
+      "date": "01/09/26",
+      "when": "Terça, 01/09/26",
+      "place": "",
+      "players": [
+        {
+          "name": "Marcos Nogueira",
+          "won": false,
+          "lost": false,
+          "sets": [
+            {
+              "games": 0,
+              "tb": null
+            },
+            {
+              "games": 0,
+              "tb": null
+            },
+            {
+              "games": 0,
+              "tb": null
+            }
+          ]
+        },
+        {
+          "name": "Sergio Trevisan",
+          "won": false,
+          "lost": false,
+          "sets": [
+            {
+              "games": 0,
+              "tb": null
+            },
+            {
+              "games": 0,
+              "tb": null
+            },
+            {
+              "games": 0,
+              "tb": null
+            }
+          ]
+        }
+      ],
+      "played": false
+    },
+    {
+      "id": 10060486,
+      "round": 7,
+      "date": "16/08/26",
+      "when": "Domingo, 16/08/26 às 16:00hs • Rápida",
+      "place": "Residencial Ibi Aram 1 - Tucano (bosque)",
+      "players": [
+        {
+          "name": "André Di_celio",
+          "won": false,
+          "lost": true,
+          "sets": [
+            {
+              "games": 4,
+              "tb": null
+            },
+            {
+              "games": 7,
+              "tb": null
+            },
+            {
+              "games": 8,
+              "tb": null
+            }
+          ]
+        },
+        {
+          "name": "Roberto Vilas",
+          "won": true,
+          "lost": false,
+          "sets": [
+            {
+              "games": 6,
+              "tb": null
+            },
+            {
+              "games": 5,
+              "tb": null
+            },
+            {
+              "games": 10,
+              "tb": null
+            }
+          ]
+        }
+      ],
+      "played": true
+    },
+    {
+      "id": 10060228,
+      "round": 7,
+      "date": "14/08/26",
+      "when": "Sexta, 14/08/26",
+      "place": "",
+      "players": [
+        {
+          "name": "Ueslen Silva",
+          "won": true,
+          "lost": false,
+          "sets": [
+            {
+              "games": 7,
+              "tb": null
+            },
+            {
+              "games": 2,
+              "tb": null
+            },
+            {
+              "games": 10,
+              "tb": null
+            }
+          ]
+        },
+        {
+          "name": "João Andrade",
+          "won": false,
+          "lost": true,
+          "sets": [
+            {
+              "games": 5,
+              "tb": null
+            },
+            {
+              "games": 6,
+              "tb": null
+            },
+            {
+              "games": 8,
+              "tb": null
+            }
+          ]
+        }
+      ],
+      "played": true
+    },
+    {
+      "id": 10060226,
+      "round": 7,
+      "date": "30/08/26",
+      "when": "Domingo, 30/08/26",
+      "place": "",
+      "players": [
+        {
+          "name": "Henrique Carelli",
+          "won": false,
+          "lost": true,
+          "sets": [
+            {
+              "games": 6,
+              "tb": null
+            },
+            {
+              "games": 3,
+              "tb": null
+            },
+            {
+              "games": 6,
+              "tb": null
+            }
+          ]
+        },
+        {
+          "name": "Fabrício Costa",
+          "won": true,
+          "lost": false,
+          "sets": [
+            {
+              "games": 1,
+              "tb": null
+            },
+            {
+              "games": 6,
+              "tb": null
+            },
+            {
+              "games": 10,
+              "tb": null
+            }
+          ]
+        }
+      ],
+      "played": true
+    },
+    {
+      "id": 10060147,
+      "round": 7,
+      "date": "30/08/26",
+      "when": "Domingo, 30/08/26",
+      "place": "",
+      "players": [
+        {
+          "name": "Douglas Kuada",
+          "won": false,
+          "lost": true,
+          "sets": [
+            {
+              "games": 0,
+              "tb": null
+            },
+            {
+              "games": 0,
+              "tb": null
+            },
+            {
+              "games": 0,
+              "tb": null
+            }
+          ]
+        },
+        {
+          "name": "André Di_celio",
+          "won": true,
+          "lost": false,
+          "sets": [
+            {
+              "games": 0,
+              "tb": null
+            },
+            {
+              "games": 0,
+              "tb": null
+            },
+            {
+              "games": 0,
+              "tb": null
+            }
+          ]
+        }
+      ],
+      "played": true
+    }
+  ]
+}

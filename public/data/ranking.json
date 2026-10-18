@@ -1,8 +1,10 @@
 {
-  "id": "2026-10-18T18-12-17",
-  "label": "Classificação parcial (18/out)",
-  "generatedAt": "2026-10-18T18:12:17.017Z",
-  "source": "ranking.xlsx",
+  "id": "2026-10-18T21-08-51",
+  "label": "Letzplay 18 de out. 18:08",
+  "generatedAt": "2026-10-18T21:08:51.989Z",
+  "source": "https://embed.letzplay.me/ibiaram/rankings/47608/table",
+  "newMatches": [],
+  "changes": [],
   "players": [
     {
       "rank": 1,
@@ -11,7 +13,23 @@
       "games": 13,
       "wins": 13,
       "losses": 0,
-      "pct": 100
+      "pct": 100,
+      "balance": 13,
+      "sets": {
+        "balance": 16,
+        "won": 18,
+        "lost": 2
+      },
+      "gamesStat": {
+        "balance": 64,
+        "won": 107,
+        "lost": 43
+      },
+      "tiebreaks": {
+        "balance": 1,
+        "won": 2,
+        "lost": 1
+      }
     },
     {
       "rank": 2,
@@ -20,7 +38,23 @@
       "games": 12,
       "wins": 10,
       "losses": 2,
-      "pct": 83.33
+      "pct": 83.33,
+      "balance": 8,
+      "sets": {
+        "balance": 15,
+        "won": 17,
+        "lost": 2
+      },
+      "gamesStat": {
+        "balance": 72,
+        "won": 107,
+        "lost": 35
+      },
+      "tiebreaks": {
+        "balance": -1,
+        "won": 0,
+        "lost": 1
+      }
     },
     {
       "rank": 3,
@@ -29,7 +63,23 @@
       "games": 13,
       "wins": 5,
       "losses": 4,
-      "pct": 38.46
+      "pct": 38.46,
+      "balance": 1,
+      "sets": {
+        "balance": 4,
+        "won": 11,
+        "lost": 7
+      },
+      "gamesStat": {
+        "balance": 11,
+        "won": 82,
+        "lost": 71
+      },
+      "tiebreaks": {
+        "balance": 2,
+        "won": 3,
+        "lost": 1
+      }
     },
     {
       "rank": 4,
@@ -38,7 +88,23 @@
       "games": 17,
       "wins": 9,
       "losses": 8,
-      "pct": 52.94
+      "pct": 52.94,
+      "balance": 1,
+      "sets": {
+        "balance": -3,
+        "won": 18,
+        "lost": 21
+      },
+      "gamesStat": {
+        "balance": -26,
+        "won": 137,
+        "lost": 163
+      },
+      "tiebreaks": {
+        "balance": 5,
+        "won": 8,
+        "lost": 3
+      }
     },
     {
       "rank": 5,
@@ -47,7 +113,23 @@
       "games": 14,
       "wins": 8,
       "losses": 6,
-      "pct": 57.14
+      "pct": 57.14,
+      "balance": 2,
+      "sets": {
+        "balance": -2,
+        "won": 12,
+        "lost": 14
+      },
+      "gamesStat": {
+        "balance": -19,
+        "won": 87,
+        "lost": 106
+      },
+      "tiebreaks": {
+        "balance": 2,
+        "won": 5,
+        "lost": 3
+      }
     },
     {
       "rank": 6,
@@ -56,7 +138,23 @@
       "games": 10,
       "wins": 4,
       "losses": 4,
-      "pct": 40
+      "pct": 40,
+      "balance": 0,
+      "sets": {
+        "balance": 4,
+        "won": 9,
+        "lost": 5
+      },
+      "gamesStat": {
+        "balance": 6,
+        "won": 56,
+        "lost": 50
+      },
+      "tiebreaks": {
+        "balance": 0,
+        "won": 1,
+        "lost": 1
+      }
     },
     {
       "rank": 7,
@@ -65,7 +163,23 @@
       "games": 14,
       "wins": 8,
       "losses": 5,
-      "pct": 57.14
+      "pct": 57.14,
+      "balance": 3,
+      "sets": {
+        "balance": 6,
+        "won": 14,
+        "lost": 8
+      },
+      "gamesStat": {
+        "balance": 19,
+        "won": 100,
+        "lost": 81
+      },
+      "tiebreaks": {
+        "balance": 2,
+        "won": 2,
+        "lost": 0
+      }
     },
     {
       "rank": 8,
@@ -74,7 +188,23 @@
       "games": 11,
       "wins": 2,
       "losses": 7,
-      "pct": 18.18
+      "pct": 18.18,
+      "balance": -5,
+      "sets": {
+        "balance": -4,
+        "won": 6,
+        "lost": 10
+      },
+      "gamesStat": {
+        "balance": -17,
+        "won": 48,
+        "lost": 65
+      },
+      "tiebreaks": {
+        "balance": -1,
+        "won": 3,
+        "lost": 4
+      }
     },
     {
       "rank": 9,
@@ -83,7 +213,23 @@
       "games": 13,
       "wins": 4,
       "losses": 8,
-      "pct": 30.77
+      "pct": 30.77,
+      "balance": -4,
+      "sets": {
+        "balance": -2,
+        "won": 6,
+        "lost": 8
+      },
+      "gamesStat": {
+        "balance": 2,
+        "won": 55,
+        "lost": 53
+      },
+      "tiebreaks": {
+        "balance": -3,
+        "won": 0,
+        "lost": 3
+      }
     },
     {
       "rank": 10,
@@ -92,7 +238,23 @@
       "games": 12,
       "wins": 5,
       "losses": 6,
-      "pct": 41.67
+      "pct": 41.67,
+      "balance": -1,
+      "sets": {
+        "balance": -4,
+        "won": 8,
+        "lost": 12
+      },
+      "gamesStat": {
+        "balance": -20,
+        "won": 62,
+        "lost": 82
+      },
+      "tiebreaks": {
+        "balance": 0,
+        "won": 2,
+        "lost": 2
+      }
     },
     {
       "rank": 11,
@@ -101,7 +263,23 @@
       "games": 5,
       "wins": 0,
       "losses": 3,
-      "pct": 0
+      "pct": 0,
+      "balance": -3,
+      "sets": {
+        "balance": -5,
+        "won": 1,
+        "lost": 6
+      },
+      "gamesStat": {
+        "balance": -18,
+        "won": 20,
+        "lost": 38
+      },
+      "tiebreaks": {
+        "balance": -1,
+        "won": 1,
+        "lost": 2
+      }
     },
     {
       "rank": 12,
@@ -110,7 +288,23 @@
       "games": 6,
       "wins": 3,
       "losses": 2,
-      "pct": 50
+      "pct": 50,
+      "balance": 1,
+      "sets": {
+        "balance": 3,
+        "won": 5,
+        "lost": 2
+      },
+      "gamesStat": {
+        "balance": 9,
+        "won": 34,
+        "lost": 25
+      },
+      "tiebreaks": {
+        "balance": 0,
+        "won": 1,
+        "lost": 1
+      }
     },
     {
       "rank": 13,
@@ -119,7 +313,23 @@
       "games": 12,
       "wins": 4,
       "losses": 8,
-      "pct": 33.33
+      "pct": 33.33,
+      "balance": -4,
+      "sets": {
+        "balance": -9,
+        "won": 6,
+        "lost": 15
+      },
+      "gamesStat": {
+        "balance": -23,
+        "won": 77,
+        "lost": 100
+      },
+      "tiebreaks": {
+        "balance": -4,
+        "won": 1,
+        "lost": 5
+      }
     },
     {
       "rank": 14,
@@ -128,7 +338,23 @@
       "games": 12,
       "wins": 4,
       "losses": 6,
-      "pct": 33.33
+      "pct": 33.33,
+      "balance": -2,
+      "sets": {
+        "balance": -4,
+        "won": 5,
+        "lost": 9
+      },
+      "gamesStat": {
+        "balance": -8,
+        "won": 50,
+        "lost": 58
+      },
+      "tiebreaks": {
+        "balance": -2,
+        "won": 1,
+        "lost": 3
+      }
     },
     {
       "rank": 15,
@@ -137,7 +363,23 @@
       "games": 5,
       "wins": 3,
       "losses": 1,
-      "pct": 60
+      "pct": 60,
+      "balance": 2,
+      "sets": {
+        "balance": 2,
+        "won": 2,
+        "lost": 0
+      },
+      "gamesStat": {
+        "balance": 7,
+        "won": 12,
+        "lost": 5
+      },
+      "tiebreaks": {
+        "balance": 0,
+        "won": 0,
+        "lost": 0
+      }
     },
     {
       "rank": 16,
@@ -146,7 +388,23 @@
       "games": 8,
       "wins": 5,
       "losses": 2,
-      "pct": 62.5
+      "pct": 62.5,
+      "balance": 3,
+      "sets": {
+        "balance": 4,
+        "won": 8,
+        "lost": 4
+      },
+      "gamesStat": {
+        "balance": 14,
+        "won": 56,
+        "lost": 42
+      },
+      "tiebreaks": {
+        "balance": 0,
+        "won": 0,
+        "lost": 0
+      }
     },
     {
       "rank": 17,
@@ -155,7 +413,23 @@
       "games": 6,
       "wins": 1,
       "losses": 3,
-      "pct": 16.67
+      "pct": 16.67,
+      "balance": -2,
+      "sets": {
+        "balance": -3,
+        "won": 2,
+        "lost": 5
+      },
+      "gamesStat": {
+        "balance": -12,
+        "won": 18,
+        "lost": 30
+      },
+      "tiebreaks": {
+        "balance": 1,
+        "won": 1,
+        "lost": 0
+      }
     },
     {
       "rank": 18,
@@ -164,7 +438,23 @@
       "games": 13,
       "wins": 5,
       "losses": 7,
-      "pct": 38.46
+      "pct": 38.46,
+      "balance": -2,
+      "sets": {
+        "balance": -2,
+        "won": 13,
+        "lost": 15
+      },
+      "gamesStat": {
+        "balance": -1,
+        "won": 104,
+        "lost": 105
+      },
+      "tiebreaks": {
+        "balance": -2,
+        "won": 2,
+        "lost": 4
+      }
     },
     {
       "rank": 19,
@@ -173,7 +463,23 @@
       "games": 4,
       "wins": 2,
       "losses": 1,
-      "pct": 50
+      "pct": 50,
+      "balance": 1,
+      "sets": {
+        "balance": 2,
+        "won": 2,
+        "lost": 0
+      },
+      "gamesStat": {
+        "balance": 3,
+        "won": 13,
+        "lost": 10
+      },
+      "tiebreaks": {
+        "balance": 1,
+        "won": 1,
+        "lost": 0
+      }
     },
     {
       "rank": 20,
@@ -182,7 +488,23 @@
       "games": 9,
       "wins": 3,
       "losses": 3,
-      "pct": 33.33
+      "pct": 33.33,
+      "balance": 0,
+      "sets": {
+        "balance": -3,
+        "won": 5,
+        "lost": 8
+      },
+      "gamesStat": {
+        "balance": -14,
+        "won": 42,
+        "lost": 56
+      },
+      "tiebreaks": {
+        "balance": 2,
+        "won": 3,
+        "lost": 1
+      }
     },
     {
       "rank": 21,
@@ -191,7 +513,23 @@
       "games": 7,
       "wins": 3,
       "losses": 1,
-      "pct": 42.86
+      "pct": 42.86,
+      "balance": 2,
+      "sets": {
+        "balance": -3,
+        "won": 1,
+        "lost": 4
+      },
+      "gamesStat": {
+        "balance": -10,
+        "won": 12,
+        "lost": 22
+      },
+      "tiebreaks": {
+        "balance": -1,
+        "won": 0,
+        "lost": 1
+      }
     },
     {
       "rank": 22,
@@ -200,7 +538,23 @@
       "games": 5,
       "wins": 1,
       "losses": 4,
-      "pct": 20
+      "pct": 20,
+      "balance": -3,
+      "sets": {
+        "balance": -1,
+        "won": 2,
+        "lost": 3
+      },
+      "gamesStat": {
+        "balance": -9,
+        "won": 13,
+        "lost": 22
+      },
+      "tiebreaks": {
+        "balance": 1,
+        "won": 1,
+        "lost": 0
+      }
     },
     {
       "rank": 23,
@@ -209,7 +563,23 @@
       "games": 4,
       "wins": 2,
       "losses": 2,
-      "pct": 50
+      "pct": 50,
+      "balance": 0,
+      "sets": {
+        "balance": 0,
+        "won": 4,
+        "lost": 4
+      },
+      "gamesStat": {
+        "balance": 6,
+        "won": 32,
+        "lost": 26
+      },
+      "tiebreaks": {
+        "balance": 0,
+        "won": 0,
+        "lost": 0
+      }
     },
     {
       "rank": 24,
@@ -218,7 +588,23 @@
       "games": 2,
       "wins": 0,
       "losses": 1,
-      "pct": 0
+      "pct": 0,
+      "balance": -1,
+      "sets": {
+        "balance": 0,
+        "won": 0,
+        "lost": 0
+      },
+      "gamesStat": {
+        "balance": 0,
+        "won": 0,
+        "lost": 0
+      },
+      "tiebreaks": {
+        "balance": 0,
+        "won": 0,
+        "lost": 0
+      }
     },
     {
       "rank": 25,
@@ -227,7 +613,23 @@
       "games": 8,
       "wins": 6,
       "losses": 0,
-      "pct": 75
+      "pct": 75,
+      "balance": 6,
+      "sets": {
+        "balance": 10,
+        "won": 12,
+        "lost": 2
+      },
+      "gamesStat": {
+        "balance": 37,
+        "won": 66,
+        "lost": 29
+      },
+      "tiebreaks": {
+        "balance": 2,
+        "won": 2,
+        "lost": 0
+      }
     },
     {
       "rank": 26,
@@ -236,7 +638,23 @@
       "games": 12,
       "wins": 2,
       "losses": 7,
-      "pct": 16.67
+      "pct": 16.67,
+      "balance": -5,
+      "sets": {
+        "balance": -13,
+        "won": 1,
+        "lost": 14
+      },
+      "gamesStat": {
+        "balance": -56,
+        "won": 28,
+        "lost": 84
+      },
+      "tiebreaks": {
+        "balance": -1,
+        "won": 0,
+        "lost": 1
+      }
     },
     {
       "rank": 27,
@@ -245,7 +663,23 @@
       "games": 2,
       "wins": 2,
       "losses": 0,
-      "pct": 100
+      "pct": 100,
+      "balance": 2,
+      "sets": {
+        "balance": 4,
+        "won": 4,
+        "lost": 0
+      },
+      "gamesStat": {
+        "balance": 17,
+        "won": 24,
+        "lost": 7
+      },
+      "tiebreaks": {
+        "balance": 0,
+        "won": 0,
+        "lost": 0
+      }
     },
     {
       "rank": 28,
@@ -254,7 +688,23 @@
       "games": 4,
       "wins": 0,
       "losses": 3,
-      "pct": 0
+      "pct": 0,
+      "balance": -3,
+      "sets": {
+        "balance": -4,
+        "won": 0,
+        "lost": 4
+      },
+      "gamesStat": {
+        "balance": -19,
+        "won": 5,
+        "lost": 24
+      },
+      "tiebreaks": {
+        "balance": 0,
+        "won": 0,
+        "lost": 0
+      }
     },
     {
       "rank": 29,
@@ -263,7 +713,23 @@
       "games": 7,
       "wins": 2,
       "losses": 4,
-      "pct": 28.57
+      "pct": 28.57,
+      "balance": -2,
+      "sets": {
+        "balance": 0,
+        "won": 6,
+        "lost": 6
+      },
+      "gamesStat": {
+        "balance": 5,
+        "won": 49,
+        "lost": 44
+      },
+      "tiebreaks": {
+        "balance": -2,
+        "won": 0,
+        "lost": 2
+      }
     },
     {
       "rank": 30,
@@ -272,7 +738,23 @@
       "games": 5,
       "wins": 0,
       "losses": 2,
-      "pct": 0
+      "pct": 0,
+      "balance": -2,
+      "sets": {
+        "balance": -2,
+        "won": 0,
+        "lost": 2
+      },
+      "gamesStat": {
+        "balance": -6,
+        "won": 6,
+        "lost": 12
+      },
+      "tiebreaks": {
+        "balance": 0,
+        "won": 0,
+        "lost": 0
+      }
     },
     {
       "rank": 31,
@@ -281,7 +763,23 @@
       "games": 3,
       "wins": 1,
       "losses": 1,
-      "pct": 33.33
+      "pct": 33.33,
+      "balance": 0,
+      "sets": {
+        "balance": -1,
+        "won": 2,
+        "lost": 3
+      },
+      "gamesStat": {
+        "balance": -4,
+        "won": 16,
+        "lost": 20
+      },
+      "tiebreaks": {
+        "balance": 1,
+        "won": 1,
+        "lost": 0
+      }
     },
     {
       "rank": 32,
@@ -290,7 +788,23 @@
       "games": 4,
       "wins": 2,
       "losses": 0,
-      "pct": 50
+      "pct": 50,
+      "balance": 2,
+      "sets": {
+        "balance": -1,
+        "won": 1,
+        "lost": 2
+      },
+      "gamesStat": {
+        "balance": -3,
+        "won": 8,
+        "lost": 11
+      },
+      "tiebreaks": {
+        "balance": -1,
+        "won": 0,
+        "lost": 1
+      }
     },
     {
       "rank": 33,
@@ -299,7 +813,23 @@
       "games": 7,
       "wins": 0,
       "losses": 4,
-      "pct": 0
+      "pct": 0,
+      "balance": -4,
+      "sets": {
+        "balance": -6,
+        "won": 2,
+        "lost": 8
+      },
+      "gamesStat": {
+        "balance": -19,
+        "won": 25,
+        "lost": 44
+      },
+      "tiebreaks": {
+        "balance": -2,
+        "won": 0,
+        "lost": 2
+      }
     }
   ]
 }

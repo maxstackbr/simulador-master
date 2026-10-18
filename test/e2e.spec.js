@@ -1,5 +1,9 @@
 // Valida regras do regulamento e telas do simulador no navegador (desktop e mobile).
 import { test, expect } from '@playwright/test'
+import { readFileSync } from 'node:fs'
+
+// O seletor lista todas as versões publicadas (o workflow de sync adiciona novas ao longo do tempo).
+const versionCount = JSON.parse(readFileSync(new URL('../public/data/index.json', import.meta.url), 'utf8')).versions.length
 
 const names = async (page, matchIdx) =>
   page.locator('.match').nth(matchIdx).locator('.slot-name').allTextContents()
@@ -95,7 +99,7 @@ test('data da última atualização em destaque e seletor de versão', async ({ 
   await expect(page.locator('.updated')).toContainText('Última atualização do ranking')
   await expect(page.locator('.updated strong')).toContainText('2026')
   await expect(page.locator('button:has-text("Enviar planilha")')).toHaveCount(0)
-  await expect(page.locator('select option')).toHaveCount(1)
+  await expect(page.locator('select option')).toHaveCount(versionCount)
 })
 
 test('chave da esquerda para a direita, com rolagem horizontal própria no celular', async ({ page, isMobile }) => {

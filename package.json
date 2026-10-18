@@ -10,7 +10,9 @@
     "test": "vitest run",
     "e2e": "playwright test",
     "build:site": "node scripts/publish-to-site.mjs",
-    "update": "node scripts/update-ranking.mjs"
+    "update": "node scripts/update-ranking.mjs",
+    "sync": "node scripts/sync-letzplay.mjs",
+    "sync:dry": "node scripts/sync-letzplay.mjs --dry-run"
   },
   "dependencies": {
     "react": "^18.3.1",
