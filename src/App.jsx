@@ -7,6 +7,8 @@ import SimulationBar from './components/SimulationBar.jsx'
 import JumpButton from './components/JumpButton.jsx'
 
 const BASE = import.meta.env.BASE_URL
+// Em produção os dados vêm do GitHub (atualizados pelo workflow); em dev, da pasta public/data.
+const DATA = (import.meta.env.VITE_DATA_URL || `${BASE}data/`).replace(/\/?$/, '/')
 const STORAGE_KEY = 'master-ibi-aram-sim'
 
 const loadSim = () => {
@@ -31,11 +33,11 @@ export default function App() {
   }, [sim])
 
   useEffect(() => {
-    fetch(`${BASE}data/index.json`)
+    fetch(`${DATA}index.json`, { cache: 'no-cache' })
       .then((r) => (r.ok ? r.json() : { versions: [] }))
       .then((idx) => setVersions(idx.versions ?? []))
       .catch(() => setVersions([]))
-    fetch(`${BASE}data/ranking.json`)
+    fetch(`${DATA}ranking.json`, { cache: 'no-cache' })
       .then((r) => {
         if (!r.ok) throw new Error('Nenhuma classificação publicada ainda.')
         return r.json()
@@ -47,7 +49,7 @@ export default function App() {
   const selectVersion = async (id) => {
     setError(null)
     try {
-      const r = await fetch(`${BASE}data/history/${id}.json`)
+      const r = await fetch(`${DATA}history/${id}.json`)
       if (!r.ok) throw new Error('Versão não encontrada.')
       setVersion(await r.json())
     } catch (e) {

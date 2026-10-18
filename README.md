@@ -27,13 +27,29 @@ npm run build               # dist/ para qualquer host estático
 npm run build:site          # build com base /ranking/ e copia para ../site-maxstack/web/public/ranking
 ```
 
-## Receber uma classificação nova
-1. `npm run update -- nova-planilha.xlsx --label "Classificação de 1º/dez"`
-   - copia a planilha para `data/ranking.xlsx`
-   - grava `public/data/ranking.json` (versão atual) e `public/data/history/<data-hora>.json`
-   - atualiza `public/data/index.json`; cada versão aparece no seletor do site
-2. `npm run build:site`, commit em `site-maxstack` e deploy normal do site.
-   A URL fica `https://maxstack.com.br/ranking/`.
+## Atualização automática (Letzplay → GitHub → site)
+O workflow `.github/workflows/sync-ranking.yml` roda de 2 em 2 horas e no botão "Run workflow". Ele:
+1. lê a classificação e os jogos no domínio de embed do Letzplay (`embed.letzplay.me/ibiaram/rankings/47608`,
+   feito para sites de terceiros; sem API oficial, o parser em `scripts/lib/letzplay.js` tem testes com uma captura real);
+2. compara com `public/data/ranking.json` e `public/data/matches.json`: jogos novos (placar aprovado) e mudanças de posição;
+3. se mudou, grava nova versão em `public/data` (atual, histórico e índice) e faz commit na `main`;
+4. envia e-mail para `contato@maxstack.com.br` (Resend) com um resumo pronto para colar no WhatsApp,
+   também quando nada mudou e quando a leitura falhou.
+
+O site publicado lê os JSON direto deste repositório (`raw.githubusercontent.com/.../public/data/`), então
+**não precisa de deploy do site a cada atualização**. O repositório precisa ser público para isso.
+
+Configuração no GitHub (Settings → Secrets and variables → Actions):
+- secret `RESEND_API_KEY` (obrigatório para o e-mail; sem ele o workflow só atualiza os dados)
+- vars opcionais `EMAIL_TO` (padrão `contato@maxstack.com.br`) e `EMAIL_FROM` (padrão `Ranking Ibi Aram <site@maxstack.com.br>`)
+
+Local: `npm run sync:dry` mostra o resumo sem gravar; `npm run sync` grava.
+
+## Atualização manual (plano B)
+1. `npm run update -- nova-planilha.xlsx --label "Classificação de 1º/dez"` grava a versão em `public/data`.
+2. Commit e push na `main`: o site lê os JSON do GitHub.
+`npm run build:site` só é necessário quando o código do simulador muda (copia o build para
+`site-maxstack/web/public/ranking`, publicado no deploy normal do site).
 
 Planilha esperada: primeira aba com cabeçalho contendo `COLOCAÇÃO`, `JOGADOR`, `SITUAÇÃO`
 (só "Ativo" entra na chave) e, opcionalmente, `JOGOS`, `VITÓRIAS`, `DERROTAS`, `APROVEITAMENTO (%)`.
@@ -43,5 +59,6 @@ Planilha esperada: primeira aba com cabeçalho contendo `COLOCAÇÃO`, `JOGADOR`
 - `src/lib/bracket.js` — regras: trocas, desistências, vagas, avanço de vencedores
 - `src/lib/parseRanking.js` — leitura do xlsx (SheetJS)
 - `src/components/` — Header, Bracket, Match, RankingTable, SimulationBar, ThemeToggle
-- `scripts/update-ranking.mjs` e `scripts/publish-to-site.mjs`
-- `test/e2e.spec.js` — validação de regras e telas
+- `scripts/sync-letzplay.mjs`, `scripts/send-email.mjs`, `scripts/update-ranking.mjs`, `scripts/publish-to-site.mjs`
+- `scripts/lib/letzplay.js` — parser do embed, diff de posições e texto para WhatsApp
+- `test/e2e.spec.js` — validação de regras e telas · `test/letzplay.test.js` — parser com HTML real (anonimizado)

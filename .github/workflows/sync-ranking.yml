@@ -1,0 +1,48 @@
+name: Sincronizar ranking (Letzplay)
+
+on:
+  schedule:
+    # A cada 2 horas (cron em UTC; em Brasília cai nas horas ímpares: 1h, 3h, ..., 23h)
+    - cron: '0 */2 * * *'
+  workflow_dispatch:
+    inputs:
+      force:
+        description: 'Gravar nova versão mesmo sem mudanças'
+        type: boolean
+        default: false
+
+concurrency: sync-ranking
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci --ignore-scripts
+      - name: Ler o Letzplay
+        id: sync
+        run: node scripts/sync-letzplay.mjs ${{ inputs.force && '--force' || '' }}
+        continue-on-error: true
+      - name: Publicar nova versão
+        if: steps.sync.outputs.changed == 'true'
+        run: |
+          git config user.name "ranking-bot"
+          git config user.email "ranking-bot@users.noreply.github.com"
+          git add public/data
+          git commit -m "data: classificação do Letzplay em $(date -u +'%Y-%m-%d %H:%M UTC')"
+          git push
+      - name: Enviar e-mail com o resumo
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          EMAIL_TO: ${{ vars.EMAIL_TO }}
+          EMAIL_FROM: ${{ vars.EMAIL_FROM }}
+          SYNC_STATUS: ${{ steps.sync.outputs.status }}
+        run: node scripts/send-email.mjs
+      - name: Falhar o job se a leitura falhou
+        if: steps.sync.outcome == 'failure'
+        run: exit 1
