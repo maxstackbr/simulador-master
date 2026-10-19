@@ -1,72 +1,100 @@
 # Master Ibi Aram 2026 · Simulador de chaveamento
 
-Site estático (Vite + React) que lê a classificação do ranking (xlsx) e monta as chaves das
-Categorias A e B conforme o regulamento (`docs/regulamento.md`) e a imagem oficial
-(`docs/Masters_2026_Chaves.png`). Visual segue a marca Max Stack (tokens de `site-maxstack`).
+Site estático (Vite + React) em `https://maxstack.com.br/ranking/` que mostra a classificação do
+6º Ranking Ibi Aram, atualizada do Letzplay de 2 em 2 horas, e monta as chaves das Categorias A e B
+conforme o regulamento (`docs/regulamento.md`) e a imagem oficial (`docs/Masters_2026_Chaves.png`).
+Visual segue a marca Max Stack (tokens de `site-maxstack`).
+
+Specs: `docs/superpowers/specs/2026-10-18-simulador-chaveamento-design.md` (regras e interface) e
+`docs/superpowers/specs/2026-10-18-sync-letzplay-notificacoes-design.md` (sincronização, notificações e decisões).
 
 ## O que dá para simular
-- **Trocas de posição**: na aba Ranking, toque num jogador e depois em outro até 5 posições acima.
+Ranking e chave ficam na mesma tela (no celular, empilhados, com botão para pular de um ao outro).
+- **Trocas de posição**: na tabela, toque num jogador e depois em outro até 5 posições acima.
 - **Desistências**: botão "Desiste" na linha. Todos abaixo sobem uma posição; o 9º vira A, o 17º entra na B (regra 4).
-- **Resultados**: na aba Chaveamento, toque no vencedor; ele avança até a final. Vaga vazia = W.O.
-- Tudo fica salvo no navegador (localStorage) e o botão "Limpar simulação" zera.
+- **Resultados**: na chave, toque no vencedor; ele avança até a final. Vaga vazia = W.O., avança automaticamente.
+- Tudo fica salvo no navegador (localStorage); a barra de simulação mostra a contagem e zera tudo.
+- Seletor de versão no cabeçalho: qualquer classificação já publicada pode ser carregada e simulada.
 
-## Publicação em maxstack.com.br/ranking
-O nginx do site (`deploy/nginx.conf`) serve qualquer arquivo de `web/public` com `try_files`, então o build
-copiado para `site-maxstack/web/public/ranking/` responde em `https://maxstack.com.br/ranking/` no deploy
-normal, sem mudanças em Caddy, DNS ou containers. Um subdomínio exigiria registro na Cloudflare, bloco
-novo no Caddy da VPS e outro container, sem ganho para SEO.
-
-## Comandos
-```bash
-npm install
-npm run dev                 # desenvolvimento
-npm test                    # regras (vitest)
-npm run e2e                 # telas e regras no navegador, desktop + mobile (playwright)
-npm run update -- caminho/da/classificacao.xlsx --label "Classificação de 1º/dez"
-npm run build               # dist/ para qualquer host estático
-npm run build:site          # build com base /ranking/ e copia para ../site-maxstack/web/public/ranking
+## Como os dados chegam ao site
 ```
+Letzplay (embed) ──sync 2h──▶ public/data/*.json na main ──raw.githubusercontent──▶ site
+                                     │
+                                     └─ mudança ou falha ──▶ push ntfy + e-mail (texto p/ WhatsApp)
+```
+- O site publicado lê `index.json`, `ranking.json` e `history/*.json` direto deste repositório
+  (`raw.githubusercontent.com/maxstackbr/simulador-master/main/public/data/`, cache de até 5 min).
+  Por isso **uma classificação nova não exige deploy do site** e o repositório precisa ser público.
+- Em desenvolvimento (`npm run dev`) o site lê `public/data/` local.
 
-## Atualização automática (Letzplay → GitHub → site)
-O workflow `.github/workflows/sync-ranking.yml` roda de 2 em 2 horas e no botão "Run workflow". Ele:
-1. lê a classificação e os jogos no domínio de embed do Letzplay (`embed.letzplay.me/ibiaram/rankings/47608`,
-   feito para sites de terceiros; sem API oficial, o parser em `scripts/lib/letzplay.js` tem testes com uma captura real);
-2. compara com `public/data/ranking.json` e `public/data/matches.json`: jogos novos (placar aprovado) e mudanças de posição;
-3. se mudou, grava nova versão em `public/data` (atual, histórico e índice) e faz commit na `main`;
-4. **só quando algo mudou ou a leitura falhou**, notifica com o resumo pronto para o WhatsApp:
-   - push via [ntfy](https://ntfy.sh), com o botão "Abrir no WhatsApp" (abre o app com o texto
-     preenchido; falta só escolher o grupo e enviar) e "Copiar texto";
+## Atualização automática (`.github/workflows/sync-ranking.yml`)
+Roda de 2 em 2 horas (cron em UTC) e no botão "Run workflow" (opção `force` grava versão mesmo sem mudança). Ele:
+1. lê classificação e jogos no domínio de embed do Letzplay (`embed.letzplay.me/ibiaram/rankings/47608/{table,matches}`)
+   **com o Chromium do Playwright**: a Cloudflare do Letzplay devolve 403 + desafio para curl/fetch em IP de
+   datacenter, e limita a taxa, então o sync baixa só o documento (sem imagens/scripts), valida cada resposta e
+   tenta de novo em caso de bloqueio. Sem API oficial, o parser (`scripts/lib/letzplay.js`) tem testes com capturas reais;
+2. compara com `public/data/ranking.json` e `public/data/matches.json`: jogos novos (só placar aprovado pelo adm;
+   W.O. conta como jogo) e mudanças de posição;
+3. se mudou, grava nova versão em `public/data` (atual, histórico, índice e `matches.json`) e faz commit na `main`
+   como `ranking-bot`;
+4. **só quando algo mudou ou a leitura falhou**, notifica com o resumo pronto para o WhatsApp, pelos dois canais,
+   independentes entre si:
+   - push via [ntfy](https://ntfy.sh), com os botões "Abrir no WhatsApp" (abre o app com o texto preenchido;
+     falta só escolher o grupo e enviar) e "Copiar texto"; em falha, prioridade alta e link para a execução;
    - e-mail para `contato@maxstack.com.br` (Resend) com o mesmo texto.
    Sem mudança, nenhuma notificação.
 
-Para receber o push: instale o app ntfy (Android/iPhone) e assine o tópico definido no secret
-`NTFY_TOPIC`. No ntfy.sh o nome do tópico é a única proteção, por isso ele é um secret (mascarado no
-log público do workflow) e deve ser aleatório; para trocar, atualize o secret e assine o novo nome.
-
-O site publicado lê os JSON direto deste repositório (`raw.githubusercontent.com/.../public/data/`), então
-**não precisa de deploy do site a cada atualização**. O repositório precisa ser público para isso.
+Para receber o push: instale o app ntfy (Android/iPhone) e assine o tópico definido no secret `NTFY_TOPIC`.
+No ntfy.sh o nome do tópico é a única proteção, por isso ele é um secret (mascarado no log público do
+workflow), aleatório e nunca aparece em código ou log; para trocar, atualize o secret e assine o novo nome.
 
 Configuração no GitHub (Settings → Secrets and variables → Actions):
 - secret `NTFY_TOPIC` (tópico do push; sem ele o push é pulado)
-- secret `RESEND_API_KEY` (chave do Resend; sem ele o e-mail é pulado)
+- secret `RESEND_API_KEY` (chave do Resend, só envio; sem ela o e-mail é pulado)
 - vars opcionais `EMAIL_TO` (padrão `contato@maxstack.com.br`) e `EMAIL_FROM` (padrão `Ranking Ibi Aram <site@maxstack.com.br>`)
 
-Local: `npm run sync:dry` mostra o resumo sem gravar; `npm run sync` grava.
+Diagnóstico: cada run deixa em `sync/` (ignorado pelo git) o resumo, o `result.json` e o HTML lido de cada
+página. Mudanças no sync devem ser testadas no runner do GitHub, não só localmente: de IP residencial o
+Letzplay nem desafia, o que mascara problemas.
 
 ## Atualização manual (plano B)
-1. `npm run update -- nova-planilha.xlsx --label "Classificação de 1º/dez"` grava a versão em `public/data`.
-2. Commit e push na `main`: o site lê os JSON do GitHub.
-`npm run build:site` só é necessário quando o código do simulador muda (copia o build para
-`site-maxstack/web/public/ranking`, publicado no deploy normal do site).
+Se o Letzplay mudar o HTML ou a leitura falhar de vez:
+1. exporte a planilha do Letzplay e rode `npm run update -- planilha.xlsx --label "Classificação de 1º/dez"`;
+2. commit e push na `main`: o site lê os JSON do GitHub.
 
 Planilha esperada: primeira aba com cabeçalho contendo `COLOCAÇÃO`, `JOGADOR`, `SITUAÇÃO`
 (só "Ativo" entra na chave) e, opcionalmente, `JOGOS`, `VITÓRIAS`, `DERROTAS`, `APROVEITAMENTO (%)`.
 
+## Publicação do código em maxstack.com.br/ranking
+Só necessária quando o código do simulador muda (os dados vêm do GitHub). `npm run build:site` gera o build com
+base `/ranking/` e `VITE_DATA_URL` apontando para este repositório, e copia para `site-maxstack/web/public/ranking/`;
+o nginx do site serve qualquer arquivo de `web/public` com `try_files`, então o deploy normal do site
+(push na `main` do site-maxstack) publica em `https://maxstack.com.br/ranking/` sem mudanças em Caddy, DNS ou containers.
+
+## Comandos
+```bash
+npm install
+npm run dev                 # desenvolvimento (dados de public/data)
+npm test                    # vitest: regras da chave, parser do Letzplay (HTML real), payload do push
+npm run e2e                 # playwright: telas e regras no navegador, desktop + mobile
+npm run sync:dry            # lê o Letzplay e mostra o resumo sem gravar
+npm run sync                # lê e grava nova versão em public/data (se mudou)
+npm run update -- caminho/da/classificacao.xlsx --label "Classificação de 1º/dez"   # plano B
+npm run build               # dist/ para qualquer host estático
+npm run build:site          # build com base /ranking/ e copia para ../site-maxstack/web/public/ranking
+```
+
 ## Estrutura
 - `src/lib/schedule.js` — confrontos, horários e quadras (dados da imagem oficial)
 - `src/lib/bracket.js` — regras: trocas, desistências, vagas, avanço de vencedores
-- `src/lib/parseRanking.js` — leitura do xlsx (SheetJS)
-- `src/components/` — Header, Bracket, Match, RankingTable, SimulationBar, ThemeToggle
-- `scripts/sync-letzplay.mjs`, `scripts/send-push.mjs`, `scripts/send-email.mjs`, `scripts/update-ranking.mjs`, `scripts/publish-to-site.mjs`
+- `src/lib/parseRanking.js` — leitura do xlsx (SheetJS), só no plano B
+- `src/components/` — Header, RankingTable, Bracket, Match, SimulationBar, ThemeToggle, JumpButton
+- `scripts/sync-letzplay.mjs` — leitura com Playwright, detecção de mudanças, gravação e resumo
+- `scripts/send-push.mjs` · `scripts/send-email.mjs` — notificações (ntfy, Resend)
+- `scripts/update-ranking.mjs` · `scripts/publish-to-site.mjs` — plano B e publicação do código
 - `scripts/lib/letzplay.js` — parser do embed, diff de posições e texto para WhatsApp
-- `test/e2e.spec.js` — validação de regras e telas · `test/letzplay.test.js` — parser com HTML real (anonimizado)
+- `scripts/lib/version.js` — grava versão (atual + histórico + índice) · `scripts/lib/push.js` — payload do ntfy
+  · `scripts/lib/html.js` — decodificação de entidades
+- `public/data/` — `ranking.json`, `index.json`, `history/`, `matches.json` (fonte do site em produção)
+- `test/e2e.spec.js` — regras e telas · `test/letzplay.test.js`, `test/push.test.js` — parser e push ·
+  `test/fixtures/` — HTML real do Letzplay (tabela, jogos, um W.O.)
