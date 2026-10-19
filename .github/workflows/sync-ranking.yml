@@ -38,15 +38,16 @@ jobs:
           git commit -m "data: classificação do Letzplay em $(date -u +'%Y-%m-%d %H:%M UTC')"
           git push
       # Notificações só quando algo mudou ou a leitura falhou; sem mudança, silêncio.
+      # Push e e-mail seguem a mesma regra e são independentes: a falha de um não cancela o outro.
       - name: Enviar push (ntfy) com o resumo
-        if: steps.sync.outputs.status != 'unchanged'
+        if: ${{ !cancelled() && steps.sync.outputs.status != 'unchanged' }}
         env:
           NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
           SYNC_STATUS: ${{ steps.sync.outputs.status }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: node scripts/send-push.mjs
       - name: Enviar e-mail com o resumo
-        if: steps.sync.outputs.status != 'unchanged'
+        if: ${{ !cancelled() && steps.sync.outputs.status != 'unchanged' }}
         env:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           EMAIL_TO: ${{ vars.EMAIL_TO }}
