@@ -41,7 +41,7 @@ jobs:
       - name: Enviar push (ntfy) com o resumo
         if: steps.sync.outputs.status != 'unchanged'
         env:
-          NTFY_TOPIC: ${{ vars.NTFY_TOPIC || 'ranking-letzplay' }}
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
           SYNC_STATUS: ${{ steps.sync.outputs.status }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: node scripts/send-push.mjs
