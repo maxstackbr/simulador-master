@@ -20,33 +20,48 @@ mkdirSync(outDir, { recursive: true })
 
 const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36'
 
-// A Cloudflare do Letzplay devolve 403 + desafio ("Just a moment...") para clientes sem impressão
-// digital de navegador (curl, fetch do Node) em IP de datacenter, como o runner do GitHub Actions.
-// Um Chromium real recebe a página direto, então as leituras passam pelo Playwright.
-async function fetchPages(urls) {
+// A Cloudflare do Letzplay devolve 403 + desafio ("Just a moment..." / "Um momento…") para clientes
+// sem impressão digital de navegador (curl, fetch do Node) em IP de datacenter, como o runner do
+// GitHub Actions. Um Chromium real recebe a página direto, então as leituras passam pelo Playwright.
+// Só o documento interessa: imagens, scripts e CSS são bloqueados para não estourar o limite de
+// taxa do Letzplay (a 2ª página voltava 429 + desafio quando a 1ª carregava tudo).
+const PAGES = [
+  { url: URLS.table, marker: 'class="table-ranking"' },
+  { url: URLS.matches, marker: '<div class="row match">' },
+]
+
+async function fetchPages(pages) {
   const browser = await chromium.launch()
   try {
-    const page = await (await browser.newContext({ locale: 'pt-BR', userAgent: UA })).newPage()
-    const pages = []
-    for (const [i, url] of urls.entries()) {
+    const context = await browser.newContext({ locale: 'pt-BR', userAgent: UA })
+    await context.route('**/*', (route) => {
+      const r = route.request()
+      const ok = r.resourceType() === 'document' || r.url().startsWith('https://challenges.cloudflare.com/')
+      return ok ? route.continue() : route.abort()
+    })
+    const page = await context.newPage()
+    const out = []
+    for (const [i, p] of pages.entries()) {
       if (i > 0) await page.waitForTimeout(5000) // o Letzplay devolve 429 para rajadas
-      pages.push(await fetchHtml(page, url))
+      out.push(await fetchHtml(page, p))
     }
-    return pages
+    return out
   } finally {
     await browser.close()
   }
 }
 
-async function fetchHtml(page, url) {
+async function fetchHtml(page, { url, marker }, attempt = 1) {
   const resp = await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60_000 })
-  if (resp.status() === 200 && !resp.headers()['cf-mitigated']) return resp.text()
-  // Caiu no desafio: dá tempo para a Cloudflare liberar e a página de verdade carregar.
-  const released = await page
-    .waitForFunction(() => !document.title.startsWith('Just a moment'), null, { timeout: 60_000 })
-    .then(() => true, () => false)
-  if (!released) throw new Error(`${url} respondeu ${resp.status()} e o desafio da Cloudflare não liberou`)
-  return page.content()
+  const status = resp.status()
+  const challenged = Boolean(resp.headers()['cf-mitigated'])
+  const html = status === 200 && !challenged ? await resp.text() : ''
+  if (html.includes(marker)) return html
+  const why = challenged ? `${status} + desafio da Cloudflare` : status !== 200 ? `${status}` : '200 sem o conteúdo esperado'
+  if (attempt >= 3) throw new Error(`${url} respondeu ${why} (${attempt} tentativas)`)
+  console.error(`${url}: ${why}; nova tentativa em 30s`)
+  await page.waitForTimeout(30_000)
+  return fetchHtml(page, { url, marker }, attempt + 1)
 }
 
 function ghOutput(k, v) {
@@ -64,10 +79,15 @@ function finish({ status, changed, summary, result }) {
 
 const now = new Date()
 try {
-  const [tableHtml, matchesHtml] = await fetchPages([URLS.table, URLS.matches])
+  const [tableHtml, matchesHtml] = await fetchPages(PAGES)
+  // Guarda o HTML lido para diagnóstico (sync/ está no .gitignore).
+  writeFileSync(resolve(outDir, 'table.html'), tableHtml)
+  writeFileSync(resolve(outDir, 'matches.html'), matchesHtml)
 
   const players = parseTable(tableHtml)
   const matches = parseMatches(matchesHtml)
+  if (players.length === 0) throw new Error('Tabela de classificação veio vazia.')
+  if (matches.length === 0) throw new Error('Página de jogos veio sem jogos.')
   const played = matches.filter((m) => m.played)
 
   const prev = readCurrent(root)
