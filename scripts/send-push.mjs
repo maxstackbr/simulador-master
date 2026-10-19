@@ -1,14 +1,18 @@
 #!/usr/bin/env node
 // Envia o resumo da sincronização como push via ntfy (https://ntfy.sh), para abrir no WhatsApp com um toque.
-// Env: NTFY_TOPIC (padrão ranking-letzplay), NTFY_SERVER (padrão https://ntfy.sh),
-//      SYNC_STATUS (changed|error), RUN_URL (link da execução no GitHub, opcional)
+// Env: NTFY_TOPIC (obrigatório; é a única proteção do tópico, por isso fica em secret e fora do log),
+//      NTFY_SERVER (padrão https://ntfy.sh), SYNC_STATUS (changed|error), RUN_URL (execução no GitHub, opcional)
 import { readFileSync, existsSync } from 'node:fs'
 import { resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { buildPush } from './lib/push.js'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
-const topic = process.env.NTFY_TOPIC || 'ranking-letzplay'
+const topic = process.env.NTFY_TOPIC
+if (!topic) {
+  console.error('NTFY_TOPIC não definido; push não enviado.')
+  process.exit(0)
+}
 const server = (process.env.NTFY_SERVER || 'https://ntfy.sh').replace(/\/$/, '')
 const status = process.env.SYNC_STATUS || 'error'
 const summaryPath = resolve(root, 'sync/summary.txt')
@@ -22,4 +26,4 @@ if (!r.ok) {
   console.error(`ntfy respondeu ${r.status}: ${await r.text()}`)
   process.exit(1)
 }
-console.log(`✔ Push enviado para ${server}/${topic}: ${payload.title}`)
+console.log(`✔ Push enviado via ${server}: ${payload.title}`)

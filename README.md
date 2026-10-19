@@ -34,21 +34,22 @@ O workflow `.github/workflows/sync-ranking.yml` roda de 2 em 2 horas e no botão
 2. compara com `public/data/ranking.json` e `public/data/matches.json`: jogos novos (placar aprovado) e mudanças de posição;
 3. se mudou, grava nova versão em `public/data` (atual, histórico e índice) e faz commit na `main`;
 4. **só quando algo mudou ou a leitura falhou**, notifica com o resumo pronto para o WhatsApp:
-   - push via [ntfy](https://ntfy.sh) no tópico `ranking-letzplay`, com o botão "Abrir no WhatsApp"
-     (abre o app com o texto preenchido; falta só escolher o grupo e enviar) e "Copiar texto";
+   - push via [ntfy](https://ntfy.sh), com o botão "Abrir no WhatsApp" (abre o app com o texto
+     preenchido; falta só escolher o grupo e enviar) e "Copiar texto";
    - e-mail para `contato@maxstack.com.br` (Resend) com o mesmo texto.
    Sem mudança, nenhuma notificação.
 
-Para receber o push: instale o app ntfy (Android/iPhone) e assine o tópico `ranking-letzplay`.
-No ntfy.sh o nome do tópico é a única proteção; para trocar, defina a var `NTFY_TOPIC` no GitHub.
+Para receber o push: instale o app ntfy (Android/iPhone) e assine o tópico definido no secret
+`NTFY_TOPIC`. No ntfy.sh o nome do tópico é a única proteção, por isso ele é um secret (mascarado no
+log público do workflow) e deve ser aleatório; para trocar, atualize o secret e assine o novo nome.
 
 O site publicado lê os JSON direto deste repositório (`raw.githubusercontent.com/.../public/data/`), então
 **não precisa de deploy do site a cada atualização**. O repositório precisa ser público para isso.
 
 Configuração no GitHub (Settings → Secrets and variables → Actions):
-- secret `RESEND_API_KEY` (obrigatório para o e-mail; sem ele o workflow só atualiza os dados e manda o push)
-- vars opcionais `NTFY_TOPIC` (padrão `ranking-letzplay`), `EMAIL_TO` (padrão `contato@maxstack.com.br`)
-  e `EMAIL_FROM` (padrão `Ranking Ibi Aram <site@maxstack.com.br>`)
+- secret `NTFY_TOPIC` (tópico do push; sem ele o push é pulado)
+- secret `RESEND_API_KEY` (chave do Resend; sem ele o e-mail é pulado)
+- vars opcionais `EMAIL_TO` (padrão `contato@maxstack.com.br`) e `EMAIL_FROM` (padrão `Ranking Ibi Aram <site@maxstack.com.br>`)
 
 Local: `npm run sync:dry` mostra o resumo sem gravar; `npm run sync` grava.
 
