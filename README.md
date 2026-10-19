@@ -22,7 +22,7 @@ flowchart LR
   L[("Letzplay<br/>embed público")] -->|"a cada 2 h<br/>Chromium (Playwright)"| S["sync-letzplay.mjs<br/>GitHub Actions"]
   S -->|"jogo novo ou<br/>mudança de posição"| D[("public/data/*.json<br/>commit na main")]
   D -->|"raw.githubusercontent<br/>(cache ≤ 5 min)"| W["maxstack.com.br/ranking<br/>simulador"]
-  S -->|"mudança publicada<br/>ou falha"| N{{"notificações"}}
+  S -->|"mudança publicada<br/>(+5 min p/ o cache expirar)<br/>ou falha"| N{{"notificações"}}
   N --> P["push ntfy<br/>botão: Abrir no WhatsApp"]
   N --> E["e-mail Resend<br/>caixa de contato"]
   P -.->|"2 toques"| G["grupo do WhatsApp"]
@@ -47,9 +47,12 @@ notificações: dispara push e e-mail com título "🧪 Teste de notificação" 
    W.O. conta como jogo) e mudanças de posição;
 3. se mudou, grava nova versão em `public/data` (atual, histórico, índice e `matches.json`) e faz commit na `main`
    como `ranking-bot`, com rebase e novas tentativas caso a `main` tenha andado nesse meio-tempo;
-4. **só quando algo mudou e foi publicado, ou a leitura falhou**, notifica com o resumo pronto para o WhatsApp,
+4. **espera 5 minutos** depois de publicar: o CDN do `raw.githubusercontent.com` guarda cada arquivo por até 5 min
+   e ignora `no-cache` e query string, então sem a espera quem clicasse no link logo após o aviso poderia ver a
+   classificação anterior. Como toda cópia em cache é anterior ao push, 5 min garantem que expirou em todo lugar;
+5. **só quando algo mudou e foi publicado, ou a leitura falhou**, notifica com o resumo pronto para o WhatsApp,
    pelos dois canais, independentes entre si (se a publicação falhar, ninguém recebe "atualizado"; o próximo
-   ciclo refaz tudo):
+   ciclo refaz tudo). O modo de teste e a falha não esperam, porque nada foi publicado:
    - push via [ntfy](https://ntfy.sh), com os botões "Abrir no WhatsApp" (abre o app com o texto preenchido;
      falta só escolher o grupo e enviar) e "Copiar texto"; em falha, prioridade alta e link para a execução;
    - e-mail para `contato@maxstack.com.br` (Resend) com o mesmo texto.

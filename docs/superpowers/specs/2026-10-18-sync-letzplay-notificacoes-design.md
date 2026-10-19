@@ -31,7 +31,9 @@ versão espúria. `--force` existe só na linha de comando, para regravar localm
 3. Escreve `sync/summary.txt` (texto para WhatsApp) e `sync/result.json`, e expõe `status`
    (`changed` | `unchanged` | `error`) e `changed` em `$GITHUB_OUTPUT`. `sync/` é ignorado pelo git
    e guarda também o HTML lido, para diagnóstico.
-4. Notificações, **só quando `status != unchanged` e a publicação não falhou** (mudança publicada,
+4. Depois de publicar, **espera 310 s** antes de notificar (só quando houve publicação; teste e falha
+   não esperam) e registra no log qual versão o CDN já serve.
+5. Notificações, **só quando `status != unchanged` e a publicação não falhou** (mudança publicada,
    falha de leitura ou teste), independentes entre si (`!cancelled()`): a falha de uma não cancela a
    outra, e o job falha para sinalizar. Se o push do bot falhar, ninguém recebe "atualizado": o
    próximo ciclo recomputa o mesmo diff e publica.
@@ -39,7 +41,7 @@ versão espúria. `--force` existe só na linha de comando, para regravar localm
      resumo, botões "Abrir no WhatsApp" (`whatsapp://send?text=…`) e "Copiar texto"; em falha,
      prioridade alta e link para a execução.
    - E-mail via Resend (`scripts/send-email.mjs`) para `contato@maxstack.com.br`, mesmo texto.
-5. Se a leitura falhou, o job termina com erro depois de notificar; o site segue com a última
+6. Se a leitura falhou, o job termina com erro depois de notificar; o site segue com a última
    versão publicada. Plano B manual: `npm run update -- planilha.xlsx` e push na `main`.
 
 ## Decisões e motivos
@@ -55,6 +57,13 @@ versão espúria. `--force` existe só na linha de comando, para regravar localm
   vazios, em vez de publicar "nenhum jogo" em silêncio.
 - **Site lê os JSON do GitHub** (`raw.githubusercontent.com`, CORS `*`, cache de até 5 min) em vez
   de rebuild/deploy a cada atualização. Exige repositório público.
+- **Espera de 5 min antes de avisar.** Medido em 18/10/2026: o CDN do raw serve do cache por até
+  300 s e ignora tanto `Cache-Control: no-cache` do cliente quanto query string na chave de cache
+  (o `cache: 'no-cache'` do App só evita o cache do próprio navegador). Sem a espera, quem clicasse
+  no link do WhatsApp logo após o aviso poderia ver a classificação anterior. Como toda cópia em cache
+  foi guardada antes do push, 310 s depois do push ela expirou em todos os pontos de presença.
+  Alternativa descartada por complexidade: link com `?v=<id>` abrindo `history/<id>.json` direto
+  (arquivo novo nunca está em cache); vale se um dia o aviso precisar ser instantâneo.
 - **WhatsApp sem API.** A API oficial não posta em grupos e o Max não quer Evolution nem robô de
   tela; o último toque (escolher o grupo e enviar) é humano, por isso o push abre o WhatsApp com o
   texto preenchido.
