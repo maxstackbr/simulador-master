@@ -6,8 +6,8 @@ on:
     - cron: '0 */2 * * *'
   workflow_dispatch:
     inputs:
-      force:
-        description: 'Gravar nova versão mesmo sem mudanças'
+      test_notify:
+        description: 'Só testar push + e-mail com a leitura atual (não grava nem commita nada)'
         type: boolean
         default: false
 
@@ -27,27 +27,36 @@ jobs:
       - run: npx playwright install --with-deps chromium
       - name: Ler o Letzplay
         id: sync
-        run: node scripts/sync-letzplay.mjs ${{ inputs.force && '--force' || '' }}
+        run: node scripts/sync-letzplay.mjs ${{ inputs.test_notify && '--test-notify' || '' }}
         continue-on-error: true
       - name: Publicar nova versão
+        id: publish
         if: steps.sync.outputs.changed == 'true'
         run: |
           git config user.name "ranking-bot"
           git config user.email "ranking-bot@users.noreply.github.com"
           git add public/data
           git commit -m "data: classificação do Letzplay em $(date -u +'%Y-%m-%d %H:%M UTC')"
-          git push
-      # Notificações só quando algo mudou ou a leitura falhou; sem mudança, silêncio.
+          # A main pode ter andado desde o checkout (plano B, revert): rebase antes do push, com novas tentativas.
+          for i in 1 2 3; do
+            if git pull --rebase origin main && git push origin HEAD:main; then exit 0; fi
+            git rebase --abort 2>/dev/null || true
+            echo "::warning::push rejeitado (tentativa $i); nova tentativa em 15s"
+            sleep 15
+          done
+          exit 1
+      # Notificações só quando algo mudou (e foi publicado) ou a leitura falhou; sem mudança, silêncio.
       # Push e e-mail seguem a mesma regra e são independentes: a falha de um não cancela o outro.
+      # Se a publicação falhou, ninguém é avisado de "atualizado": o próximo ciclo refaz a leitura e publica.
       - name: Enviar push (ntfy) com o resumo
-        if: ${{ !cancelled() && steps.sync.outputs.status != 'unchanged' }}
+        if: ${{ !cancelled() && steps.sync.outputs.status != 'unchanged' && steps.publish.outcome != 'failure' }}
         env:
           NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
           SYNC_STATUS: ${{ steps.sync.outputs.status }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: node scripts/send-push.mjs
       - name: Enviar e-mail com o resumo
-        if: ${{ !cancelled() && steps.sync.outputs.status != 'unchanged' }}
+        if: ${{ !cancelled() && steps.sync.outputs.status != 'unchanged' && steps.publish.outcome != 'failure' }}
         env:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           EMAIL_TO: ${{ vars.EMAIL_TO }}

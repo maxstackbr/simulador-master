@@ -24,6 +24,12 @@ describe('buildPush', () => {
     expect(p.actions).toEqual([{ action: 'view', label: 'Ver execução', url: 'https://github.com/x/y/actions/runs/1', clear: true }])
     expect(p.click).toBe('https://github.com/x/y/actions/runs/1')
   })
+  it('teste: título próprio, prioridade baixa, mas com os botões do WhatsApp para testar o fluxo', () => {
+    const p = buildPush({ status: 'test', summary, topic: 't' })
+    expect(p.title).toBe('🧪 Teste de notificação')
+    expect(p.priority).toBe(2)
+    expect(p.actions.map((a) => a.label)).toEqual(['Abrir no WhatsApp', 'Copiar texto'])
+  })
   it('status desconhecido é tratado como erro', () => {
     expect(buildPush({ status: '', summary: 'x', topic: 't' }).title).toBe('❌ Falha na leitura do ranking')
   })
