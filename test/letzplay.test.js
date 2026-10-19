@@ -73,3 +73,16 @@ describe('diffRanking e formatWhatsApp', () => {
     expect(txt).toContain('⏳ Na fila: 17. Caio Anjos · 18. Henrique Carelli')
   })
 })
+
+describe('jogo decidido por W.O.', () => {
+  const [m] = parseMatches(readFileSync('test/fixtures/letzplay-match-wo.html', 'utf8'))
+  it('conta como jogado, marca o W.O. e mostra "W.O." no lugar do placar', () => {
+    expect(m).toMatchObject({ id: 10341046, played: true, wo: true })
+    expect(m.players.map((p) => [p.name, p.won])).toEqual([['Marcos Nogueira', true], ['Sergio Trevisan', false]])
+    expect(scoreText(m)).toBe('W.O.')
+  })
+  it('aparece no resumo como vitória por W.O.', () => {
+    const text = formatWhatsApp({ players: [], newMatches: [m], changes: [] })
+    expect(text).toContain('✅ Marcos Nogueira venceu Sergio Trevisan: W.O. (18/10/26)')
+  })
+})

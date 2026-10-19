@@ -65,12 +65,14 @@ export function parseMatches(html) {
       return { name, won, lost, sets }
     })
     const played = players.some((p) => p.won)
-    return { id, round, date, when, place, players, played }
+    const wo = /Perdeu por W\.O\./.test(part)
+    return { id, round, date, when, place, players, played, wo }
   })
 }
 
 /** Texto do placar, vencedor primeiro: "7-6(4) 2-6 10-6". */
 export function scoreText(match) {
+  if (match.wo) return 'W.O.'
   const [a, b] = match.players
   const w = a.won ? a : b
   const l = a.won ? b : a
