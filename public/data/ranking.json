@@ -1,10 +1,31 @@
 {
-  "id": "2026-10-18T21-08-51",
-  "label": "Letzplay 18 de out. 18:08",
-  "generatedAt": "2026-10-18T21:08:51.989Z",
+  "id": "2026-10-19T00-00-02",
+  "label": "Letzplay 18 de out. 21:00",
+  "generatedAt": "2026-10-19T00:00:02.259Z",
   "source": "https://embed.letzplay.me/ibiaram/rankings/47608/table",
   "newMatches": [],
-  "changes": [],
+  "changes": [
+    {
+      "name": "Marcos Nogueira",
+      "from": 14,
+      "to": 11
+    },
+    {
+      "name": "Sergio Trevisan",
+      "from": 11,
+      "to": 12
+    },
+    {
+      "name": "Franco Gonçales",
+      "from": 12,
+      "to": 13
+    },
+    {
+      "name": "Marco Tempesta",
+      "from": 13,
+      "to": 14
+    }
+  ],
   "players": [
     {
       "rank": 1,
@@ -258,6 +279,31 @@
     },
     {
       "rank": 11,
+      "name": "Marcos Nogueira",
+      "status": "Ativo",
+      "games": 12,
+      "wins": 4,
+      "losses": 6,
+      "pct": 33.33,
+      "balance": -2,
+      "sets": {
+        "balance": -4,
+        "won": 5,
+        "lost": 9
+      },
+      "gamesStat": {
+        "balance": -8,
+        "won": 50,
+        "lost": 58
+      },
+      "tiebreaks": {
+        "balance": -2,
+        "won": 1,
+        "lost": 3
+      }
+    },
+    {
+      "rank": 12,
       "name": "Sergio Trevisan",
       "status": "Ativo",
       "games": 5,
@@ -282,7 +328,7 @@
       }
     },
     {
-      "rank": 12,
+      "rank": 13,
       "name": "Franco Gonçales",
       "status": "Ativo",
       "games": 6,
@@ -307,7 +353,7 @@
       }
     },
     {
-      "rank": 13,
+      "rank": 14,
       "name": "Marco Tempesta",
       "status": "Ativo",
       "games": 12,
@@ -329,31 +375,6 @@
         "balance": -4,
         "won": 1,
         "lost": 5
-      }
-    },
-    {
-      "rank": 14,
-      "name": "Marcos Nogueira",
-      "status": "Ativo",
-      "games": 12,
-      "wins": 4,
-      "losses": 6,
-      "pct": 33.33,
-      "balance": -2,
-      "sets": {
-        "balance": -4,
-        "won": 5,
-        "lost": 9
-      },
-      "gamesStat": {
-        "balance": -8,
-        "won": 50,
-        "lost": 58
-      },
-      "tiebreaks": {
-        "balance": -2,
-        "won": 1,
-        "lost": 3
       }
     },
     {
