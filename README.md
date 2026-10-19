@@ -33,15 +33,22 @@ O workflow `.github/workflows/sync-ranking.yml` roda de 2 em 2 horas e no botão
    feito para sites de terceiros; sem API oficial, o parser em `scripts/lib/letzplay.js` tem testes com uma captura real);
 2. compara com `public/data/ranking.json` e `public/data/matches.json`: jogos novos (placar aprovado) e mudanças de posição;
 3. se mudou, grava nova versão em `public/data` (atual, histórico e índice) e faz commit na `main`;
-4. envia e-mail para `contato@maxstack.com.br` (Resend) com um resumo pronto para colar no WhatsApp,
-   também quando nada mudou e quando a leitura falhou.
+4. **só quando algo mudou ou a leitura falhou**, notifica com o resumo pronto para o WhatsApp:
+   - push via [ntfy](https://ntfy.sh) no tópico `ranking-letzplay`, com o botão "Abrir no WhatsApp"
+     (abre o app com o texto preenchido; falta só escolher o grupo e enviar) e "Copiar texto";
+   - e-mail para `contato@maxstack.com.br` (Resend) com o mesmo texto.
+   Sem mudança, nenhuma notificação.
+
+Para receber o push: instale o app ntfy (Android/iPhone) e assine o tópico `ranking-letzplay`.
+No ntfy.sh o nome do tópico é a única proteção; para trocar, defina a var `NTFY_TOPIC` no GitHub.
 
 O site publicado lê os JSON direto deste repositório (`raw.githubusercontent.com/.../public/data/`), então
 **não precisa de deploy do site a cada atualização**. O repositório precisa ser público para isso.
 
 Configuração no GitHub (Settings → Secrets and variables → Actions):
-- secret `RESEND_API_KEY` (obrigatório para o e-mail; sem ele o workflow só atualiza os dados)
-- vars opcionais `EMAIL_TO` (padrão `contato@maxstack.com.br`) e `EMAIL_FROM` (padrão `Ranking Ibi Aram <site@maxstack.com.br>`)
+- secret `RESEND_API_KEY` (obrigatório para o e-mail; sem ele o workflow só atualiza os dados e manda o push)
+- vars opcionais `NTFY_TOPIC` (padrão `ranking-letzplay`), `EMAIL_TO` (padrão `contato@maxstack.com.br`)
+  e `EMAIL_FROM` (padrão `Ranking Ibi Aram <site@maxstack.com.br>`)
 
 Local: `npm run sync:dry` mostra o resumo sem gravar; `npm run sync` grava.
 
@@ -59,6 +66,6 @@ Planilha esperada: primeira aba com cabeçalho contendo `COLOCAÇÃO`, `JOGADOR`
 - `src/lib/bracket.js` — regras: trocas, desistências, vagas, avanço de vencedores
 - `src/lib/parseRanking.js` — leitura do xlsx (SheetJS)
 - `src/components/` — Header, Bracket, Match, RankingTable, SimulationBar, ThemeToggle
-- `scripts/sync-letzplay.mjs`, `scripts/send-email.mjs`, `scripts/update-ranking.mjs`, `scripts/publish-to-site.mjs`
+- `scripts/sync-letzplay.mjs`, `scripts/send-push.mjs`, `scripts/send-email.mjs`, `scripts/update-ranking.mjs`, `scripts/publish-to-site.mjs`
 - `scripts/lib/letzplay.js` — parser do embed, diff de posições e texto para WhatsApp
 - `test/e2e.spec.js` — validação de regras e telas · `test/letzplay.test.js` — parser com HTML real (anonimizado)

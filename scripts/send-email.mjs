@@ -2,7 +2,7 @@
 // Envia o resumo da sincronização por e-mail via Resend (mesmo provedor do site Max Stack).
 // Env: RESEND_API_KEY (obrigatório), EMAIL_TO (padrão contato@maxstack.com.br),
 //      EMAIL_FROM (padrão "Ranking Ibi Aram <site@maxstack.com.br>"), SYNC_STATUS (changed|unchanged|error)
-import { readFileSync } from 'node:fs'
+import { readFileSync, existsSync } from 'node:fs'
 import { resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -14,8 +14,11 @@ if (!key) {
 }
 const to = process.env.EMAIL_TO || 'contato@maxstack.com.br'
 const from = process.env.EMAIL_FROM || 'Ranking Ibi Aram <site@maxstack.com.br>'
-const status = process.env.SYNC_STATUS || 'unknown'
-const summary = readFileSync(resolve(root, 'sync/summary.txt'), 'utf8')
+const status = process.env.SYNC_STATUS || 'error'
+const summaryPath = resolve(root, 'sync/summary.txt')
+const summary = existsSync(summaryPath)
+  ? readFileSync(summaryPath, 'utf8')
+  : '❌ *Ranking Ibi Aram*: a sincronização terminou sem produzir resumo. Veja a execução no GitHub.'
 
 const titles = { changed: '✅ Ranking atualizado', unchanged: '➖ Ranking sem mudanças', error: '❌ Falha na leitura do ranking' }
 const subject = `${titles[status] ?? 'Ranking'} · ${new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo', day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' })}`
