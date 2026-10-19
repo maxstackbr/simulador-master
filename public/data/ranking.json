@@ -1,31 +1,12 @@
 {
-  "id": "2026-10-19T00-00-02",
-  "label": "Letzplay 18 de out. 21:00",
-  "generatedAt": "2026-10-19T00:00:02.259Z",
+  "id": "2026-10-19T00-08-59",
+  "label": "Letzplay 18 de out. 21:08",
+  "generatedAt": "2026-10-19T00:08:59.389Z",
   "source": "https://embed.letzplay.me/ibiaram/rankings/47608/table",
-  "newMatches": [],
-  "changes": [
-    {
-      "name": "Marcos Nogueira",
-      "from": 14,
-      "to": 11
-    },
-    {
-      "name": "Sergio Trevisan",
-      "from": 11,
-      "to": 12
-    },
-    {
-      "name": "Franco Gonçales",
-      "from": 12,
-      "to": 13
-    },
-    {
-      "name": "Marco Tempesta",
-      "from": 13,
-      "to": 14
-    }
+  "newMatches": [
+    10341046
   ],
+  "changes": [],
   "players": [
     {
       "rank": 1,
