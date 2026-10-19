@@ -17,10 +17,19 @@ Ranking e chave ficam na mesma tela (no celular, empilhados, com botão para pul
 - Seletor de versão no cabeçalho: qualquer classificação já publicada pode ser carregada e simulada.
 
 ## Como os dados chegam ao site
-```
-Letzplay (embed) ──sync 2h──▶ public/data/*.json na main ──raw.githubusercontent──▶ site
-                                     │
-                                     └─ mudança ou falha ──▶ push ntfy + e-mail (texto p/ WhatsApp)
+```mermaid
+flowchart LR
+  L[("Letzplay<br/>embed público")] -->|"a cada 2 h<br/>Chromium (Playwright)"| S["sync-letzplay.mjs<br/>GitHub Actions"]
+  S -->|"jogo novo ou<br/>mudança de posição"| D[("public/data/*.json<br/>commit na main")]
+  D -->|"raw.githubusercontent<br/>(cache ≤ 5 min)"| W["maxstack.com.br/ranking<br/>simulador"]
+  S -->|"mudança publicada<br/>ou falha"| N{{"notificações"}}
+  N --> P["push ntfy<br/>botão: Abrir no WhatsApp"]
+  N --> E["e-mail Resend<br/>caixa de contato"]
+  P -.->|"2 toques"| G["grupo do WhatsApp"]
+  classDef data fill:#eef3f8,stroke:#4a5d78,color:#1d2a3a
+  classDef out fill:#e8f5ec,stroke:#2e7d4f,color:#143d26
+  class L,D data
+  class W,G out
 ```
 - O site publicado lê `index.json`, `ranking.json` e `history/*.json` direto deste repositório
   (`raw.githubusercontent.com/maxstackbr/simulador-master/main/public/data/`, cache de até 5 min).
@@ -28,7 +37,8 @@ Letzplay (embed) ──sync 2h──▶ public/data/*.json na main ──raw.git
 - Em desenvolvimento (`npm run dev`) o site lê `public/data/` local.
 
 ## Atualização automática (`.github/workflows/sync-ranking.yml`)
-Roda de 2 em 2 horas (cron em UTC) e no botão "Run workflow" (opção `force` grava versão mesmo sem mudança). Ele:
+Roda de 2 em 2 horas (cron em UTC) e no botão "Run workflow". A opção `test_notify` do botão só testa as
+notificações: dispara push e e-mail com título "🧪 Teste de notificação" e a leitura atual, sem gravar nem commitar nada. Ele:
 1. lê classificação e jogos no domínio de embed do Letzplay (`embed.letzplay.me/ibiaram/rankings/47608/{table,matches}`)
    **com o Chromium do Playwright**: a Cloudflare do Letzplay devolve 403 + desafio para curl/fetch em IP de
    datacenter, e limita a taxa, então o sync baixa só o documento (sem imagens/scripts), valida cada resposta e
@@ -36,9 +46,10 @@ Roda de 2 em 2 horas (cron em UTC) e no botão "Run workflow" (opção `force` g
 2. compara com `public/data/ranking.json` e `public/data/matches.json`: jogos novos (só placar aprovado pelo adm;
    W.O. conta como jogo) e mudanças de posição;
 3. se mudou, grava nova versão em `public/data` (atual, histórico, índice e `matches.json`) e faz commit na `main`
-   como `ranking-bot`;
-4. **só quando algo mudou ou a leitura falhou**, notifica com o resumo pronto para o WhatsApp, pelos dois canais,
-   independentes entre si:
+   como `ranking-bot`, com rebase e novas tentativas caso a `main` tenha andado nesse meio-tempo;
+4. **só quando algo mudou e foi publicado, ou a leitura falhou**, notifica com o resumo pronto para o WhatsApp,
+   pelos dois canais, independentes entre si (se a publicação falhar, ninguém recebe "atualizado"; o próximo
+   ciclo refaz tudo):
    - push via [ntfy](https://ntfy.sh), com os botões "Abrir no WhatsApp" (abre o app com o texto preenchido;
      falta só escolher o grupo e enviar) e "Copiar texto"; em falha, prioridade alta e link para a execução;
    - e-mail para `contato@maxstack.com.br` (Resend) com o mesmo texto.
@@ -78,7 +89,7 @@ npm run dev                 # desenvolvimento (dados de public/data)
 npm test                    # vitest: regras da chave, parser do Letzplay (HTML real), payload do push
 npm run e2e                 # playwright: telas e regras no navegador, desktop + mobile
 npm run sync:dry            # lê o Letzplay e mostra o resumo sem gravar
-npm run sync                # lê e grava nova versão em public/data (se mudou)
+npm run sync                # lê e grava nova versão em public/data (se mudou); --force grava mesmo sem mudança
 npm run update -- caminho/da/classificacao.xlsx --label "Classificação de 1º/dez"   # plano B
 npm run build               # dist/ para qualquer host estático
 npm run build:site          # build com base /ranking/ e copia para ../site-maxstack/web/public/ranking
@@ -96,5 +107,5 @@ npm run build:site          # build com base /ranking/ e copia para ../site-maxs
 - `scripts/lib/version.js` — grava versão (atual + histórico + índice) · `scripts/lib/push.js` — payload do ntfy
   · `scripts/lib/html.js` — decodificação de entidades
 - `public/data/` — `ranking.json`, `index.json`, `history/`, `matches.json` (fonte do site em produção)
-- `test/e2e.spec.js` — regras e telas · `test/letzplay.test.js`, `test/push.test.js` — parser e push ·
-  `test/fixtures/` — HTML real do Letzplay (tabela, jogos, um W.O.)
+- `test/e2e.spec.js` — regras e telas, contra o snapshot fixo `test/fixtures/e2e-*.json` (os dados reais mudam sozinhos)
+  · `test/letzplay.test.js`, `test/push.test.js` — parser e push · `test/fixtures/letzplay-*.html` — HTML real do Letzplay (tabela, jogos, um W.O.)

@@ -2,13 +2,18 @@
 import { test, expect } from '@playwright/test'
 import { readFileSync } from 'node:fs'
 
-// O seletor lista todas as versões publicadas (o workflow de sync adiciona novas ao longo do tempo).
-const versionCount = JSON.parse(readFileSync(new URL('../public/data/index.json', import.meta.url), 'utf8')).versions.length
+// Os dados de public/data mudam sozinhos (sync do Letzplay), então os cenários rodam contra um
+// snapshot fixo: a página recebe test/fixtures/e2e-*.json no lugar de data/*.json.
+const fixture = (name) => readFileSync(new URL(`./fixtures/${name}`, import.meta.url), 'utf8')
+const E2E_INDEX = JSON.parse(fixture('e2e-index.json'))
 
 const names = async (page, matchIdx) =>
   page.locator('.match').nth(matchIdx).locator('.slot-name').allTextContents()
 
 test.beforeEach(async ({ page }) => {
+  await page.route('**/data/index.json', (route) => route.fulfill({ json: E2E_INDEX }))
+  await page.route('**/data/ranking.json', (route) => route.fulfill({ body: fixture('e2e-ranking.json'), contentType: 'application/json' }))
+  await page.route('**/data/history/*.json', (route) => route.fulfill({ body: fixture('e2e-ranking.json'), contentType: 'application/json' }))
   await page.goto('/')
   await page.waitForSelector('.match')
   await page.evaluate(() => localStorage.removeItem('master-ibi-aram-sim'))
@@ -99,7 +104,8 @@ test('data da última atualização em destaque e seletor de versão', async ({ 
   await expect(page.locator('.updated')).toContainText('Última atualização do ranking')
   await expect(page.locator('.updated strong')).toContainText('2026')
   await expect(page.locator('button:has-text("Enviar planilha")')).toHaveCount(0)
-  await expect(page.locator('select option')).toHaveCount(versionCount)
+  // O seletor lista as versões do índice servido à página (aqui, o snapshot fixo).
+  await expect(page.locator('select option')).toHaveCount(E2E_INDEX.versions.length)
 })
 
 test('chave da esquerda para a direita, com rolagem horizontal própria no celular', async ({ page, isMobile }) => {

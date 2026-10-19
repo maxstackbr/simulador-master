@@ -3,7 +3,10 @@
 // grava nova versão em public/data quando algo mudou e escreve um resumo para e-mail.
 // Saídas: sync/result.json, sync/summary.txt (texto pronto para WhatsApp) e, no GitHub
 // Actions, as variáveis changed/status em $GITHUB_OUTPUT.
-// Uso: node scripts/sync-letzplay.mjs [--dry-run] [--force]
+// Uso: node scripts/sync-letzplay.mjs [--dry-run] [--force] [--test-notify]
+//   --dry-run      mostra o resumo e não grava nada
+//   --force        grava nova versão mesmo sem mudança (uso local, p.ex. após corrigir o parser)
+//   --test-notify  não grava nada e sai com status "test", para o workflow disparar push + e-mail de teste
 import { readFileSync, writeFileSync, mkdirSync, existsSync, appendFileSync } from 'node:fs'
 import { resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -13,8 +16,9 @@ import { readCurrent, writeVersion } from './lib/version.js'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const args = new Set(process.argv.slice(2))
-const dryRun = args.has('--dry-run')
-const force = args.has('--force')
+const testNotify = args.has('--test-notify')
+const dryRun = args.has('--dry-run') || testNotify
+const force = args.has('--force') && !testNotify
 const outDir = resolve(root, 'sync')
 mkdirSync(outDir, { recursive: true })
 
@@ -111,11 +115,12 @@ try {
   }
 
   const summary = formatWhatsApp({ now, players, newMatches, changes })
+  const status = testNotify ? 'test' : changed ? 'changed' : 'unchanged'
   finish({
-    status: changed ? 'changed' : 'unchanged',
-    changed,
-    summary,
-    result: { status: changed ? 'changed' : 'unchanged', generatedAt: now.toISOString(), players: players.length, newMatches, changes, dryRun },
+    status,
+    changed: changed && !testNotify,
+    summary: testNotify ? `🧪 *Teste de notificação* — nada foi gravado. Leitura atual:\n\n${summary}` : summary,
+    result: { status, generatedAt: now.toISOString(), players: players.length, newMatches, changes, dryRun },
   })
 } catch (e) {
   const summary = `❌ *Ranking Ibi Aram*: a leitura automática do Letzplay falhou em ${now.toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' })}.\n\nMotivo: ${e.message}\n\nO site continua com a última classificação publicada. Se persistir, exporte a planilha e rode: npm run update -- planilha.xlsx`

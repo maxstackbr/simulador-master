@@ -18,17 +18,23 @@ pronto para o grupo do WhatsApp, sempre que houver jogo novo, mudança de posiç
   jogos/vitórias/derrotas (o Letzplay ordena por pontuação própria que o embed não mostra).
 
 ## Fluxo (`.github/workflows/sync-ranking.yml`, de 2 em 2 horas e sob demanda)
+Sob demanda, a opção `test_notify` roda a leitura e dispara as notificações com status `test`
+(título "🧪 Teste de notificação"), sem gravar nem commitar: serve para validar os canais sem criar
+versão espúria. `--force` existe só na linha de comando, para regravar localmente após corrigir o parser.
 1. `scripts/sync-letzplay.mjs` lê as duas páginas, compara com `public/data/ranking.json` e
    `public/data/matches.json` e calcula: jogos novos (ids jogados ainda não vistos), mudanças de
    posição (`diffRanking`: subiu/desceu/entrou/saiu) e se as estatísticas mudaram.
-2. Se algo mudou (ou `force`), grava nova versão via `scripts/lib/version.js` (com `newMatches` e
-   `changes` dentro da versão) e atualiza `matches.json` (acumula os jogos já vistos, pois a página
-   só traz 21). O workflow commita em `public/data` na `main` como `ranking-bot`; o site lê daí.
+2. Se algo mudou, grava nova versão via `scripts/lib/version.js` (com `newMatches` e `changes` dentro
+   da versão) e atualiza `matches.json` (acumula os jogos já vistos, pois a página só traz 21). O
+   workflow commita em `public/data` na `main` como `ranking-bot`, com `git pull --rebase` e até 3
+   tentativas de push (a `main` pode ter andado por um plano B ou revert); o site lê daí.
 3. Escreve `sync/summary.txt` (texto para WhatsApp) e `sync/result.json`, e expõe `status`
    (`changed` | `unchanged` | `error`) e `changed` em `$GITHUB_OUTPUT`. `sync/` é ignorado pelo git
    e guarda também o HTML lido, para diagnóstico.
-4. Notificações, **só quando `status != unchanged`** (mudança ou falha), independentes entre si
-   (`!cancelled()`): a falha de uma não cancela a outra, e o job falha para sinalizar.
+4. Notificações, **só quando `status != unchanged` e a publicação não falhou** (mudança publicada,
+   falha de leitura ou teste), independentes entre si (`!cancelled()`): a falha de uma não cancela a
+   outra, e o job falha para sinalizar. Se o push do bot falhar, ninguém recebe "atualizado": o
+   próximo ciclo recomputa o mesmo diff e publica.
    - Push via ntfy (`scripts/send-push.mjs`, `scripts/lib/push.js`): título por status, texto do
      resumo, botões "Abrir no WhatsApp" (`whatsapp://send?text=…`) e "Copiar texto"; em falha,
      prioridade alta e link para a execução.
@@ -56,6 +62,11 @@ pronto para o grupo do WhatsApp, sempre que houver jogo novo, mudança de posiç
   do workflow é público; `NTFY_TOPIC` fica em `secrets`, sem padrão no código e fora do log.
 - **Silêncio quando nada muda.** Com cadência de 2 h, notificar sempre daria 12 avisos/dia.
 - **Cron em UTC** (`0 */2 * * *`): em Brasília cai nas horas ímpares.
+- **Sem `force` no botão.** Um run forçado gravava versão duplicada e notificava "atualizado" sem
+  mudança, exigindo revert manual; `test_notify` cobre o único uso real (testar os canais).
+- **E2E roda contra um snapshot fixo** (`test/fixtures/e2e-ranking.json` e `e2e-index.json`,
+  interceptando `data/*.json` na página): os dados de `public/data` mudam sozinhos a cada ciclo do
+  bot e quebravam cenários que esperam nomes em posições fixas.
 
 ## Configuração (GitHub → Settings → Secrets and variables → Actions)
 - secrets `NTFY_TOPIC` (sem ele o push é pulado) e `RESEND_API_KEY` (sem ela o e-mail é pulado);

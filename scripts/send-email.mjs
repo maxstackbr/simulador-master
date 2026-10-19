@@ -20,8 +20,8 @@ const summary = existsSync(summaryPath)
   ? readFileSync(summaryPath, 'utf8')
   : '❌ *Ranking Ibi Aram*: a sincronização terminou sem produzir resumo. Veja a execução no GitHub.'
 
-const titles = { changed: '✅ Ranking atualizado', unchanged: '➖ Ranking sem mudanças', error: '❌ Falha na leitura do ranking' }
-const subject = `${titles[status] ?? 'Ranking'} · ${new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo', day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' })}`
+const titles = { changed: '✅ Ranking atualizado', test: '🧪 Teste de notificação', error: '❌ Falha na leitura do ranking' }
+const subject = `${titles[status] ?? titles.error} · ${new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo', day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' })}`
 const esc = (s) => s.replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' })[c])
 const html = `<p style="color:#4a5d78;font-family:system-ui">Copie o bloco abaixo e cole no grupo do WhatsApp:</p>
 <pre style="white-space:pre-wrap;font-family:system-ui,-apple-system,sans-serif;font-size:15px;line-height:1.5;background:#f4f7fa;border:1px solid #d2dce7;border-radius:4px;padding:16px;max-width:640px">${esc(summary)}</pre>
