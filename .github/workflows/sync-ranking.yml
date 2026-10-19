@@ -45,6 +45,17 @@ jobs:
             sleep 15
           done
           exit 1
+      # raw.githubusercontent.com guarda cada arquivo por até 5 min (max-age=300) e ignora no-cache e
+      # query string. Qualquer cópia em cache foi guardada antes do push, logo expira em até 300 s depois
+      # dele. Esperar antes de avisar garante que quem clicar no link já veja a versão nova.
+      - name: Aguardar o cache do CDN expirar
+        if: steps.publish.outcome == 'success'
+        run: |
+          sleep 310
+          esperado=$(node -p "require('./public/data/ranking.json').id")
+          servido=$(curl -sS --max-time 20 https://raw.githubusercontent.com/${{ github.repository }}/main/public/data/ranking.json | node -p "JSON.parse(require('fs').readFileSync(0,'utf8')).id" 2>/dev/null || echo '?')
+          echo "versão publicada: $esperado · servida pelo CDN: $servido"
+          [ "$servido" = "$esperado" ] || echo "::warning::o CDN ainda serve $servido; o cache expira em até 5 min a partir do push"
       # Notificações só quando algo mudou (e foi publicado) ou a leitura falhou; sem mudança, silêncio.
       # Push e e-mail seguem a mesma regra e são independentes: a falha de um não cancela o outro.
       # Se a publicação falhou, ninguém é avisado de "atualizado": o próximo ciclo refaz a leitura e publica.
