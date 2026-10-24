@@ -1,52 +1,21 @@
 {
-  "id": "2026-10-24T13-44-59",
-  "label": "Letzplay 24 de out. 10:44",
-  "generatedAt": "2026-10-24T13:44:59.321Z",
+  "id": "2026-10-24T22-18-07",
+  "label": "Letzplay 24 de out. 19:18",
+  "generatedAt": "2026-10-24T22:18:07.605Z",
   "source": "https://embed.letzplay.me/ibiaram/rankings/47608/table",
   "newMatches": [
-    10717994,
-    10784430
+    10632131
   ],
   "changes": [
     {
-      "name": "Lucas Claudio",
-      "from": 15,
-      "to": 14
+      "name": "André Di Celio",
+      "from": 5,
+      "to": 4
     },
     {
-      "name": "Marco Tempesta",
-      "from": 14,
-      "to": 15
-    },
-    {
-      "name": "Flávio Malta",
-      "from": 33,
-      "to": 28
-    },
-    {
-      "name": "Evandro Santos",
-      "from": 28,
-      "to": 29
-    },
-    {
-      "name": "Felipe Uesugui Santana",
-      "from": 29,
-      "to": 30
-    },
-    {
-      "name": "Marcelo Alexandrino",
-      "from": 30,
-      "to": 31
-    },
-    {
-      "name": "Luis Gustavo Oliveira da Silva",
-      "from": 31,
-      "to": 32
-    },
-    {
-      "name": "Edmur Terruel Manzano",
-      "from": 32,
-      "to": 33
+      "name": "Roberto Vilas",
+      "from": 4,
+      "to": 5
     }
   ],
   "players": [
@@ -79,20 +48,20 @@
       "rank": 2,
       "name": "João Andrade",
       "status": "Ativo",
-      "games": 12,
-      "wins": 10,
+      "games": 13,
+      "wins": 11,
       "losses": 2,
-      "pct": 83.33,
-      "balance": 8,
+      "pct": 84.62,
+      "balance": 9,
       "sets": {
-        "balance": 15,
-        "won": 17,
+        "balance": 17,
+        "won": 19,
         "lost": 2
       },
       "gamesStat": {
-        "balance": 72,
-        "won": 107,
-        "lost": 35
+        "balance": 78,
+        "won": 119,
+        "lost": 41
       },
       "tiebreaks": {
         "balance": -1,
@@ -127,31 +96,6 @@
     },
     {
       "rank": 4,
-      "name": "Roberto Vilas",
-      "status": "Ativo",
-      "games": 17,
-      "wins": 9,
-      "losses": 8,
-      "pct": 52.94,
-      "balance": 1,
-      "sets": {
-        "balance": -3,
-        "won": 18,
-        "lost": 21
-      },
-      "gamesStat": {
-        "balance": -26,
-        "won": 137,
-        "lost": 163
-      },
-      "tiebreaks": {
-        "balance": 5,
-        "won": 8,
-        "lost": 3
-      }
-    },
-    {
-      "rank": 5,
       "name": "André Di Celio",
       "status": "Ativo",
       "games": 14,
@@ -172,6 +116,31 @@
       "tiebreaks": {
         "balance": 2,
         "won": 5,
+        "lost": 3
+      }
+    },
+    {
+      "rank": 5,
+      "name": "Roberto Vilas",
+      "status": "Ativo",
+      "games": 18,
+      "wins": 9,
+      "losses": 9,
+      "pct": 50,
+      "balance": 0,
+      "sets": {
+        "balance": -5,
+        "won": 18,
+        "lost": 23
+      },
+      "gamesStat": {
+        "balance": -32,
+        "won": 143,
+        "lost": 175
+      },
+      "tiebreaks": {
+        "balance": 5,
+        "won": 8,
         "lost": 3
       }
     },
