@@ -1,6 +1,96 @@
 {
-  "updatedAt": "2026-10-19T00:08:59.389Z",
+  "updatedAt": "2026-10-24T13:44:59.321Z",
   "matches": [
+    {
+      "id": 10784430,
+      "round": 9,
+      "date": "24/10/26",
+      "when": "Sábado, 24/10/26",
+      "place": "",
+      "players": [
+        {
+          "name": "Flávio Malta",
+          "won": true,
+          "lost": false,
+          "sets": [
+            {
+              "games": 0,
+              "tb": null
+            },
+            {
+              "games": 0,
+              "tb": null
+            },
+            {
+              "games": 0,
+              "tb": null
+            }
+          ]
+        },
+        {
+          "name": "Evandro Santos",
+          "won": false,
+          "lost": true,
+          "sets": [
+            {
+              "games": 0,
+              "tb": null
+            },
+            {
+              "games": 0,
+              "tb": null
+            },
+            {
+              "games": 0,
+              "tb": null
+            }
+          ]
+        }
+      ],
+      "played": true,
+      "wo": true
+    },
+    {
+      "id": 10717994,
+      "round": 9,
+      "date": "24/10/26",
+      "when": "Sábado, 24/10/26",
+      "place": "",
+      "players": [
+        {
+          "name": "Lucas Claudio",
+          "won": true,
+          "lost": false,
+          "sets": [
+            {
+              "games": 6,
+              "tb": null
+            },
+            {
+              "games": 6,
+              "tb": null
+            }
+          ]
+        },
+        {
+          "name": "Marco Tempesta",
+          "won": false,
+          "lost": true,
+          "sets": [
+            {
+              "games": 2,
+              "tb": null
+            },
+            {
+              "games": 3,
+              "tb": null
+            }
+          ]
+        }
+      ],
+      "played": true,
+      "wo": false
+    },
     {
       "id": 10645381,
       "round": 9,

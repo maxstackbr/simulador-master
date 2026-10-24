@@ -1,0 +1,879 @@
+{
+  "id": "2026-10-24T13-44-59",
+  "label": "Letzplay 24 de out. 10:44",
+  "generatedAt": "2026-10-24T13:44:59.321Z",
+  "source": "https://embed.letzplay.me/ibiaram/rankings/47608/table",
+  "newMatches": [
+    10717994,
+    10784430
+  ],
+  "changes": [
+    {
+      "name": "Lucas Claudio",
+      "from": 15,
+      "to": 14
+    },
+    {
+      "name": "Marco Tempesta",
+      "from": 14,
+      "to": 15
+    },
+    {
+      "name": "Flávio Malta",
+      "from": 33,
+      "to": 28
+    },
+    {
+      "name": "Evandro Santos",
+      "from": 28,
+      "to": 29
+    },
+    {
+      "name": "Felipe Uesugui Santana",
+      "from": 29,
+      "to": 30
+    },
+    {
+      "name": "Marcelo Alexandrino",
+      "from": 30,
+      "to": 31
+    },
+    {
+      "name": "Luis Gustavo Oliveira da Silva",
+      "from": 31,
+      "to": 32
+    },
+    {
+      "name": "Edmur Terruel Manzano",
+      "from": 32,
+      "to": 33
+    }
+  ],
+  "players": [
+    {
+      "rank": 1,
+      "name": "Ueslen Silva",
+      "status": "Ativo",
+      "games": 13,
+      "wins": 13,
+      "losses": 0,
+      "pct": 100,
+      "balance": 13,
+      "sets": {
+        "balance": 16,
+        "won": 18,
+        "lost": 2
+      },
+      "gamesStat": {
+        "balance": 64,
+        "won": 107,
+        "lost": 43
+      },
+      "tiebreaks": {
+        "balance": 1,
+        "won": 2,
+        "lost": 1
+      }
+    },
+    {
+      "rank": 2,
+      "name": "João Andrade",
+      "status": "Ativo",
+      "games": 12,
+      "wins": 10,
+      "losses": 2,
+      "pct": 83.33,
+      "balance": 8,
+      "sets": {
+        "balance": 15,
+        "won": 17,
+        "lost": 2
+      },
+      "gamesStat": {
+        "balance": 72,
+        "won": 107,
+        "lost": 35
+      },
+      "tiebreaks": {
+        "balance": -1,
+        "won": 0,
+        "lost": 1
+      }
+    },
+    {
+      "rank": 3,
+      "name": "Marinho Schramm",
+      "status": "Ativo",
+      "games": 13,
+      "wins": 5,
+      "losses": 4,
+      "pct": 38.46,
+      "balance": 1,
+      "sets": {
+        "balance": 4,
+        "won": 11,
+        "lost": 7
+      },
+      "gamesStat": {
+        "balance": 11,
+        "won": 82,
+        "lost": 71
+      },
+      "tiebreaks": {
+        "balance": 2,
+        "won": 3,
+        "lost": 1
+      }
+    },
+    {
+      "rank": 4,
+      "name": "Roberto Vilas",
+      "status": "Ativo",
+      "games": 17,
+      "wins": 9,
+      "losses": 8,
+      "pct": 52.94,
+      "balance": 1,
+      "sets": {
+        "balance": -3,
+        "won": 18,
+        "lost": 21
+      },
+      "gamesStat": {
+        "balance": -26,
+        "won": 137,
+        "lost": 163
+      },
+      "tiebreaks": {
+        "balance": 5,
+        "won": 8,
+        "lost": 3
+      }
+    },
+    {
+      "rank": 5,
+      "name": "André Di Celio",
+      "status": "Ativo",
+      "games": 14,
+      "wins": 8,
+      "losses": 6,
+      "pct": 57.14,
+      "balance": 2,
+      "sets": {
+        "balance": -2,
+        "won": 12,
+        "lost": 14
+      },
+      "gamesStat": {
+        "balance": -19,
+        "won": 87,
+        "lost": 106
+      },
+      "tiebreaks": {
+        "balance": 2,
+        "won": 5,
+        "lost": 3
+      }
+    },
+    {
+      "rank": 6,
+      "name": "Leonardo Belchior",
+      "status": "Ativo",
+      "games": 10,
+      "wins": 4,
+      "losses": 4,
+      "pct": 40,
+      "balance": 0,
+      "sets": {
+        "balance": 4,
+        "won": 9,
+        "lost": 5
+      },
+      "gamesStat": {
+        "balance": 6,
+        "won": 56,
+        "lost": 50
+      },
+      "tiebreaks": {
+        "balance": 0,
+        "won": 1,
+        "lost": 1
+      }
+    },
+    {
+      "rank": 7,
+      "name": "Max D'angelo",
+      "status": "Ativo",
+      "games": 14,
+      "wins": 8,
+      "losses": 5,
+      "pct": 57.14,
+      "balance": 3,
+      "sets": {
+        "balance": 6,
+        "won": 14,
+        "lost": 8
+      },
+      "gamesStat": {
+        "balance": 19,
+        "won": 100,
+        "lost": 81
+      },
+      "tiebreaks": {
+        "balance": 2,
+        "won": 2,
+        "lost": 0
+      }
+    },
+    {
+      "rank": 8,
+      "name": "Thiago Atilio",
+      "status": "Ativo",
+      "games": 11,
+      "wins": 2,
+      "losses": 7,
+      "pct": 18.18,
+      "balance": -5,
+      "sets": {
+        "balance": -4,
+        "won": 6,
+        "lost": 10
+      },
+      "gamesStat": {
+        "balance": -17,
+        "won": 48,
+        "lost": 65
+      },
+      "tiebreaks": {
+        "balance": -1,
+        "won": 3,
+        "lost": 4
+      }
+    },
+    {
+      "rank": 9,
+      "name": "Douglas Kuada",
+      "status": "Ativo",
+      "games": 13,
+      "wins": 4,
+      "losses": 8,
+      "pct": 30.77,
+      "balance": -4,
+      "sets": {
+        "balance": -2,
+        "won": 6,
+        "lost": 8
+      },
+      "gamesStat": {
+        "balance": 2,
+        "won": 55,
+        "lost": 53
+      },
+      "tiebreaks": {
+        "balance": -3,
+        "won": 0,
+        "lost": 3
+      }
+    },
+    {
+      "rank": 10,
+      "name": "Fabrício Costa",
+      "status": "Ativo",
+      "games": 12,
+      "wins": 5,
+      "losses": 6,
+      "pct": 41.67,
+      "balance": -1,
+      "sets": {
+        "balance": -4,
+        "won": 8,
+        "lost": 12
+      },
+      "gamesStat": {
+        "balance": -20,
+        "won": 62,
+        "lost": 82
+      },
+      "tiebreaks": {
+        "balance": 0,
+        "won": 2,
+        "lost": 2
+      }
+    },
+    {
+      "rank": 11,
+      "name": "Marcos Nogueira",
+      "status": "Ativo",
+      "games": 12,
+      "wins": 4,
+      "losses": 6,
+      "pct": 33.33,
+      "balance": -2,
+      "sets": {
+        "balance": -4,
+        "won": 5,
+        "lost": 9
+      },
+      "gamesStat": {
+        "balance": -8,
+        "won": 50,
+        "lost": 58
+      },
+      "tiebreaks": {
+        "balance": -2,
+        "won": 1,
+        "lost": 3
+      }
+    },
+    {
+      "rank": 12,
+      "name": "Sergio Trevisan",
+      "status": "Ativo",
+      "games": 5,
+      "wins": 0,
+      "losses": 3,
+      "pct": 0,
+      "balance": -3,
+      "sets": {
+        "balance": -5,
+        "won": 1,
+        "lost": 6
+      },
+      "gamesStat": {
+        "balance": -18,
+        "won": 20,
+        "lost": 38
+      },
+      "tiebreaks": {
+        "balance": -1,
+        "won": 1,
+        "lost": 2
+      }
+    },
+    {
+      "rank": 13,
+      "name": "Franco Gonçales",
+      "status": "Ativo",
+      "games": 6,
+      "wins": 3,
+      "losses": 2,
+      "pct": 50,
+      "balance": 1,
+      "sets": {
+        "balance": 3,
+        "won": 5,
+        "lost": 2
+      },
+      "gamesStat": {
+        "balance": 9,
+        "won": 34,
+        "lost": 25
+      },
+      "tiebreaks": {
+        "balance": 0,
+        "won": 1,
+        "lost": 1
+      }
+    },
+    {
+      "rank": 14,
+      "name": "Lucas Claudio",
+      "status": "Ativo",
+      "games": 6,
+      "wins": 4,
+      "losses": 1,
+      "pct": 66.67,
+      "balance": 3,
+      "sets": {
+        "balance": 4,
+        "won": 4,
+        "lost": 0
+      },
+      "gamesStat": {
+        "balance": 14,
+        "won": 24,
+        "lost": 10
+      },
+      "tiebreaks": {
+        "balance": 0,
+        "won": 0,
+        "lost": 0
+      }
+    },
+    {
+      "rank": 15,
+      "name": "Marco Tempesta",
+      "status": "Ativo",
+      "games": 13,
+      "wins": 4,
+      "losses": 9,
+      "pct": 30.77,
+      "balance": -5,
+      "sets": {
+        "balance": -11,
+        "won": 6,
+        "lost": 17
+      },
+      "gamesStat": {
+        "balance": -30,
+        "won": 82,
+        "lost": 112
+      },
+      "tiebreaks": {
+        "balance": -4,
+        "won": 1,
+        "lost": 5
+      }
+    },
+    {
+      "rank": 16,
+      "name": "Andre Santana",
+      "status": "Ativo",
+      "games": 8,
+      "wins": 5,
+      "losses": 2,
+      "pct": 62.5,
+      "balance": 3,
+      "sets": {
+        "balance": 4,
+        "won": 8,
+        "lost": 4
+      },
+      "gamesStat": {
+        "balance": 14,
+        "won": 56,
+        "lost": 42
+      },
+      "tiebreaks": {
+        "balance": 0,
+        "won": 0,
+        "lost": 0
+      }
+    },
+    {
+      "rank": 17,
+      "name": "Caio Anjos",
+      "status": "Ativo",
+      "games": 6,
+      "wins": 1,
+      "losses": 3,
+      "pct": 16.67,
+      "balance": -2,
+      "sets": {
+        "balance": -3,
+        "won": 2,
+        "lost": 5
+      },
+      "gamesStat": {
+        "balance": -12,
+        "won": 18,
+        "lost": 30
+      },
+      "tiebreaks": {
+        "balance": 1,
+        "won": 1,
+        "lost": 0
+      }
+    },
+    {
+      "rank": 18,
+      "name": "Henrique Carelli",
+      "status": "Ativo",
+      "games": 13,
+      "wins": 5,
+      "losses": 7,
+      "pct": 38.46,
+      "balance": -2,
+      "sets": {
+        "balance": -2,
+        "won": 13,
+        "lost": 15
+      },
+      "gamesStat": {
+        "balance": -1,
+        "won": 104,
+        "lost": 105
+      },
+      "tiebreaks": {
+        "balance": -2,
+        "won": 2,
+        "lost": 4
+      }
+    },
+    {
+      "rank": 19,
+      "name": "Rafael Patz",
+      "status": "Ativo",
+      "games": 4,
+      "wins": 2,
+      "losses": 1,
+      "pct": 50,
+      "balance": 1,
+      "sets": {
+        "balance": 2,
+        "won": 2,
+        "lost": 0
+      },
+      "gamesStat": {
+        "balance": 3,
+        "won": 13,
+        "lost": 10
+      },
+      "tiebreaks": {
+        "balance": 1,
+        "won": 1,
+        "lost": 0
+      }
+    },
+    {
+      "rank": 20,
+      "name": "Alexandre Scarpato",
+      "status": "Ativo",
+      "games": 9,
+      "wins": 3,
+      "losses": 3,
+      "pct": 33.33,
+      "balance": 0,
+      "sets": {
+        "balance": -3,
+        "won": 5,
+        "lost": 8
+      },
+      "gamesStat": {
+        "balance": -14,
+        "won": 42,
+        "lost": 56
+      },
+      "tiebreaks": {
+        "balance": 2,
+        "won": 3,
+        "lost": 1
+      }
+    },
+    {
+      "rank": 21,
+      "name": "Almir Bortolim",
+      "status": "Ativo",
+      "games": 7,
+      "wins": 3,
+      "losses": 1,
+      "pct": 42.86,
+      "balance": 2,
+      "sets": {
+        "balance": -3,
+        "won": 1,
+        "lost": 4
+      },
+      "gamesStat": {
+        "balance": -10,
+        "won": 12,
+        "lost": 22
+      },
+      "tiebreaks": {
+        "balance": -1,
+        "won": 0,
+        "lost": 1
+      }
+    },
+    {
+      "rank": 22,
+      "name": "Marcelo Zampieri",
+      "status": "Ativo",
+      "games": 5,
+      "wins": 1,
+      "losses": 4,
+      "pct": 20,
+      "balance": -3,
+      "sets": {
+        "balance": -1,
+        "won": 2,
+        "lost": 3
+      },
+      "gamesStat": {
+        "balance": -9,
+        "won": 13,
+        "lost": 22
+      },
+      "tiebreaks": {
+        "balance": 1,
+        "won": 1,
+        "lost": 0
+      }
+    },
+    {
+      "rank": 23,
+      "name": "Hugo Branquinho",
+      "status": "Ativo",
+      "games": 4,
+      "wins": 2,
+      "losses": 2,
+      "pct": 50,
+      "balance": 0,
+      "sets": {
+        "balance": 0,
+        "won": 4,
+        "lost": 4
+      },
+      "gamesStat": {
+        "balance": 6,
+        "won": 32,
+        "lost": 26
+      },
+      "tiebreaks": {
+        "balance": 0,
+        "won": 0,
+        "lost": 0
+      }
+    },
+    {
+      "rank": 24,
+      "name": "Eduardo De Oliveira Barossi",
+      "status": "Ativo",
+      "games": 2,
+      "wins": 0,
+      "losses": 1,
+      "pct": 0,
+      "balance": -1,
+      "sets": {
+        "balance": 0,
+        "won": 0,
+        "lost": 0
+      },
+      "gamesStat": {
+        "balance": 0,
+        "won": 0,
+        "lost": 0
+      },
+      "tiebreaks": {
+        "balance": 0,
+        "won": 0,
+        "lost": 0
+      }
+    },
+    {
+      "rank": 25,
+      "name": "Jader Dias",
+      "status": "Ativo",
+      "games": 8,
+      "wins": 6,
+      "losses": 0,
+      "pct": 75,
+      "balance": 6,
+      "sets": {
+        "balance": 10,
+        "won": 12,
+        "lost": 2
+      },
+      "gamesStat": {
+        "balance": 37,
+        "won": 66,
+        "lost": 29
+      },
+      "tiebreaks": {
+        "balance": 2,
+        "won": 2,
+        "lost": 0
+      }
+    },
+    {
+      "rank": 26,
+      "name": "Leandro Fanti",
+      "status": "Ativo",
+      "games": 12,
+      "wins": 2,
+      "losses": 7,
+      "pct": 16.67,
+      "balance": -5,
+      "sets": {
+        "balance": -13,
+        "won": 1,
+        "lost": 14
+      },
+      "gamesStat": {
+        "balance": -56,
+        "won": 28,
+        "lost": 84
+      },
+      "tiebreaks": {
+        "balance": -1,
+        "won": 0,
+        "lost": 1
+      }
+    },
+    {
+      "rank": 27,
+      "name": "Marcos Hamamura",
+      "status": "Ativo",
+      "games": 2,
+      "wins": 2,
+      "losses": 0,
+      "pct": 100,
+      "balance": 2,
+      "sets": {
+        "balance": 4,
+        "won": 4,
+        "lost": 0
+      },
+      "gamesStat": {
+        "balance": 17,
+        "won": 24,
+        "lost": 7
+      },
+      "tiebreaks": {
+        "balance": 0,
+        "won": 0,
+        "lost": 0
+      }
+    },
+    {
+      "rank": 28,
+      "name": "Flávio Malta",
+      "status": "Ativo",
+      "games": 8,
+      "wins": 1,
+      "losses": 4,
+      "pct": 12.5,
+      "balance": -3,
+      "sets": {
+        "balance": -6,
+        "won": 2,
+        "lost": 8
+      },
+      "gamesStat": {
+        "balance": -19,
+        "won": 25,
+        "lost": 44
+      },
+      "tiebreaks": {
+        "balance": -2,
+        "won": 0,
+        "lost": 2
+      }
+    },
+    {
+      "rank": 29,
+      "name": "Evandro Santos",
+      "status": "Ativo",
+      "games": 5,
+      "wins": 0,
+      "losses": 4,
+      "pct": 0,
+      "balance": -4,
+      "sets": {
+        "balance": -4,
+        "won": 0,
+        "lost": 4
+      },
+      "gamesStat": {
+        "balance": -19,
+        "won": 5,
+        "lost": 24
+      },
+      "tiebreaks": {
+        "balance": 0,
+        "won": 0,
+        "lost": 0
+      }
+    },
+    {
+      "rank": 30,
+      "name": "Felipe Uesugui Santana",
+      "status": "Ativo",
+      "games": 7,
+      "wins": 2,
+      "losses": 4,
+      "pct": 28.57,
+      "balance": -2,
+      "sets": {
+        "balance": 0,
+        "won": 6,
+        "lost": 6
+      },
+      "gamesStat": {
+        "balance": 5,
+        "won": 49,
+        "lost": 44
+      },
+      "tiebreaks": {
+        "balance": -2,
+        "won": 0,
+        "lost": 2
+      }
+    },
+    {
+      "rank": 31,
+      "name": "Marcelo Alexandrino",
+      "status": "Ativo",
+      "games": 5,
+      "wins": 0,
+      "losses": 2,
+      "pct": 0,
+      "balance": -2,
+      "sets": {
+        "balance": -2,
+        "won": 0,
+        "lost": 2
+      },
+      "gamesStat": {
+        "balance": -6,
+        "won": 6,
+        "lost": 12
+      },
+      "tiebreaks": {
+        "balance": 0,
+        "won": 0,
+        "lost": 0
+      }
+    },
+    {
+      "rank": 32,
+      "name": "Luis Gustavo Oliveira da Silva",
+      "status": "Ativo",
+      "games": 3,
+      "wins": 1,
+      "losses": 1,
+      "pct": 33.33,
+      "balance": 0,
+      "sets": {
+        "balance": -1,
+        "won": 2,
+        "lost": 3
+      },
+      "gamesStat": {
+        "balance": -4,
+        "won": 16,
+        "lost": 20
+      },
+      "tiebreaks": {
+        "balance": 1,
+        "won": 1,
+        "lost": 0
+      }
+    },
+    {
+      "rank": 33,
+      "name": "Edmur Terruel Manzano",
+      "status": "Ativo",
+      "games": 4,
+      "wins": 2,
+      "losses": 0,
+      "pct": 50,
+      "balance": 2,
+      "sets": {
+        "balance": -1,
+        "won": 1,
+        "lost": 2
+      },
+      "gamesStat": {
+        "balance": -3,
+        "won": 8,
+        "lost": 11
+      },
+      "tiebreaks": {
+        "balance": -1,
+        "won": 0,
+        "lost": 1
+      }
+    }
+  ]
+}
