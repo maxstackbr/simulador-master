@@ -41,6 +41,11 @@ versão espúria. `--force` existe só na linha de comando, para regravar localm
      resumo, botões "Abrir no WhatsApp" (`whatsapp://send?text=…`) e "Copiar texto"; em falha,
      prioridade alta e link para a execução.
    - E-mail via Resend (`scripts/send-email.mjs`) para `contato@maxstack.com.br`, mesmo texto.
+   - Telegram via bot (`scripts/send-telegram.mjs`, `scripts/lib/telegram.js`, adicionado em
+     29/10/2026) para o chat de `TELEGRAM_CHAT_ID` (hoje o grupo RankingIbiAram): mesmo texto com o
+     `*negrito*` convertido para HTML do Telegram e botão "Abrir no WhatsApp" (`https://wa.me/?text=…`,
+     porque botão inline só aceita http(s)); em falha, botão para a execução. Se o Telegram recusar o
+     botão, reenvia só o texto; se o grupo virar supergrupo, o log mostra o novo ID para o secret.
 6. Se a leitura falhou, o job termina com erro depois de notificar; o site segue com a última
    versão publicada. Plano B manual: `npm run update -- planilha.xlsx` e push na `main`.
 
@@ -79,6 +84,8 @@ versão espúria. `--force` existe só na linha de comando, para regravar localm
 
 ## Configuração (GitHub → Settings → Secrets and variables → Actions)
 - secrets `NTFY_TOPIC` (sem ele o push é pulado) e `RESEND_API_KEY` (sem ela o e-mail é pulado);
+- secrets `TELEGRAM_BOT_TOKEN` (token do `@simulador_master_bot`, do BotFather) e `TELEGRAM_CHAT_ID`
+  (ID do chat; grupo é negativo, supergrupo começa com `-100`); sem um deles o Telegram é pulado;
 - vars opcionais `EMAIL_TO` e `EMAIL_FROM`;
 - no celular: app ntfy assinando o tópico do secret.
 

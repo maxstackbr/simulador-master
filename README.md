@@ -25,6 +25,7 @@ flowchart LR
   S -->|"mudança publicada<br/>(+5 min p/ o cache expirar)<br/>ou falha"| N{{"notificações"}}
   N --> P["push ntfy<br/>botão: Abrir no WhatsApp"]
   N --> E["e-mail Resend<br/>caixa de contato"]
+  N --> T["Telegram<br/>grupo RankingIbiAram"]
   P -.->|"2 toques"| G["grupo do WhatsApp"]
   classDef data fill:#eef3f8,stroke:#4a5d78,color:#1d2a3a
   classDef out fill:#e8f5ec,stroke:#2e7d4f,color:#143d26
@@ -38,7 +39,7 @@ flowchart LR
 
 ## Atualização automática (`.github/workflows/sync-ranking.yml`)
 Roda de 2 em 2 horas (cron em UTC) e no botão "Run workflow". A opção `test_notify` do botão só testa as
-notificações: dispara push e e-mail com título "🧪 Teste de notificação" e a leitura atual, sem gravar nem commitar nada. Ele:
+notificações: dispara push, e-mail e Telegram com título "🧪 Teste de notificação" e a leitura atual, sem gravar nem commitar nada. Ele:
 1. lê classificação e jogos no domínio de embed do Letzplay (`embed.letzplay.me/ibiaram/rankings/47608/{table,matches}`)
    **com o Chromium do Playwright**: a Cloudflare do Letzplay devolve 403 + desafio para curl/fetch em IP de
    datacenter, e limita a taxa, então o sync baixa só o documento (sem imagens/scripts), valida cada resposta e
@@ -51,11 +52,13 @@ notificações: dispara push e e-mail com título "🧪 Teste de notificação" 
    e ignora `no-cache` e query string, então sem a espera quem clicasse no link logo após o aviso poderia ver a
    classificação anterior. Como toda cópia em cache é anterior ao push, 5 min garantem que expirou em todo lugar;
 5. **só quando algo mudou e foi publicado, ou a leitura falhou**, notifica com o resumo pronto para o WhatsApp,
-   pelos dois canais, independentes entre si (se a publicação falhar, ninguém recebe "atualizado"; o próximo
+   pelos três canais, independentes entre si (se a publicação falhar, ninguém recebe "atualizado"; o próximo
    ciclo refaz tudo). O modo de teste e a falha não esperam, porque nada foi publicado:
    - push via [ntfy](https://ntfy.sh), com os botões "Abrir no WhatsApp" (abre o app com o texto preenchido;
      falta só escolher o grupo e enviar) e "Copiar texto"; em falha, prioridade alta e link para a execução;
-   - e-mail para `contato@maxstack.com.br` (Resend) com o mesmo texto.
+   - e-mail para `contato@maxstack.com.br` (Resend) com o mesmo texto;
+   - mensagem do bot `@simulador_master_bot` no Telegram (grupo RankingIbiAram), com o mesmo texto e o botão
+     "Abrir no WhatsApp"; em falha, botão para a execução.
    Sem mudança, nenhuma notificação.
 
 Para receber o push: instale o app ntfy (Android/iPhone) e assine o tópico definido no secret `NTFY_TOPIC`.
@@ -65,6 +68,9 @@ workflow), aleatório e nunca aparece em código ou log; para trocar, atualize o
 Configuração no GitHub (Settings → Secrets and variables → Actions):
 - secret `NTFY_TOPIC` (tópico do push; sem ele o push é pulado)
 - secret `RESEND_API_KEY` (chave do Resend, só envio; sem ela o e-mail é pulado)
+- secrets `TELEGRAM_BOT_TOKEN` (token do bot, do BotFather) e `TELEGRAM_CHAT_ID` (ID do chat; grupo é negativo,
+  supergrupo começa com `-100`); sem um deles o Telegram é pulado. Se o grupo virar supergrupo, o ID muda e o
+  log do passo do Telegram mostra o novo valor para o secret
 - vars opcionais `EMAIL_TO` (padrão `contato@maxstack.com.br`) e `EMAIL_FROM` (padrão `Ranking Ibi Aram <site@maxstack.com.br>`)
 
 Diagnóstico: cada run deixa em `sync/` (ignorado pelo git) o resumo, o `result.json` e o HTML lido de cada
@@ -89,7 +95,7 @@ o nginx do site serve qualquer arquivo de `web/public` com `try_files`, então o
 ```bash
 npm install
 npm run dev                 # desenvolvimento (dados de public/data)
-npm test                    # vitest: regras da chave, parser do Letzplay (HTML real), payload do push
+npm test                    # vitest: regras da chave, parser do Letzplay (HTML real), payload do push e do Telegram
 npm run e2e                 # playwright: telas e regras no navegador, desktop + mobile
 npm run sync:dry            # lê o Letzplay e mostra o resumo sem gravar
 npm run sync                # lê e grava nova versão em public/data (se mudou); --force grava mesmo sem mudança
@@ -104,11 +110,11 @@ npm run build:site          # build com base /ranking/ e copia para ../site-maxs
 - `src/lib/parseRanking.js` — leitura do xlsx (SheetJS), só no plano B
 - `src/components/` — Header, RankingTable, Bracket, Match, SimulationBar, ThemeToggle, JumpButton
 - `scripts/sync-letzplay.mjs` — leitura com Playwright, detecção de mudanças, gravação e resumo
-- `scripts/send-push.mjs` · `scripts/send-email.mjs` — notificações (ntfy, Resend)
+- `scripts/send-push.mjs` · `scripts/send-email.mjs` · `scripts/send-telegram.mjs` — notificações (ntfy, Resend, Telegram)
 - `scripts/update-ranking.mjs` · `scripts/publish-to-site.mjs` — plano B e publicação do código
 - `scripts/lib/letzplay.js` — parser do embed, diff de posições e texto para WhatsApp
-- `scripts/lib/version.js` — grava versão (atual + histórico + índice) · `scripts/lib/push.js` — payload do ntfy
+- `scripts/lib/version.js` — grava versão (atual + histórico + índice) · `scripts/lib/push.js` — payload do ntfy · `scripts/lib/telegram.js` — mensagem do Telegram
   · `scripts/lib/html.js` — decodificação de entidades
 - `public/data/` — `ranking.json`, `index.json`, `history/`, `matches.json` (fonte do site em produção)
 - `test/e2e.spec.js` — regras e telas, contra o snapshot fixo `test/fixtures/e2e-*.json` (os dados reais mudam sozinhos)
-  · `test/letzplay.test.js`, `test/push.test.js` — parser e push · `test/fixtures/letzplay-*.html` — HTML real do Letzplay (tabela, jogos, um W.O.)
+  · `test/letzplay.test.js`, `test/push.test.js`, `test/telegram.test.js` — parser, push e Telegram · `test/fixtures/letzplay-*.html` — HTML real do Letzplay (tabela, jogos, um W.O.)

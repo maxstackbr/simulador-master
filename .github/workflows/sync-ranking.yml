@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
     inputs:
       test_notify:
-        description: 'Só testar push + e-mail com a leitura atual (não grava nem commita nada)'
+        description: 'Só testar push + e-mail + Telegram com a leitura atual (não grava nem commita nada)'
         type: boolean
         default: false
 
@@ -57,7 +57,7 @@ jobs:
           echo "versão publicada: $esperado · servida pelo CDN: $servido"
           [ "$servido" = "$esperado" ] || echo "::warning::o CDN ainda serve $servido; o cache expira em até 5 min a partir do push"
       # Notificações só quando algo mudou (e foi publicado) ou a leitura falhou; sem mudança, silêncio.
-      # Push e e-mail seguem a mesma regra e são independentes: a falha de um não cancela o outro.
+      # Push, e-mail e Telegram seguem a mesma regra e são independentes: a falha de um não cancela os outros.
       # Se a publicação falhou, ninguém é avisado de "atualizado": o próximo ciclo refaz a leitura e publica.
       - name: Enviar push (ntfy) com o resumo
         if: ${{ !cancelled() && steps.sync.outputs.status != 'unchanged' && steps.publish.outcome != 'failure' }}
@@ -74,6 +74,14 @@ jobs:
           EMAIL_FROM: ${{ vars.EMAIL_FROM }}
           SYNC_STATUS: ${{ steps.sync.outputs.status }}
         run: node scripts/send-email.mjs
+      - name: Enviar Telegram com o resumo
+        if: ${{ !cancelled() && steps.sync.outputs.status != 'unchanged' && steps.publish.outcome != 'failure' }}
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          SYNC_STATUS: ${{ steps.sync.outputs.status }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: node scripts/send-telegram.mjs
       - name: Falhar o job se a leitura falhou
         if: steps.sync.outcome == 'failure'
         run: exit 1
