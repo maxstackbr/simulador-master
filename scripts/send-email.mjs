@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Envia o resumo da sincronização por e-mail via Resend (mesmo provedor do site Max Stack).
 // Env: RESEND_API_KEY (obrigatório), EMAIL_TO (padrão contato@maxstack.com.br),
-//      EMAIL_FROM (padrão "Ranking Ibi Aram <site@maxstack.com.br>"), SYNC_STATUS (changed|unchanged|error)
+//      EMAIL_FROM (padrão "Ranking Ibi Aram <site@maxstack.com.br>"), SYNC_STATUS (changed|test|error|stalled)
 import { readFileSync, existsSync } from 'node:fs'
 import { resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -20,7 +20,7 @@ const summary = existsSync(summaryPath)
   ? readFileSync(summaryPath, 'utf8')
   : '❌ *Ranking Ibi Aram*: a sincronização terminou sem produzir resumo. Veja a execução no GitHub.'
 
-const titles = { changed: '✅ Ranking atualizado', test: '🧪 Teste de notificação', error: '❌ Falha na leitura do ranking' }
+const titles = { changed: '✅ Ranking atualizado', test: '🧪 Teste de notificação', error: '❌ Falha na leitura do ranking', stalled: '⚠️ Sincronização travada' }
 const subject = `${titles[status] ?? titles.error} · ${new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo', day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' })}`
 const esc = (s) => s.replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' })[c])
 const html = `<p style="color:#4a5d78;font-family:system-ui">Copie o bloco abaixo e cole no grupo do WhatsApp:</p>

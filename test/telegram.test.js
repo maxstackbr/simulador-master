@@ -33,6 +33,11 @@ describe('buildTelegram', () => {
     expect(m.text.startsWith('<b>🧪 Teste de notificação</b>')).toBe(true)
     expect(m.reply_markup.inline_keyboard[0][0].text).toBe('Abrir no WhatsApp')
   })
+  it('travada (vigia): título próprio e botão para a execução presa', () => {
+    const m = buildTelegram({ status: 'stalled', summary: 'presa', chatId: '1', runUrl: 'https://github.com/x/y/actions/runs/7' })
+    expect(m.text).toBe('<b>⚠️ Sincronização travada</b>\n\npresa')
+    expect(m.reply_markup.inline_keyboard).toEqual([[{ text: 'Ver execução', url: 'https://github.com/x/y/actions/runs/7' }]])
+  })
   it('status desconhecido é tratado como erro', () => {
     expect(buildTelegram({ status: '', summary: 'x', chatId: '1' }).text.startsWith('<b>❌')).toBe(true)
   })

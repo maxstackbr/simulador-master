@@ -37,7 +37,8 @@ flowchart LR
 - Em desenvolvimento (`npm run dev`) o site lê `public/data/` local.
 
 ## Atualização automática (`.github/workflows/sync-ranking.yml`)
-Roda de 2 em 2 horas (cron em UTC) e no botão "Run workflow". A opção `test_notify` do botão só testa as
+Roda de 2 em 2 horas, aos 23 min (cron em UTC; fora do minuto 0, quando o GitHub mais atrasa e descarta
+agendamentos), e no botão "Run workflow". A opção `test_notify` do botão só testa as
 notificações: dispara e-mail e Telegram com título "🧪 Teste de notificação" e a leitura atual, sem gravar nem commitar nada. Ele:
 1. lê classificação e jogos no domínio de embed do Letzplay (`embed.letzplay.me/ibiaram/rankings/47608/{table,matches}`)
    **com o Chromium do Playwright**: a Cloudflare do Letzplay devolve 403 + desafio para curl/fetch em IP de
@@ -58,6 +59,13 @@ notificações: dispara e-mail e Telegram com título "🧪 Teste de notificaç�
      "Abrir no WhatsApp" (abre o app com o texto preenchido; falta só escolher o grupo e enviar); em falha,
      botão para a execução.
    Sem mudança, nenhuma notificação.
+
+Travamentos: instalação do Chromium e leitura têm timeout próprio (20 e 15 min) e, se estourarem, viram falha
+de leitura com aviso; o job tem timeout de 45 min. Um job que nem começa (preso na fila sem runner, como em
+27/10/2026, que segurou o grupo de concorrência por 24 h) é pego pelo **vigia** (`.github/workflows/watchdog.yml`):
+de hora em hora ele procura execução do sync ativa há mais de 60 min, cancela (liberando as próximas) e avisa
+por e-mail e Telegram com o título "⚠️ Sincronização travada". No botão "Run workflow" do vigia, `max_minutes: 0`
+cancela qualquer sync ativo, para testar o aviso.
 
 Configuração no GitHub (Settings → Secrets and variables → Actions):
 - secret `RESEND_API_KEY` (chave do Resend, só envio; sem ela o e-mail é pulado)
@@ -104,10 +112,11 @@ npm run build:site          # build com base /ranking/ e copia para ../site-maxs
 - `src/components/` — Header, RankingTable, Bracket, Match, SimulationBar, ThemeToggle, JumpButton
 - `scripts/sync-letzplay.mjs` — leitura com Playwright, detecção de mudanças, gravação e resumo
 - `scripts/send-email.mjs` · `scripts/send-telegram.mjs` — notificações (Resend, Telegram)
+- `scripts/watchdog.mjs` · `scripts/lib/watchdog.js` — vigia: cancela e avisa execução do sync presa
 - `scripts/update-ranking.mjs` · `scripts/publish-to-site.mjs` — plano B e publicação do código
 - `scripts/lib/letzplay.js` — parser do embed, diff de posições e texto para WhatsApp
 - `scripts/lib/version.js` — grava versão (atual + histórico + índice) · `scripts/lib/telegram.js` — mensagem do Telegram
   · `scripts/lib/html.js` — decodificação de entidades
 - `public/data/` — `ranking.json`, `index.json`, `history/`, `matches.json` (fonte do site em produção)
 - `test/e2e.spec.js` — regras e telas, contra o snapshot fixo `test/fixtures/e2e-*.json` (os dados reais mudam sozinhos)
-  · `test/letzplay.test.js`, `test/telegram.test.js` — parser e Telegram · `test/fixtures/letzplay-*.html` — HTML real do Letzplay (tabela, jogos, um W.O.)
+  · `test/letzplay.test.js`, `test/telegram.test.js`, `test/watchdog.test.js` — parser, Telegram e vigia · `test/fixtures/letzplay-*.html` — HTML real do Letzplay (tabela, jogos, um W.O.)

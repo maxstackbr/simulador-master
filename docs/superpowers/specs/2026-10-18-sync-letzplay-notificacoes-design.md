@@ -74,7 +74,18 @@ versão espúria. `--force` existe só na linha de comando, para regravar localm
   o mesmo uso (aviso no celular com botão para o WhatsApp) com entrega confiável; o secret
   `NTFY_TOPIC` deixou de ser usado.
 - **Silêncio quando nada muda.** Com cadência de 2 h, notificar sempre daria 12 avisos/dia.
-- **Cron em UTC** (`0 */2 * * *`): em Brasília cai nas horas ímpares.
+- **Cron em UTC, aos 23 min** (`23 */2 * * *`, desde 29/10/2026): em Brasília cai nas horas ímpares.
+  De 19 a 29/10 o `0 */2` rendeu 4,7 execuções por dia em vez de 12 (intervalo mediano de 5,2 h): o
+  GitHub atrasa e descarta agendamentos no início de cada hora. Intervalo maior (4 h) foi descartado:
+  pioraria o atraso dos avisos sem economia (Actions é gratuito em repositório público).
+- **Timeouts e vigia** (29/10/2026). Em 27/10 um job ficou 24 h na fila sem runner, segurando o grupo
+  `concurrency` (as execuções seguintes foram se substituindo como pendentes); sem nenhum passo rodar,
+  ninguém foi avisado. Instalação e leitura ganharam timeout por passo com `continue-on-error`
+  (travar vira falha de leitura, que notifica) e o job, 45 min (instalação lenta chega a 12 min).
+  Para o job que nem começa, `watchdog.yml` roda de hora em hora em grupo próprio: execução do sync
+  ativa há mais de 60 min é cancelada (`cancel`, e `force-cancel` se recusar) e avisada por e-mail e
+  Telegram (`SYNC_STATUS=stalled`). Limite: se faltar runner para todo o repositório, o vigia também
+  espera; ele avisa quando conseguir rodar.
 - **Sem `force` no botão.** Um run forçado gravava versão duplicada e notificava "atualizado" sem
   mudança, exigindo revert manual; `test_notify` cobre o único uso real (testar os canais).
 - **E2E roda contra um snapshot fixo** (`test/fixtures/e2e-ranking.json` e `e2e-index.json`,
