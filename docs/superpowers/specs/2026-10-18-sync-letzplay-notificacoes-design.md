@@ -37,9 +37,6 @@ versão espúria. `--force` existe só na linha de comando, para regravar localm
    falha de leitura ou teste), independentes entre si (`!cancelled()`): a falha de uma não cancela a
    outra, e o job falha para sinalizar. Se o push do bot falhar, ninguém recebe "atualizado": o
    próximo ciclo recomputa o mesmo diff e publica.
-   - Push via ntfy (`scripts/send-push.mjs`, `scripts/lib/push.js`): título por status, texto do
-     resumo, botões "Abrir no WhatsApp" (`whatsapp://send?text=…`) e "Copiar texto"; em falha,
-     prioridade alta e link para a execução.
    - E-mail via Resend (`scripts/send-email.mjs`) para `contato@maxstack.com.br`, mesmo texto.
    - Telegram via bot (`scripts/send-telegram.mjs`, `scripts/lib/telegram.js`, adicionado em
      29/10/2026) para o chat de `TELEGRAM_CHAT_ID` (hoje o grupo RankingIbiAram): mesmo texto com o
@@ -70,10 +67,12 @@ versão espúria. `--force` existe só na linha de comando, para regravar localm
   Alternativa descartada por complexidade: link com `?v=<id>` abrindo `history/<id>.json` direto
   (arquivo novo nunca está em cache); vale se um dia o aviso precisar ser instantâneo.
 - **WhatsApp sem API.** A API oficial não posta em grupos e o Max não quer Evolution nem robô de
-  tela; o último toque (escolher o grupo e enviar) é humano, por isso o push abre o WhatsApp com o
+  tela; o último toque (escolher o grupo e enviar) é humano, por isso a notificação abre o WhatsApp com o
   texto preenchido.
-- **Tópico do ntfy é secret e aleatório.** No ntfy.sh o nome do tópico é a única proteção e o log
-  do workflow é público; `NTFY_TOPIC` fica em `secrets`, sem padrão no código e fora do log.
+- **Push via ntfy removido em 29/10/2026.** No iPhone o ntfy recebia a mensagem mas não a mostrava
+  na tela (só ao abrir o app), e o aviso do jogo #163 de 24/10 passou despercebido. O Telegram cobre
+  o mesmo uso (aviso no celular com botão para o WhatsApp) com entrega confiável; o secret
+  `NTFY_TOPIC` deixou de ser usado.
 - **Silêncio quando nada muda.** Com cadência de 2 h, notificar sempre daria 12 avisos/dia.
 - **Cron em UTC** (`0 */2 * * *`): em Brasília cai nas horas ímpares.
 - **Sem `force` no botão.** Um run forçado gravava versão duplicada e notificava "atualizado" sem
@@ -83,11 +82,11 @@ versão espúria. `--force` existe só na linha de comando, para regravar localm
   bot e quebravam cenários que esperam nomes em posições fixas.
 
 ## Configuração (GitHub → Settings → Secrets and variables → Actions)
-- secrets `NTFY_TOPIC` (sem ele o push é pulado) e `RESEND_API_KEY` (sem ela o e-mail é pulado);
+- secret `RESEND_API_KEY` (sem ela o e-mail é pulado);
 - secrets `TELEGRAM_BOT_TOKEN` (token do `@simulador_master_bot`, do BotFather) e `TELEGRAM_CHAT_ID`
   (ID do chat; grupo é negativo, supergrupo começa com `-100`); sem um deles o Telegram é pulado;
 - vars opcionais `EMAIL_TO` e `EMAIL_FROM`;
-- no celular: app ntfy assinando o tópico do secret.
+- no Telegram: o bot `@simulador_master_bot` como membro do grupo do `TELEGRAM_CHAT_ID`.
 
 ## Validação feita em 18/10/2026
 - Testes: parser com HTML real (tabela, jogos, W.O.), diff, texto do WhatsApp, payload do push.

@@ -6,7 +6,7 @@
 // Uso: node scripts/sync-letzplay.mjs [--dry-run] [--force] [--test-notify]
 //   --dry-run      mostra o resumo e não grava nada
 //   --force        grava nova versão mesmo sem mudança (uso local, p.ex. após corrigir o parser)
-//   --test-notify  não grava nada e sai com status "test", para o workflow disparar push + e-mail + Telegram de teste
+//   --test-notify  não grava nada e sai com status "test", para o workflow disparar e-mail + Telegram de teste
 import { readFileSync, writeFileSync, mkdirSync, existsSync, appendFileSync } from 'node:fs'
 import { resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'

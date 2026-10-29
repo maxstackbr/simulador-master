@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import { buildTelegram, toTelegramHtml, cleanToken } from '../scripts/lib/telegram.js'
 
-const summary = '🎾 *Ranking Ibi Aram 2026* — atualização 18/10 às 21:09\n\n*Jogos novos (1):*\n✅ Marcos Nogueira venceu Sergio Trevisan: W.O. (18/10/26)\n\nSimule desistências e a chave: https://maxstack.com.br/ranking/'
+const summary = '🎾 *Ranking Ibi Aram 2026* — atualização 18/10 às 21:09\n\n*Jogos novos (1):*\n✅ Marcos Nogueira venceu Sergio Trevisan: W.O. (18/10/26)\n\nSimule o chaveamento do Master: https://maxstack.com.br/ranking/'
 
 describe('toTelegramHtml', () => {
   it('converte o *negrito* do WhatsApp em <b> e escapa &, < e >', () => {
