@@ -71,6 +71,7 @@ describe('diffRanking e formatWhatsApp', () => {
     expect(txt).toContain('🅰️ 1. Ueslen Silva')
     expect(txt).toContain('🅱️ 9. Douglas Kuada')
     expect(txt).toContain('⏳ Na fila: 17. Caio Anjos · 18. Henrique Carelli')
+    expect(txt.endsWith('\n\nSimule o chaveamento do Master: https://maxstack.com.br/ranking/')).toBe(true)
   })
 })
 

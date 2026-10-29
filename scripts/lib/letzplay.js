@@ -136,6 +136,6 @@ export function formatWhatsApp({ now = new Date(), players, newMatches = [], cha
   const next = players.slice(16, 18)
   if (next.length) L.push('⏳ Na fila: ' + next.map((p) => `${p.rank}. ${p.name}`).join(' · '))
   L.push('')
-  L.push(`Simule desistências e a chave: ${siteUrl}`)
+  L.push(`Simule o chaveamento do Master: ${siteUrl}`)
   return L.join('\n')
 }
