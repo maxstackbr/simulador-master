@@ -1,0 +1,51 @@
+name: Vigiar a sincronização
+
+on:
+  schedule:
+    # De hora em hora, fora do minuto 0 e longe do sync (que roda aos 23 min).
+    - cron: '41 * * * *'
+  workflow_dispatch:
+    inputs:
+      max_minutes:
+        description: 'Cancelar e avisar execuções do sync ativas há mais de N minutos (0 cancela qualquer uma ativa: só para testar)'
+        type: number
+        default: 60
+
+# Grupo próprio: o vigia não pode ficar na fila atrás do sync que ele vigia.
+concurrency: sync-watchdog
+
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      # O sync dura no máximo 45 min (timeout do job); ativo há mais de 60 min, ficou preso na fila.
+      - name: Procurar execução presa
+        id: watch
+        env:
+          GH_TOKEN: ${{ github.token }}
+          MAX_MINUTES: ${{ inputs.max_minutes || 60 }}
+        run: node scripts/watchdog.mjs
+      - name: Enviar e-mail
+        if: steps.watch.outputs.stalled == 'true'
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          EMAIL_TO: ${{ vars.EMAIL_TO }}
+          EMAIL_FROM: ${{ vars.EMAIL_FROM }}
+          SYNC_STATUS: stalled
+        run: node scripts/send-email.mjs
+      - name: Enviar Telegram
+        if: ${{ !cancelled() && steps.watch.outputs.stalled == 'true' }}
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          SYNC_STATUS: stalled
+          RUN_URL: ${{ steps.watch.outputs.run_url }}
+        run: node scripts/send-telegram.mjs

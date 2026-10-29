@@ -2,8 +2,11 @@ name: Sincronizar ranking (Letzplay)
 
 on:
   schedule:
-    # A cada 2 horas (cron em UTC; em Brasília cai nas horas ímpares: 1h, 3h, ..., 23h)
-    - cron: '0 */2 * * *'
+    # A cada 2 horas (cron em UTC; em Brasília cai nas horas ímpares e 23 min: 1h23, 3h23, ..., 23h23).
+    # Fora do minuto 0 de propósito: no início de cada hora o GitHub atrasa ou descarta agendamentos
+    # (de 19 a 29/10 o cron '0 */2' rendeu 4,7 execuções por dia em vez de 12).
+    # Execução presa na fila é cancelada e avisada pelo vigia (watchdog.yml).
+    - cron: '23 */2 * * *'
   workflow_dispatch:
     inputs:
       test_notify:
@@ -19,15 +22,24 @@ permissions:
 jobs:
   sync:
     runs-on: ubuntu-latest
+    # Última rede de segurança: job morto por timeout não avisa ninguém, por isso os passos que podem
+    # travar têm timeout próprio com continue-on-error (viram falha de leitura, que notifica).
+    # Normal: até ~12 min de instalação em dia de apt lento + 5 min de espera do CDN.
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with: { node-version: 22, cache: npm }
       - run: npm ci --ignore-scripts
-      - run: npx playwright install --with-deps chromium
+      - name: Instalar o Chromium
+        run: npx playwright install --with-deps chromium
+        timeout-minutes: 20
+        continue-on-error: true
       - name: Ler o Letzplay
         id: sync
         run: node scripts/sync-letzplay.mjs ${{ inputs.test_notify && '--test-notify' || '' }}
+        # pior caso normal: 2 páginas × 3 tentativas de até 60 s + esperas de 30 s, ~8 min
+        timeout-minutes: 15
         continue-on-error: true
       - name: Publicar nova versão
         id: publish

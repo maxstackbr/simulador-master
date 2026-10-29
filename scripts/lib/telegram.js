@@ -1,7 +1,12 @@
 // Monta a mensagem do Telegram (Bot API, sendMessage) a partir do resumo do sync.
 // O resumo usa o *negrito* do WhatsApp; aqui vira HTML do Telegram. O botão inline só aceita http(s),
 // por isso o "Abrir no WhatsApp" usa https://wa.me/?text= em vez de whatsapp://.
-const TITLES = { changed: '✅ Ranking atualizado', test: '🧪 Teste de notificação', error: '❌ Falha na leitura do ranking' }
+const TITLES = {
+  changed: '✅ Ranking atualizado',
+  test: '🧪 Teste de notificação',
+  error: '❌ Falha na leitura do ranking',
+  stalled: '⚠️ Sincronização travada',
+}
 
 const esc = (s) => s.replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' })[c])
 
@@ -13,7 +18,8 @@ export const cleanToken = (t) => (t ?? '').replace(/\s+/g, '')
 
 export function buildTelegram({ status, summary, chatId, runUrl = null, siteUrl = 'https://maxstack.com.br/ranking/' }) {
   const kind = TITLES[status] ? status : 'error'
-  const button = kind === 'error'
+  // Falha e trava são para quem mantém o sync, não para o grupo do WhatsApp: o botão leva à execução.
+  const button = kind === 'error' || kind === 'stalled'
     ? { text: 'Ver execução', url: runUrl ?? siteUrl }
     : { text: 'Abrir no WhatsApp', url: `https://wa.me/?text=${encodeURIComponent(summary)}` }
   return {

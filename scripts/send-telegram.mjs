@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Envia o resumo da sincronização para um chat do Telegram (privado, grupo ou canal) pelo bot.
 // Env: TELEGRAM_BOT_TOKEN e TELEGRAM_CHAT_ID (sem eles o envio é pulado),
-//      SYNC_STATUS (changed|test|error), RUN_URL (execução no GitHub, opcional)
+//      SYNC_STATUS (changed|test|error|stalled), RUN_URL (execução no GitHub, opcional)
 import { readFileSync, existsSync } from 'node:fs'
 import { resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
