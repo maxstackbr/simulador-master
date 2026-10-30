@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-24T22:18:07.605Z",
+  "updatedAt": "2026-10-30T23:53:02.162Z",
   "matches": [
     {
       "id": 10784430,
@@ -173,6 +173,47 @@
             },
             {
               "games": 10,
+              "tb": null
+            }
+          ]
+        }
+      ],
+      "played": true,
+      "wo": false
+    },
+    {
+      "id": 10633219,
+      "round": 9,
+      "date": "16/10/26",
+      "when": "Sexta, 16/10/26 às 14:45hs • Rápida",
+      "place": "Residencial Ibi Aram 1 - Beija-flor (caixa d’água)",
+      "players": [
+        {
+          "name": "Marco Tempesta",
+          "won": true,
+          "lost": false,
+          "sets": [
+            {
+              "games": 6,
+              "tb": null
+            },
+            {
+              "games": 6,
+              "tb": null
+            }
+          ]
+        },
+        {
+          "name": "Sergio Trevisan",
+          "won": false,
+          "lost": true,
+          "sets": [
+            {
+              "games": 2,
+              "tb": null
+            },
+            {
+              "games": 1,
               "tb": null
             }
           ]

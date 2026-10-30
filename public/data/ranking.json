@@ -1,21 +1,31 @@
 {
-  "id": "2026-10-24T22-18-07",
-  "label": "Letzplay 24 de out. 19:18",
-  "generatedAt": "2026-10-24T22:18:07.605Z",
+  "id": "2026-10-30T23-53-02",
+  "label": "Letzplay 30 de out. 20:53",
+  "generatedAt": "2026-10-30T23:53:02.162Z",
   "source": "https://embed.letzplay.me/ibiaram/rankings/47608/table",
   "newMatches": [
-    10632131
+    10633219
   ],
   "changes": [
     {
-      "name": "André Di Celio",
-      "from": 5,
-      "to": 4
+      "name": "Marco Tempesta",
+      "from": 15,
+      "to": 12
     },
     {
-      "name": "Roberto Vilas",
-      "from": 4,
-      "to": 5
+      "name": "Sergio Trevisan",
+      "from": 12,
+      "to": 13
+    },
+    {
+      "name": "Franco Gonçales",
+      "from": 13,
+      "to": 14
+    },
+    {
+      "name": "Lucas Claudio",
+      "from": 14,
+      "to": 15
     }
   ],
   "players": [
@@ -296,22 +306,47 @@
     },
     {
       "rank": 12,
-      "name": "Sergio Trevisan",
+      "name": "Marco Tempesta",
       "status": "Ativo",
-      "games": 5,
-      "wins": 0,
-      "losses": 3,
-      "pct": 0,
-      "balance": -3,
+      "games": 14,
+      "wins": 5,
+      "losses": 9,
+      "pct": 35.71,
+      "balance": -4,
       "sets": {
-        "balance": -5,
-        "won": 1,
-        "lost": 6
+        "balance": -9,
+        "won": 8,
+        "lost": 17
       },
       "gamesStat": {
-        "balance": -18,
-        "won": 20,
-        "lost": 38
+        "balance": -21,
+        "won": 94,
+        "lost": 115
+      },
+      "tiebreaks": {
+        "balance": -4,
+        "won": 1,
+        "lost": 5
+      }
+    },
+    {
+      "rank": 13,
+      "name": "Sergio Trevisan",
+      "status": "Ativo",
+      "games": 6,
+      "wins": 0,
+      "losses": 4,
+      "pct": 0,
+      "balance": -4,
+      "sets": {
+        "balance": -7,
+        "won": 1,
+        "lost": 8
+      },
+      "gamesStat": {
+        "balance": -27,
+        "won": 23,
+        "lost": 50
       },
       "tiebreaks": {
         "balance": -1,
@@ -320,7 +355,7 @@
       }
     },
     {
-      "rank": 13,
+      "rank": 14,
       "name": "Franco Gonçales",
       "status": "Ativo",
       "games": 6,
@@ -345,7 +380,7 @@
       }
     },
     {
-      "rank": 14,
+      "rank": 15,
       "name": "Lucas Claudio",
       "status": "Ativo",
       "games": 6,
@@ -367,31 +402,6 @@
         "balance": 0,
         "won": 0,
         "lost": 0
-      }
-    },
-    {
-      "rank": 15,
-      "name": "Marco Tempesta",
-      "status": "Ativo",
-      "games": 13,
-      "wins": 4,
-      "losses": 9,
-      "pct": 30.77,
-      "balance": -5,
-      "sets": {
-        "balance": -11,
-        "won": 6,
-        "lost": 17
-      },
-      "gamesStat": {
-        "balance": -30,
-        "won": 82,
-        "lost": 112
-      },
-      "tiebreaks": {
-        "balance": -4,
-        "won": 1,
-        "lost": 5
       }
     },
     {
