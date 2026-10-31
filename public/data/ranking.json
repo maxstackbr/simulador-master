@@ -1,31 +1,63 @@
 {
-  "id": "2026-10-30T23-53-02",
-  "label": "Letzplay 30 de out. 20:53",
-  "generatedAt": "2026-10-30T23:53:02.162Z",
+  "id": "2026-10-31T15-28-44",
+  "label": "Letzplay 31 de out. 12:28",
+  "generatedAt": "2026-10-31T15:28:44.695Z",
   "source": "https://embed.letzplay.me/ibiaram/rankings/47608/table",
   "newMatches": [
-    10633219
+    10631601,
+    10636134,
+    10636176
   ],
   "changes": [
     {
-      "name": "Marco Tempesta",
-      "from": 15,
+      "name": "André Di Celio",
+      "from": 4,
+      "to": 3
+    },
+    {
+      "name": "Marinho Schramm",
+      "from": 3,
+      "to": 4
+    },
+    {
+      "name": "Henrique Carelli",
+      "from": 18,
+      "to": 9
+    },
+    {
+      "name": "Douglas Kuada",
+      "from": 9,
       "to": 12
     },
     {
-      "name": "Sergio Trevisan",
+      "name": "Marco Tempesta",
       "from": 12,
       "to": 13
     },
     {
-      "name": "Franco Gonçales",
+      "name": "Sergio Trevisan",
       "from": 13,
       "to": 14
     },
     {
-      "name": "Lucas Claudio",
+      "name": "Franco Gonçales",
       "from": 14,
       "to": 15
+    },
+    {
+      "name": "Lucas Claudio",
+      "from": 15,
+      "to": 16
+    },
+    {
+      "name": "Andre Santana",
+      "from": 16,
+      "to": 17
+    },
+    {
+      "name": "Caio Anjos",
+      "from": 17,
+      "to": 18
     }
   ],
   "players": [
@@ -81,38 +113,13 @@
     },
     {
       "rank": 3,
-      "name": "Marinho Schramm",
-      "status": "Ativo",
-      "games": 13,
-      "wins": 5,
-      "losses": 4,
-      "pct": 38.46,
-      "balance": 1,
-      "sets": {
-        "balance": 4,
-        "won": 11,
-        "lost": 7
-      },
-      "gamesStat": {
-        "balance": 11,
-        "won": 82,
-        "lost": 71
-      },
-      "tiebreaks": {
-        "balance": 2,
-        "won": 3,
-        "lost": 1
-      }
-    },
-    {
-      "rank": 4,
       "name": "André Di Celio",
       "status": "Ativo",
-      "games": 14,
-      "wins": 8,
+      "games": 15,
+      "wins": 9,
       "losses": 6,
-      "pct": 57.14,
-      "balance": 2,
+      "pct": 60,
+      "balance": 3,
       "sets": {
         "balance": -2,
         "won": 12,
@@ -127,6 +134,31 @@
         "balance": 2,
         "won": 5,
         "lost": 3
+      }
+    },
+    {
+      "rank": 4,
+      "name": "Marinho Schramm",
+      "status": "Ativo",
+      "games": 14,
+      "wins": 5,
+      "losses": 5,
+      "pct": 35.71,
+      "balance": 0,
+      "sets": {
+        "balance": 4,
+        "won": 11,
+        "lost": 7
+      },
+      "gamesStat": {
+        "balance": 11,
+        "won": 82,
+        "lost": 71
+      },
+      "tiebreaks": {
+        "balance": 2,
+        "won": 3,
+        "lost": 1
       }
     },
     {
@@ -158,11 +190,11 @@
       "rank": 6,
       "name": "Leonardo Belchior",
       "status": "Ativo",
-      "games": 10,
-      "wins": 4,
+      "games": 11,
+      "wins": 5,
       "losses": 4,
-      "pct": 40,
-      "balance": 0,
+      "pct": 45.45,
+      "balance": 1,
       "sets": {
         "balance": 4,
         "won": 9,
@@ -231,27 +263,27 @@
     },
     {
       "rank": 9,
-      "name": "Douglas Kuada",
+      "name": "Henrique Carelli",
       "status": "Ativo",
-      "games": 13,
-      "wins": 4,
-      "losses": 8,
-      "pct": 30.77,
-      "balance": -4,
+      "games": 14,
+      "wins": 6,
+      "losses": 7,
+      "pct": 42.86,
+      "balance": -1,
       "sets": {
-        "balance": -2,
-        "won": 6,
-        "lost": 8
+        "balance": 0,
+        "won": 15,
+        "lost": 15
       },
       "gamesStat": {
-        "balance": 2,
-        "won": 55,
-        "lost": 53
+        "balance": 9,
+        "won": 116,
+        "lost": 107
       },
       "tiebreaks": {
-        "balance": -3,
-        "won": 0,
-        "lost": 3
+        "balance": -2,
+        "won": 2,
+        "lost": 4
       }
     },
     {
@@ -306,6 +338,31 @@
     },
     {
       "rank": 12,
+      "name": "Douglas Kuada",
+      "status": "Ativo",
+      "games": 15,
+      "wins": 4,
+      "losses": 10,
+      "pct": 26.67,
+      "balance": -6,
+      "sets": {
+        "balance": -4,
+        "won": 6,
+        "lost": 10
+      },
+      "gamesStat": {
+        "balance": -8,
+        "won": 57,
+        "lost": 65
+      },
+      "tiebreaks": {
+        "balance": -3,
+        "won": 0,
+        "lost": 3
+      }
+    },
+    {
+      "rank": 13,
       "name": "Marco Tempesta",
       "status": "Ativo",
       "games": 14,
@@ -330,7 +387,7 @@
       }
     },
     {
-      "rank": 13,
+      "rank": 14,
       "name": "Sergio Trevisan",
       "status": "Ativo",
       "games": 6,
@@ -355,7 +412,7 @@
       }
     },
     {
-      "rank": 14,
+      "rank": 15,
       "name": "Franco Gonçales",
       "status": "Ativo",
       "games": 6,
@@ -380,7 +437,7 @@
       }
     },
     {
-      "rank": 15,
+      "rank": 16,
       "name": "Lucas Claudio",
       "status": "Ativo",
       "games": 6,
@@ -405,7 +462,7 @@
       }
     },
     {
-      "rank": 16,
+      "rank": 17,
       "name": "Andre Santana",
       "status": "Ativo",
       "games": 8,
@@ -430,7 +487,7 @@
       }
     },
     {
-      "rank": 17,
+      "rank": 18,
       "name": "Caio Anjos",
       "status": "Ativo",
       "games": 6,
@@ -452,31 +509,6 @@
         "balance": 1,
         "won": 1,
         "lost": 0
-      }
-    },
-    {
-      "rank": 18,
-      "name": "Henrique Carelli",
-      "status": "Ativo",
-      "games": 13,
-      "wins": 5,
-      "losses": 7,
-      "pct": 38.46,
-      "balance": -2,
-      "sets": {
-        "balance": -2,
-        "won": 13,
-        "lost": 15
-      },
-      "gamesStat": {
-        "balance": -1,
-        "won": 104,
-        "lost": 105
-      },
-      "tiebreaks": {
-        "balance": -2,
-        "won": 2,
-        "lost": 4
       }
     },
     {
