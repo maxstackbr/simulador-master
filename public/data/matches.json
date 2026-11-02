@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-31T15:28:44.695Z",
+  "updatedAt": "2026-11-02T23:36:53.092Z",
   "matches": [
     {
       "id": 10784430,
@@ -435,6 +435,47 @@
             },
             {
               "games": 6,
+              "tb": null
+            }
+          ]
+        }
+      ],
+      "played": true,
+      "wo": false
+    },
+    {
+      "id": 10359167,
+      "round": 8,
+      "date": "02/11/26",
+      "when": "Segunda, 02/11/26",
+      "place": "",
+      "players": [
+        {
+          "name": "Alexandre Scarpato",
+          "won": true,
+          "lost": false,
+          "sets": [
+            {
+              "games": 6,
+              "tb": null
+            },
+            {
+              "games": 6,
+              "tb": null
+            }
+          ]
+        },
+        {
+          "name": "Andre Santana",
+          "won": false,
+          "lost": true,
+          "sets": [
+            {
+              "games": 2,
+              "tb": null
+            },
+            {
+              "games": 2,
               "tb": null
             }
           ]
