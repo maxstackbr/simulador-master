@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-02T23:36:53.092Z",
+  "updatedAt": "2026-11-03T16:19:33.150Z",
   "matches": [
     {
       "id": 10784430,
@@ -476,6 +476,47 @@
             },
             {
               "games": 2,
+              "tb": null
+            }
+          ]
+        }
+      ],
+      "played": true,
+      "wo": false
+    },
+    {
+      "id": 10343941,
+      "round": 8,
+      "date": "10/09/26",
+      "when": "Quinta, 10/09/26 às 11:15hs • Rápida",
+      "place": "Residencial Ibi Aram 1 - Tucano (bosque)",
+      "players": [
+        {
+          "name": "Lucas Claudio",
+          "won": true,
+          "lost": false,
+          "sets": [
+            {
+              "games": 6,
+              "tb": null
+            },
+            {
+              "games": 6,
+              "tb": null
+            }
+          ]
+        },
+        {
+          "name": "Franco Gonçales",
+          "won": false,
+          "lost": true,
+          "sets": [
+            {
+              "games": 4,
+              "tb": null
+            },
+            {
+              "games": 4,
               "tb": null
             }
           ]

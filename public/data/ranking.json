@@ -1,31 +1,21 @@
 {
-  "id": "2026-11-02T23-36-53",
-  "label": "Letzplay 02 de nov. 20:36",
-  "generatedAt": "2026-11-02T23:36:53.092Z",
+  "id": "2026-11-03T16-19-33",
+  "label": "Letzplay 03 de nov. 13:19",
+  "generatedAt": "2026-11-03T16:19:33.150Z",
   "source": "https://embed.letzplay.me/ibiaram/rankings/47608/table",
   "newMatches": [
-    10359167
+    10343941
   ],
   "changes": [
     {
-      "name": "Alexandre Scarpato",
-      "from": 20,
-      "to": 17
+      "name": "Lucas Claudio",
+      "from": 16,
+      "to": 15
     },
     {
-      "name": "Andre Santana",
-      "from": 17,
-      "to": 18
-    },
-    {
-      "name": "Caio Anjos",
-      "from": 18,
-      "to": 19
-    },
-    {
-      "name": "Rafael Patz",
-      "from": 19,
-      "to": 20
+      "name": "Franco Gonçales",
+      "from": 15,
+      "to": 16
     }
   ],
   "players": [
@@ -381,31 +371,6 @@
     },
     {
       "rank": 15,
-      "name": "Franco Gonçales",
-      "status": "Ativo",
-      "games": 6,
-      "wins": 3,
-      "losses": 2,
-      "pct": 50,
-      "balance": 1,
-      "sets": {
-        "balance": 3,
-        "won": 5,
-        "lost": 2
-      },
-      "gamesStat": {
-        "balance": 9,
-        "won": 34,
-        "lost": 25
-      },
-      "tiebreaks": {
-        "balance": 0,
-        "won": 1,
-        "lost": 1
-      }
-    },
-    {
-      "rank": 16,
       "name": "Lucas Claudio",
       "status": "Ativo",
       "games": 6,
@@ -427,6 +392,31 @@
         "balance": 0,
         "won": 0,
         "lost": 0
+      }
+    },
+    {
+      "rank": 16,
+      "name": "Franco Gonçales",
+      "status": "Ativo",
+      "games": 6,
+      "wins": 3,
+      "losses": 2,
+      "pct": 50,
+      "balance": 1,
+      "sets": {
+        "balance": 3,
+        "won": 5,
+        "lost": 2
+      },
+      "gamesStat": {
+        "balance": 9,
+        "won": 34,
+        "lost": 25
+      },
+      "tiebreaks": {
+        "balance": 0,
+        "won": 1,
+        "lost": 1
       }
     },
     {
