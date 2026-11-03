@@ -1,21 +1,44 @@
 {
-  "id": "2026-11-03T16-19-33",
-  "label": "Letzplay 03 de nov. 13:19",
-  "generatedAt": "2026-11-03T16:19:33.150Z",
+  "id": "2026-11-03T21-50-00",
+  "label": "Letzplay 03 de nov. 18:50",
+  "generatedAt": "2026-11-03T21:50:00.075Z",
   "source": "https://embed.letzplay.me/ibiaram/rankings/47608/table",
-  "newMatches": [
-    10343941
-  ],
+  "newMatches": [],
   "changes": [
     {
-      "name": "Lucas Claudio",
-      "from": 16,
-      "to": 15
+      "name": "Alexandre Scarpato",
+      "from": 17,
+      "to": 16
+    },
+    {
+      "name": "Andre Santana",
+      "from": 18,
+      "to": 17
+    },
+    {
+      "name": "Caio Anjos",
+      "from": 19,
+      "to": 18
+    },
+    {
+      "name": "Rafael Patz",
+      "from": 20,
+      "to": 19
+    },
+    {
+      "name": "Almir Bortolim",
+      "from": 21,
+      "to": 20
+    },
+    {
+      "name": "Marcelo Zampieri",
+      "from": 22,
+      "to": 21
     },
     {
       "name": "Franco Gonçales",
-      "from": 15,
-      "to": 16
+      "from": 16,
+      "to": 22
     }
   ],
   "players": [
@@ -396,31 +419,6 @@
     },
     {
       "rank": 16,
-      "name": "Franco Gonçales",
-      "status": "Ativo",
-      "games": 6,
-      "wins": 3,
-      "losses": 2,
-      "pct": 50,
-      "balance": 1,
-      "sets": {
-        "balance": 3,
-        "won": 5,
-        "lost": 2
-      },
-      "gamesStat": {
-        "balance": 9,
-        "won": 34,
-        "lost": 25
-      },
-      "tiebreaks": {
-        "balance": 0,
-        "won": 1,
-        "lost": 1
-      }
-    },
-    {
-      "rank": 17,
       "name": "Alexandre Scarpato",
       "status": "Ativo",
       "games": 9,
@@ -445,7 +443,7 @@
       }
     },
     {
-      "rank": 18,
+      "rank": 17,
       "name": "Andre Santana",
       "status": "Ativo",
       "games": 8,
@@ -470,7 +468,7 @@
       }
     },
     {
-      "rank": 19,
+      "rank": 18,
       "name": "Caio Anjos",
       "status": "Ativo",
       "games": 6,
@@ -495,7 +493,7 @@
       }
     },
     {
-      "rank": 20,
+      "rank": 19,
       "name": "Rafael Patz",
       "status": "Ativo",
       "games": 4,
@@ -520,7 +518,7 @@
       }
     },
     {
-      "rank": 21,
+      "rank": 20,
       "name": "Almir Bortolim",
       "status": "Ativo",
       "games": 7,
@@ -545,7 +543,7 @@
       }
     },
     {
-      "rank": 22,
+      "rank": 21,
       "name": "Marcelo Zampieri",
       "status": "Ativo",
       "games": 5,
@@ -567,6 +565,31 @@
         "balance": 1,
         "won": 1,
         "lost": 0
+      }
+    },
+    {
+      "rank": 22,
+      "name": "Franco Gonçales",
+      "status": "Ativo",
+      "games": 6,
+      "wins": 3,
+      "losses": 2,
+      "pct": 50,
+      "balance": 1,
+      "sets": {
+        "balance": 3,
+        "won": 5,
+        "lost": 2
+      },
+      "gamesStat": {
+        "balance": 9,
+        "won": 34,
+        "lost": 25
+      },
+      "tiebreaks": {
+        "balance": 0,
+        "won": 1,
+        "lost": 1
       }
     },
     {

@@ -1,6 +1,12 @@
 {
   "versions": [
     {
+      "id": "2026-11-03T21-50-00",
+      "label": "Letzplay 03 de nov. 18:50",
+      "generatedAt": "2026-11-03T21:50:00.075Z",
+      "players": 33
+    },
+    {
       "id": "2026-11-03T16-19-33",
       "label": "Letzplay 03 de nov. 13:19",
       "generatedAt": "2026-11-03T16:19:33.150Z",
