@@ -1,44 +1,34 @@
 {
-  "id": "2026-11-03T21-50-00",
-  "label": "Letzplay 03 de nov. 18:50",
-  "generatedAt": "2026-11-03T21:50:00.075Z",
+  "id": "2026-11-11T09-30-37",
+  "label": "Letzplay 11 de nov. 06:30",
+  "generatedAt": "2026-11-11T09:30:37.055Z",
   "source": "https://embed.letzplay.me/ibiaram/rankings/47608/table",
   "newMatches": [],
   "changes": [
     {
-      "name": "Alexandre Scarpato",
-      "from": 17,
-      "to": 16
+      "name": "Leandro Fanti",
+      "from": 26,
+      "to": 25
     },
     {
-      "name": "Andre Santana",
-      "from": 18,
-      "to": 17
+      "name": "Jader Dias",
+      "from": 25,
+      "to": 26
     },
     {
-      "name": "Caio Anjos",
-      "from": 19,
-      "to": 18
+      "name": "Luis Gustavo Oliveira da Silva",
+      "from": 32,
+      "to": 31
     },
     {
-      "name": "Rafael Patz",
-      "from": 20,
-      "to": 19
+      "name": "Edmur Terruel Manzano",
+      "from": 33,
+      "to": 32
     },
     {
-      "name": "Almir Bortolim",
-      "from": 21,
-      "to": 20
-    },
-    {
-      "name": "Marcelo Zampieri",
-      "from": 22,
-      "to": 21
-    },
-    {
-      "name": "Franco Gonçales",
-      "from": 16,
-      "to": 22
+      "name": "Marcelo Alexandrino",
+      "from": 31,
+      "to": 33
     }
   ],
   "players": [
@@ -644,31 +634,6 @@
     },
     {
       "rank": 25,
-      "name": "Jader Dias",
-      "status": "Ativo",
-      "games": 8,
-      "wins": 6,
-      "losses": 0,
-      "pct": 75,
-      "balance": 6,
-      "sets": {
-        "balance": 10,
-        "won": 12,
-        "lost": 2
-      },
-      "gamesStat": {
-        "balance": 37,
-        "won": 66,
-        "lost": 29
-      },
-      "tiebreaks": {
-        "balance": 2,
-        "won": 2,
-        "lost": 0
-      }
-    },
-    {
-      "rank": 26,
       "name": "Leandro Fanti",
       "status": "Ativo",
       "games": 12,
@@ -690,6 +655,31 @@
         "balance": -1,
         "won": 0,
         "lost": 1
+      }
+    },
+    {
+      "rank": 26,
+      "name": "Jader Dias",
+      "status": "Ativo",
+      "games": 8,
+      "wins": 6,
+      "losses": 0,
+      "pct": 75,
+      "balance": 6,
+      "sets": {
+        "balance": 10,
+        "won": 12,
+        "lost": 2
+      },
+      "gamesStat": {
+        "balance": 37,
+        "won": 66,
+        "lost": 29
+      },
+      "tiebreaks": {
+        "balance": 2,
+        "won": 2,
+        "lost": 0
       }
     },
     {
@@ -794,31 +784,6 @@
     },
     {
       "rank": 31,
-      "name": "Marcelo Alexandrino",
-      "status": "Ativo",
-      "games": 5,
-      "wins": 0,
-      "losses": 2,
-      "pct": 0,
-      "balance": -2,
-      "sets": {
-        "balance": -2,
-        "won": 0,
-        "lost": 2
-      },
-      "gamesStat": {
-        "balance": -6,
-        "won": 6,
-        "lost": 12
-      },
-      "tiebreaks": {
-        "balance": 0,
-        "won": 0,
-        "lost": 0
-      }
-    },
-    {
-      "rank": 32,
       "name": "Luis Gustavo Oliveira da Silva",
       "status": "Ativo",
       "games": 3,
@@ -843,7 +808,7 @@
       }
     },
     {
-      "rank": 33,
+      "rank": 32,
       "name": "Edmur Terruel Manzano",
       "status": "Ativo",
       "games": 4,
@@ -865,6 +830,31 @@
         "balance": -1,
         "won": 0,
         "lost": 1
+      }
+    },
+    {
+      "rank": 33,
+      "name": "Marcelo Alexandrino",
+      "status": "Ativo",
+      "games": 5,
+      "wins": 0,
+      "losses": 2,
+      "pct": 0,
+      "balance": -2,
+      "sets": {
+        "balance": -2,
+        "won": 0,
+        "lost": 2
+      },
+      "gamesStat": {
+        "balance": -6,
+        "won": 6,
+        "lost": 12
+      },
+      "tiebreaks": {
+        "balance": 0,
+        "won": 0,
+        "lost": 0
       }
     }
   ]
