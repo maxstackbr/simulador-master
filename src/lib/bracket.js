@@ -4,7 +4,9 @@ export const TOTAL_SLOTS = 16
 
 /**
  * Aplica trocas de posição simuladas ([nomeA, nomeB], em ordem) à lista ordenada
- * por colocação. Devolve jogadores com rank = posição simulada e originalRank.
+ * por colocação. Em cada troca, o jogador de posição mais baixa assume a posição do
+ * de posição mais alta, e este (com quem estava entre os dois) cai uma posição.
+ * Devolve jogadores com rank = posição simulada e originalRank.
  */
 export function applySwaps(players, swaps = []) {
   const list = [...players].sort((a, b) => a.rank - b.rank).map((p) => ({ ...p, originalRank: p.originalRank ?? p.rank }))
@@ -12,7 +14,9 @@ export function applySwaps(players, swaps = []) {
     const i = list.findIndex((p) => p.name === a)
     const j = list.findIndex((p) => p.name === b)
     if (i < 0 || j < 0 || i === j) continue
-    ;[list[i], list[j]] = [list[j], list[i]]
+    const [top, bottom] = i < j ? [i, j] : [j, i]
+    const [climber] = list.splice(bottom, 1)
+    list.splice(top, 0, climber)
   }
   return list.map((p, i) => ({ ...p, rank: i + 1 }))
 }

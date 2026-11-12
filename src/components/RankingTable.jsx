@@ -26,7 +26,8 @@ export default function RankingTable({ players, seeds, withdrawn, onToggle, onSw
       <header className="ranking-head">
         <h2>Classificação do ranking</h2>
         <p className="muted">
-          Toque num jogador e depois em qualquer outro para trocar as colocações. Use o
+          Toque num jogador e depois em qualquer outro para simular a troca: o de posição mais baixa assume a posição
+          do mais alto, que cai uma posição. Use o
           botão Desiste para simular uma desistência. Tudo reflete na chave ao lado.
         </p>
         {selected && (

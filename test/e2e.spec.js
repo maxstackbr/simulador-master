@@ -58,21 +58,23 @@ test('regra 4: desistência na A promove o 9º e o 17º entra na B', async ({ pa
   expect(await names(page, 0)).toEqual(['Ueslen Silva', 'Thiago Atilio'])
 })
 
-test('troca de posições: livre com qualquer jogador, e reflete na chave', async ({ page }) => {
+test('troca de posições: quem sobe assume a posição, o de cima cai uma, e reflete na chave', async ({ page }) => {
   await page.click('tr:has-text("Caio Anjos") td.name') // 17º
   await expect(page.locator('tr.row-target')).toHaveCount(32) // todos os outros
   await expect(page.locator('tr:has-text("Ueslen Silva")')).toHaveClass(/row-target/) // 1º
   await expect(page.locator('tr:has-text("Flávio Malta")')).toHaveClass(/row-target/) // 33º
-  await page.click('tr:has-text("Thiago Atilio") td.name') // 8º: bem mais de 5 acima
+  await page.click('tr:has-text("Thiago Atilio") td.name') // 8º
   await expect(page.locator('tr:has-text("Caio Anjos") .tag-cat-A')).toHaveText('A · 8º')
   await expect(page.locator('tr:has-text("Caio Anjos") .rank-delta')).toContainText('era 17º')
+  await expect(page.locator('tr:has-text("Thiago Atilio") .tag-cat-B')).toHaveText('B · 9º') // caiu só uma
   await expect(page.locator('tr:has-text("Thiago Atilio") .rank-delta')).toContainText('era 8º')
+  await expect(page.locator('tr:has-text("Andre Santana") .rank-delta')).toContainText('era 16º') // 16º → 17º
   await expect(page.locator('.simbar')).toContainText('1 troca')
-  // o 1º pode trocar com alguém abaixo
+  // nova troca sobre a ordem já alterada: o 1º clicado pode ser o de cima
   await page.click('tr:has-text("Ueslen Silva") td.name')
-  await expect(page.locator('tr.row-target')).toHaveCount(32)
-  await page.click('tr:has-text("Flávio Malta") td.name')
-  await expect(page.locator('tr:has-text("Flávio Malta") .tag-cat-A')).toHaveText('A · 1º')
+  await page.click('tr:has-text("Caio Anjos") td.name')
+  await expect(page.locator('tr:has-text("Caio Anjos") .tag-cat-A')).toHaveText('A · 1º')
+  await expect(page.locator('tr:has-text("Ueslen Silva") .tag-cat-A')).toHaveText('A · 2º')
   await expect(page.locator('.simbar')).toContainText('2 trocas')
 })
 

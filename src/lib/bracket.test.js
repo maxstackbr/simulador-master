@@ -79,20 +79,29 @@ describe('buildBracket', () => {
 import { applySwaps, swapTargets } from './bracket.js'
 
 describe('applySwaps', () => {
-  it('troca as posições de dois jogadores e guarda a colocação original', () => {
+  it('quem sobe assume a posição do de cima, que cai só uma posição', () => {
     const out = applySwaps(mk(20), [['P7', 'P3']])
-    expect(out[2].name).toBe('P7')
+    expect(out.map((p) => p.name).slice(0, 8)).toEqual(['P1', 'P2', 'P7', 'P3', 'P4', 'P5', 'P6', 'P8'])
     expect(out[2].rank).toBe(3)
     expect(out[2].originalRank).toBe(7)
-    expect(out[6].name).toBe('P3')
-    expect(out[6].rank).toBe(7)
-    expect(out[6].originalRank).toBe(3)
+    expect(out[3].name).toBe('P3')
+    expect(out[3].rank).toBe(4)
+    expect(out[3].originalRank).toBe(3)
     expect(out[0].originalRank).toBe(1)
   })
 
+  it('a ordem do clique não importa: sempre sobe o de posição mais baixa', () => {
+    expect(applySwaps(mk(20), [['P3', 'P7']]).map((p) => p.name)).toEqual(applySwaps(mk(20), [['P7', 'P3']]).map((p) => p.name))
+  })
+
+  it('jogadores vizinhos simplesmente trocam de lugar', () => {
+    const out = applySwaps(mk(20), [['P5', 'P4']])
+    expect(out.map((p) => p.name).slice(2, 6)).toEqual(['P3', 'P5', 'P4', 'P6'])
+  })
+
   it('aplica trocas em sequência sobre a ordem já alterada', () => {
-    const out = applySwaps(mk(20), [['P7', 'P3'], ['P7', 'P1']])
-    expect(out.map((p) => p.name).slice(0, 7)).toEqual(['P7', 'P2', 'P1', 'P4', 'P5', 'P6', 'P3'])
+    const out = applySwaps(mk(20), [['P7', 'P3'], ['P7', 'P1'], ['P10', 'P7']])
+    expect(out.map((p) => p.name).slice(0, 10)).toEqual(['P10', 'P7', 'P1', 'P2', 'P3', 'P4', 'P5', 'P6', 'P8', 'P9'])
   })
 
   it('ignora troca com nome inexistente', () => {
