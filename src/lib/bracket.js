@@ -1,7 +1,6 @@
 import { CATEGORIES, COURTS } from './schedule.js'
 
 export const TOTAL_SLOTS = 16
-export const MAX_SWAP_DISTANCE = 5
 
 /**
  * Aplica trocas de posição simuladas ([nomeA, nomeB], em ordem) à lista ordenada
@@ -18,14 +17,13 @@ export function applySwaps(players, swaps = []) {
   return list.map((p, i) => ({ ...p, rank: i + 1 }))
 }
 
-/** Jogadores com quem `name` pode trocar: até MAX_SWAP_DISTANCE posições acima. */
-export function swapTargets(orderedPlayers, name) {
-  const i = orderedPlayers.findIndex((p) => p.name === name)
-  if (i < 0) return []
-  return orderedPlayers.slice(Math.max(0, i - MAX_SWAP_DISTANCE), i)
-}
-
 const isActive = (p) => !p.status || /^ativ/i.test(String(p.status).trim())
+
+/** Jogadores com quem `name` pode trocar: qualquer outro jogador ativo e não desistente. */
+export function swapTargets(orderedPlayers, name, withdrawn = new Set()) {
+  if (!orderedPlayers.some((p) => p.name === name)) return []
+  return orderedPlayers.filter((p) => p.name !== name && isActive(p) && !withdrawn.has(p.name))
+}
 
 /**
  * Lista elegível em ordem de colocação, descartando inativos e desistentes,

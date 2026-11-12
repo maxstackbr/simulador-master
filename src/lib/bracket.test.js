@@ -76,7 +76,7 @@ describe('buildBracket', () => {
   })
 })
 
-import { applySwaps, swapTargets, MAX_SWAP_DISTANCE } from './bracket.js'
+import { applySwaps, swapTargets } from './bracket.js'
 
 describe('applySwaps', () => {
   it('troca as posições de dois jogadores e guarda a colocação original', () => {
@@ -109,13 +109,21 @@ describe('applySwaps', () => {
 })
 
 describe('swapTargets', () => {
-  it('devolve até 5 jogadores acima do selecionado', () => {
+  it('devolve todos os outros jogadores, acima e abaixo, sem limite de distância', () => {
     const t = swapTargets(mk(20), 'P9')
-    expect(t.map((p) => p.name)).toEqual(['P4', 'P5', 'P6', 'P7', 'P8'])
-    expect(MAX_SWAP_DISTANCE).toBe(5)
+    expect(t).toHaveLength(19)
+    expect(t.map((p) => p.name)).toContain('P1')
+    expect(t.map((p) => p.name)).toContain('P20')
+    expect(t.map((p) => p.name)).not.toContain('P9')
   })
-  it('no topo não há alvos', () => {
-    expect(swapTargets(mk(20), 'P1')).toEqual([])
-    expect(swapTargets(mk(20), 'P3').map((p) => p.name)).toEqual(['P1', 'P2'])
+  it('o 1º também pode trocar (com quem está abaixo)', () => {
+    expect(swapTargets(mk(20), 'P1')).toHaveLength(19)
+  })
+  it('exclui inativos e desistentes', () => {
+    const players = mk(5).map((p) => (p.name === 'P2' ? { ...p, status: 'Inativo' } : p))
+    expect(swapTargets(players, 'P1', new Set(['P4'])).map((p) => p.name)).toEqual(['P3', 'P5'])
+  })
+  it('nome inexistente não tem alvos', () => {
+    expect(swapTargets(mk(5), 'Zé')).toEqual([])
   })
 })

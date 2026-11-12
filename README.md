@@ -10,7 +10,7 @@ Specs: `docs/superpowers/specs/2026-10-18-simulador-chaveamento-design.md` (regr
 
 ## O que dá para simular
 Ranking e chave ficam na mesma tela (no celular, empilhados, com botão para pular de um ao outro).
-- **Trocas de posição**: na tabela, toque num jogador e depois em outro até 5 posições acima.
+- **Trocas de posição**: na tabela, toque num jogador e depois em qualquer outro jogador ativo (acima ou abaixo).
 - **Desistências**: botão "Desiste" na linha. Todos abaixo sobem uma posição; o 9º vira A, o 17º entra na B (regra 4).
 - **Resultados**: na chave, toque no vencedor; ele avança até a final. Vaga vazia = W.O., avança automaticamente.
 - Tudo fica salvo no navegador (localStorage); a barra de simulação mostra a contagem e zera tudo.
