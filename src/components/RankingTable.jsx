@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { swapTargets, MAX_SWAP_DISTANCE } from '../lib/bracket.js'
+import { swapTargets } from '../lib/bracket.js'
 
 const isActive = (p) => /^ativ/i.test(p.status)
 
@@ -7,7 +7,7 @@ export default function RankingTable({ players, seeds, withdrawn, onToggle, onSw
   const [selected, setSelected] = useState(null) // nome do jogador em modo troca
   const seedByName = new Map(seeds.map((s) => [s.name, s.seed]))
   const nextInLine = players.find((p) => !seedByName.has(p.name) && !withdrawn.has(p.name) && isActive(p))
-  const targets = selected ? new Set(swapTargets(players, selected).map((p) => p.name)) : new Set()
+  const targets = selected ? new Set(swapTargets(players, selected, withdrawn).map((p) => p.name)) : new Set()
 
   const clickRow = (p) => {
     if (!isActive(p) || withdrawn.has(p.name)) return
@@ -26,13 +26,13 @@ export default function RankingTable({ players, seeds, withdrawn, onToggle, onSw
       <header className="ranking-head">
         <h2>Classificação do ranking</h2>
         <p className="muted">
-          Toque num jogador e depois em outro até {MAX_SWAP_DISTANCE} posições acima para trocar as colocações. Use o
+          Toque num jogador e depois em qualquer outro para trocar as colocações. Use o
           botão Desiste para simular uma desistência. Tudo reflete na chave ao lado.
         </p>
         {selected && (
           <div className="swap-hint">
             <span>
-              Trocando <strong>{selected}</strong>. Escolha um jogador destacado acima, ou toque nele de novo para cancelar.
+              Trocando <strong>{selected}</strong>. Escolha qualquer outro jogador destacado, ou toque nele de novo para cancelar.
             </span>
             <button className="btn btn-small" onClick={() => setSelected(null)}>
               Cancelar

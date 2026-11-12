@@ -58,20 +58,22 @@ test('regra 4: desistência na A promove o 9º e o 17º entra na B', async ({ pa
   expect(await names(page, 0)).toEqual(['Ueslen Silva', 'Thiago Atilio'])
 })
 
-test('troca de posições: só até 5 acima, e reflete na chave', async ({ page }) => {
+test('troca de posições: livre com qualquer jogador, e reflete na chave', async ({ page }) => {
   await page.click('tr:has-text("Caio Anjos") td.name') // 17º
-  await expect(page.locator('tr.row-target')).toHaveCount(5)
-  await expect(page.locator('tr.row-target td.name').first()).toContainText('Franco Gonçales') // 12º
-  await expect(page.locator('tr:has-text("Sergio Trevisan")')).not.toHaveClass(/row-target/) // 11º: fora do alcance
-  await page.click('tr:has-text("Marcos Nogueira") td.name') // 14º
-  await expect(page.locator('tr:has-text("Caio Anjos") .tag-cat-B')).toHaveText('B · 14º')
+  await expect(page.locator('tr.row-target')).toHaveCount(32) // todos os outros
+  await expect(page.locator('tr:has-text("Ueslen Silva")')).toHaveClass(/row-target/) // 1º
+  await expect(page.locator('tr:has-text("Flávio Malta")')).toHaveClass(/row-target/) // 33º
+  await page.click('tr:has-text("Thiago Atilio") td.name') // 8º: bem mais de 5 acima
+  await expect(page.locator('tr:has-text("Caio Anjos") .tag-cat-A')).toHaveText('A · 8º')
   await expect(page.locator('tr:has-text("Caio Anjos") .rank-delta')).toContainText('era 17º')
-  await expect(page.locator('tr:has-text("Marcos Nogueira") .rank-delta')).toContainText('era 14º')
-  expect(await names(page, 10)).toEqual(['Sergio Trevisan', 'Caio Anjos'])
+  await expect(page.locator('tr:has-text("Thiago Atilio") .rank-delta')).toContainText('era 8º')
   await expect(page.locator('.simbar')).toContainText('1 troca')
-  // o 1º não tem alvo de troca
+  // o 1º pode trocar com alguém abaixo
   await page.click('tr:has-text("Ueslen Silva") td.name')
-  await expect(page.locator('tr.row-target')).toHaveCount(0)
+  await expect(page.locator('tr.row-target')).toHaveCount(32)
+  await page.click('tr:has-text("Flávio Malta") td.name')
+  await expect(page.locator('tr:has-text("Flávio Malta") .tag-cat-A')).toHaveText('A · 1º')
+  await expect(page.locator('.simbar')).toContainText('2 trocas')
 })
 
 test('resultados: vencedor avança até a final e aparece como campeão', async ({ page }) => {
