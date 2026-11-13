@@ -1,34 +1,31 @@
 {
-  "id": "2026-11-11T09-30-37",
-  "label": "Letzplay 11 de nov. 06:30",
-  "generatedAt": "2026-11-11T09:30:37.055Z",
+  "id": "2026-11-13T06-53-33",
+  "label": "Letzplay 13 de nov. 03:53",
+  "generatedAt": "2026-11-13T06:53:33.226Z",
   "source": "https://embed.letzplay.me/ibiaram/rankings/47608/table",
-  "newMatches": [],
+  "newMatches": [
+    10918897
+  ],
   "changes": [
     {
-      "name": "Leandro Fanti",
-      "from": 26,
-      "to": 25
+      "name": "Evandro Santos",
+      "from": 29,
+      "to": 28
     },
     {
-      "name": "Jader Dias",
-      "from": 25,
-      "to": 26
+      "name": "Felipe Uesugui Santana",
+      "from": 30,
+      "to": 29
     },
     {
       "name": "Luis Gustavo Oliveira da Silva",
-      "from": 32,
-      "to": 31
-    },
-    {
-      "name": "Edmur Terruel Manzano",
-      "from": 33,
-      "to": 32
-    },
-    {
-      "name": "Marcelo Alexandrino",
       "from": 31,
-      "to": 33
+      "to": 30
+    },
+    {
+      "name": "Flávio Malta",
+      "from": 28,
+      "to": 31
     }
   ],
   "players": [
@@ -586,20 +583,20 @@
       "rank": 23,
       "name": "Hugo Branquinho",
       "status": "Ativo",
-      "games": 4,
-      "wins": 2,
+      "games": 5,
+      "wins": 3,
       "losses": 2,
-      "pct": 50,
-      "balance": 0,
+      "pct": 60,
+      "balance": 1,
       "sets": {
-        "balance": 0,
-        "won": 4,
+        "balance": 2,
+        "won": 6,
         "lost": 4
       },
       "gamesStat": {
-        "balance": 6,
-        "won": 32,
-        "lost": 26
+        "balance": 17,
+        "won": 44,
+        "lost": 27
       },
       "tiebreaks": {
         "balance": 0,
@@ -709,31 +706,6 @@
     },
     {
       "rank": 28,
-      "name": "Flávio Malta",
-      "status": "Ativo",
-      "games": 8,
-      "wins": 1,
-      "losses": 4,
-      "pct": 12.5,
-      "balance": -3,
-      "sets": {
-        "balance": -6,
-        "won": 2,
-        "lost": 8
-      },
-      "gamesStat": {
-        "balance": -19,
-        "won": 25,
-        "lost": 44
-      },
-      "tiebreaks": {
-        "balance": -2,
-        "won": 0,
-        "lost": 2
-      }
-    },
-    {
-      "rank": 29,
       "name": "Evandro Santos",
       "status": "Ativo",
       "games": 5,
@@ -758,7 +730,7 @@
       }
     },
     {
-      "rank": 30,
+      "rank": 29,
       "name": "Felipe Uesugui Santana",
       "status": "Ativo",
       "games": 7,
@@ -783,7 +755,7 @@
       }
     },
     {
-      "rank": 31,
+      "rank": 30,
       "name": "Luis Gustavo Oliveira da Silva",
       "status": "Ativo",
       "games": 3,
@@ -805,6 +777,31 @@
         "balance": 1,
         "won": 1,
         "lost": 0
+      }
+    },
+    {
+      "rank": 31,
+      "name": "Flávio Malta",
+      "status": "Ativo",
+      "games": 9,
+      "wins": 1,
+      "losses": 5,
+      "pct": 11.11,
+      "balance": -4,
+      "sets": {
+        "balance": -8,
+        "won": 2,
+        "lost": 10
+      },
+      "gamesStat": {
+        "balance": -30,
+        "won": 26,
+        "lost": 56
+      },
+      "tiebreaks": {
+        "balance": -2,
+        "won": 0,
+        "lost": 2
       }
     },
     {
