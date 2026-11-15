@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-13T06:53:33.226Z",
+  "updatedAt": "2026-11-15T17:14:46.067Z",
   "matches": [
     {
       "id": 10918897,
@@ -34,6 +34,47 @@
             },
             {
               "games": 6,
+              "tb": null
+            }
+          ]
+        }
+      ],
+      "played": true,
+      "wo": false
+    },
+    {
+      "id": 10906746,
+      "round": 10,
+      "date": "15/11/26",
+      "when": "Domingo, 15/11/26",
+      "place": "",
+      "players": [
+        {
+          "name": "Hugo Branquinho",
+          "won": true,
+          "lost": false,
+          "sets": [
+            {
+              "games": 6,
+              "tb": null
+            },
+            {
+              "games": 6,
+              "tb": null
+            }
+          ]
+        },
+        {
+          "name": "Caio Anjos",
+          "won": false,
+          "lost": true,
+          "sets": [
+            {
+              "games": 2,
+              "tb": null
+            },
+            {
+              "games": 0,
               "tb": null
             }
           ]
