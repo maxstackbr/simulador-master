@@ -1,41 +1,26 @@
 {
-  "id": "2026-11-15T17-14-46",
-  "label": "Letzplay 15 de nov. 14:14",
-  "generatedAt": "2026-11-15T17:14:46.067Z",
+  "id": "2026-11-20T21-51-18",
+  "label": "Letzplay 20 de nov. 18:51",
+  "generatedAt": "2026-11-20T21:51:18.676Z",
   "source": "https://embed.letzplay.me/ibiaram/rankings/47608/table",
   "newMatches": [
-    10906746
+    10906570
   ],
   "changes": [
     {
-      "name": "Hugo Branquinho",
-      "from": 23,
-      "to": 18
+      "name": "Roberto Vilas",
+      "from": 5,
+      "to": 3
     },
     {
-      "name": "Caio Anjos",
-      "from": 18,
-      "to": 19
+      "name": "André Di Celio",
+      "from": 3,
+      "to": 4
     },
     {
-      "name": "Rafael Patz",
-      "from": 19,
-      "to": 20
-    },
-    {
-      "name": "Almir Bortolim",
-      "from": 20,
-      "to": 21
-    },
-    {
-      "name": "Marcelo Zampieri",
-      "from": 21,
-      "to": 22
-    },
-    {
-      "name": "Franco Gonçales",
-      "from": 22,
-      "to": 23
+      "name": "Marinho Schramm",
+      "from": 4,
+      "to": 5
     }
   ],
   "players": [
@@ -91,22 +76,47 @@
     },
     {
       "rank": 3,
-      "name": "André Di Celio",
+      "name": "Roberto Vilas",
       "status": "Ativo",
-      "games": 15,
-      "wins": 9,
-      "losses": 6,
-      "pct": 60,
-      "balance": 3,
+      "games": 19,
+      "wins": 10,
+      "losses": 9,
+      "pct": 52.63,
+      "balance": 1,
       "sets": {
-        "balance": -2,
-        "won": 12,
-        "lost": 14
+        "balance": -3,
+        "won": 20,
+        "lost": 23
       },
       "gamesStat": {
-        "balance": -19,
-        "won": 87,
-        "lost": 106
+        "balance": -25,
+        "won": 155,
+        "lost": 180
+      },
+      "tiebreaks": {
+        "balance": 5,
+        "won": 8,
+        "lost": 3
+      }
+    },
+    {
+      "rank": 4,
+      "name": "André Di Celio",
+      "status": "Ativo",
+      "games": 16,
+      "wins": 9,
+      "losses": 7,
+      "pct": 56.25,
+      "balance": 2,
+      "sets": {
+        "balance": -4,
+        "won": 12,
+        "lost": 16
+      },
+      "gamesStat": {
+        "balance": -26,
+        "won": 92,
+        "lost": 118
       },
       "tiebreaks": {
         "balance": 2,
@@ -115,7 +125,7 @@
       }
     },
     {
-      "rank": 4,
+      "rank": 5,
       "name": "Marinho Schramm",
       "status": "Ativo",
       "games": 14,
@@ -137,31 +147,6 @@
         "balance": 2,
         "won": 3,
         "lost": 1
-      }
-    },
-    {
-      "rank": 5,
-      "name": "Roberto Vilas",
-      "status": "Ativo",
-      "games": 18,
-      "wins": 9,
-      "losses": 9,
-      "pct": 50,
-      "balance": 0,
-      "sets": {
-        "balance": -5,
-        "won": 18,
-        "lost": 23
-      },
-      "gamesStat": {
-        "balance": -32,
-        "won": 143,
-        "lost": 175
-      },
-      "tiebreaks": {
-        "balance": 5,
-        "won": 8,
-        "lost": 3
       }
     },
     {
