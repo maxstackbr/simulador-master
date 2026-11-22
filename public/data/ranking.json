@@ -1,26 +1,31 @@
 {
-  "id": "2026-11-20T21-51-18",
-  "label": "Letzplay 20 de nov. 18:51",
-  "generatedAt": "2026-11-20T21:51:18.676Z",
+  "id": "2026-11-22T22-55-41",
+  "label": "Letzplay 22 de nov. 19:55",
+  "generatedAt": "2026-11-22T22:55:41.239Z",
   "source": "https://embed.letzplay.me/ibiaram/rankings/47608/table",
   "newMatches": [
-    10906570
+    10913430
   ],
   "changes": [
     {
-      "name": "Roberto Vilas",
-      "from": 5,
-      "to": 3
+      "name": "Fabrício Costa",
+      "from": 10,
+      "to": 9
     },
     {
-      "name": "André Di Celio",
-      "from": 3,
-      "to": 4
+      "name": "Marcos Nogueira",
+      "from": 11,
+      "to": 10
     },
     {
-      "name": "Marinho Schramm",
-      "from": 4,
-      "to": 5
+      "name": "Douglas Kuada",
+      "from": 12,
+      "to": 11
+    },
+    {
+      "name": "Henrique Carelli",
+      "from": 9,
+      "to": 12
     }
   ],
   "players": [
@@ -78,20 +83,20 @@
       "rank": 3,
       "name": "Roberto Vilas",
       "status": "Ativo",
-      "games": 19,
-      "wins": 10,
+      "games": 20,
+      "wins": 11,
       "losses": 9,
-      "pct": 52.63,
-      "balance": 1,
+      "pct": 55,
+      "balance": 2,
       "sets": {
-        "balance": -3,
-        "won": 20,
+        "balance": -1,
+        "won": 22,
         "lost": 23
       },
       "gamesStat": {
-        "balance": -25,
-        "won": 155,
-        "lost": 180
+        "balance": -20,
+        "won": 167,
+        "lost": 187
       },
       "tiebreaks": {
         "balance": 5,
@@ -226,31 +231,6 @@
     },
     {
       "rank": 9,
-      "name": "Henrique Carelli",
-      "status": "Ativo",
-      "games": 14,
-      "wins": 6,
-      "losses": 7,
-      "pct": 42.86,
-      "balance": -1,
-      "sets": {
-        "balance": 0,
-        "won": 15,
-        "lost": 15
-      },
-      "gamesStat": {
-        "balance": 9,
-        "won": 116,
-        "lost": 107
-      },
-      "tiebreaks": {
-        "balance": -2,
-        "won": 2,
-        "lost": 4
-      }
-    },
-    {
-      "rank": 10,
       "name": "Fabrício Costa",
       "status": "Ativo",
       "games": 12,
@@ -275,7 +255,7 @@
       }
     },
     {
-      "rank": 11,
+      "rank": 10,
       "name": "Marcos Nogueira",
       "status": "Ativo",
       "games": 12,
@@ -300,7 +280,7 @@
       }
     },
     {
-      "rank": 12,
+      "rank": 11,
       "name": "Douglas Kuada",
       "status": "Ativo",
       "games": 15,
@@ -322,6 +302,31 @@
         "balance": -3,
         "won": 0,
         "lost": 3
+      }
+    },
+    {
+      "rank": 12,
+      "name": "Henrique Carelli",
+      "status": "Ativo",
+      "games": 15,
+      "wins": 6,
+      "losses": 8,
+      "pct": 40,
+      "balance": -2,
+      "sets": {
+        "balance": -2,
+        "won": 15,
+        "lost": 17
+      },
+      "gamesStat": {
+        "balance": 4,
+        "won": 123,
+        "lost": 119
+      },
+      "tiebreaks": {
+        "balance": -2,
+        "won": 2,
+        "lost": 4
       }
     },
     {
