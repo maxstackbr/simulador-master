@@ -1,31 +1,51 @@
 {
-  "id": "2026-11-22T22-55-41",
-  "label": "Letzplay 22 de nov. 19:55",
-  "generatedAt": "2026-11-22T22:55:41.239Z",
+  "id": "2026-11-23T07-48-47",
+  "label": "Letzplay 23 de nov. 04:48",
+  "generatedAt": "2026-11-23T07:48:47.149Z",
   "source": "https://embed.letzplay.me/ibiaram/rankings/47608/table",
   "newMatches": [
-    10913430
+    10907484
   ],
   "changes": [
     {
-      "name": "Fabrício Costa",
-      "from": 10,
-      "to": 9
+      "name": "Franco Gonçales",
+      "from": 23,
+      "to": 16
     },
     {
-      "name": "Marcos Nogueira",
-      "from": 11,
-      "to": 10
+      "name": "Alexandre Scarpato",
+      "from": 16,
+      "to": 17
     },
     {
-      "name": "Douglas Kuada",
-      "from": 12,
-      "to": 11
+      "name": "Andre Santana",
+      "from": 17,
+      "to": 18
     },
     {
-      "name": "Henrique Carelli",
-      "from": 9,
-      "to": 12
+      "name": "Hugo Branquinho",
+      "from": 18,
+      "to": 19
+    },
+    {
+      "name": "Caio Anjos",
+      "from": 19,
+      "to": 20
+    },
+    {
+      "name": "Rafael Patz",
+      "from": 20,
+      "to": 21
+    },
+    {
+      "name": "Almir Bortolim",
+      "from": 21,
+      "to": 22
+    },
+    {
+      "name": "Marcelo Zampieri",
+      "from": 22,
+      "to": 23
     }
   ],
   "players": [
@@ -406,22 +426,47 @@
     },
     {
       "rank": 16,
-      "name": "Alexandre Scarpato",
+      "name": "Franco Gonçales",
       "status": "Ativo",
-      "games": 9,
-      "wins": 3,
-      "losses": 3,
-      "pct": 33.33,
-      "balance": 0,
+      "games": 7,
+      "wins": 4,
+      "losses": 2,
+      "pct": 57.14,
+      "balance": 2,
       "sets": {
-        "balance": -3,
-        "won": 5,
-        "lost": 8
+        "balance": 5,
+        "won": 7,
+        "lost": 2
       },
       "gamesStat": {
-        "balance": -14,
-        "won": 42,
-        "lost": 56
+        "balance": 17,
+        "won": 46,
+        "lost": 29
+      },
+      "tiebreaks": {
+        "balance": 0,
+        "won": 1,
+        "lost": 1
+      }
+    },
+    {
+      "rank": 17,
+      "name": "Alexandre Scarpato",
+      "status": "Ativo",
+      "games": 10,
+      "wins": 3,
+      "losses": 4,
+      "pct": 30,
+      "balance": -1,
+      "sets": {
+        "balance": -5,
+        "won": 5,
+        "lost": 10
+      },
+      "gamesStat": {
+        "balance": -22,
+        "won": 46,
+        "lost": 68
       },
       "tiebreaks": {
         "balance": 2,
@@ -430,7 +475,7 @@
       }
     },
     {
-      "rank": 17,
+      "rank": 18,
       "name": "Andre Santana",
       "status": "Ativo",
       "games": 8,
@@ -455,7 +500,7 @@
       }
     },
     {
-      "rank": 18,
+      "rank": 19,
       "name": "Hugo Branquinho",
       "status": "Ativo",
       "games": 6,
@@ -480,7 +525,7 @@
       }
     },
     {
-      "rank": 19,
+      "rank": 20,
       "name": "Caio Anjos",
       "status": "Ativo",
       "games": 7,
@@ -505,7 +550,7 @@
       }
     },
     {
-      "rank": 20,
+      "rank": 21,
       "name": "Rafael Patz",
       "status": "Ativo",
       "games": 4,
@@ -530,7 +575,7 @@
       }
     },
     {
-      "rank": 21,
+      "rank": 22,
       "name": "Almir Bortolim",
       "status": "Ativo",
       "games": 7,
@@ -555,7 +600,7 @@
       }
     },
     {
-      "rank": 22,
+      "rank": 23,
       "name": "Marcelo Zampieri",
       "status": "Ativo",
       "games": 5,
@@ -577,31 +622,6 @@
         "balance": 1,
         "won": 1,
         "lost": 0
-      }
-    },
-    {
-      "rank": 23,
-      "name": "Franco Gonçales",
-      "status": "Ativo",
-      "games": 6,
-      "wins": 3,
-      "losses": 2,
-      "pct": 50,
-      "balance": 1,
-      "sets": {
-        "balance": 3,
-        "won": 5,
-        "lost": 2
-      },
-      "gamesStat": {
-        "balance": 9,
-        "won": 34,
-        "lost": 25
-      },
-      "tiebreaks": {
-        "balance": 0,
-        "won": 1,
-        "lost": 1
       }
     },
     {
