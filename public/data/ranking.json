@@ -1,31 +1,37 @@
 {
-  "id": "2026-11-27T17-05-50",
-  "label": "Letzplay 27 de nov. 14:05",
-  "generatedAt": "2026-11-27T17:05:50.692Z",
+  "id": "2026-11-27T22-45-23",
+  "label": "Letzplay 27 de nov. 19:45",
+  "generatedAt": "2026-11-27T22:45:23.184Z",
   "source": "https://embed.letzplay.me/ibiaram/rankings/47608/table",
   "newMatches": [
-    10907279
+    10696185,
+    10380768
   ],
   "changes": [
     {
-      "name": "Marco Tempesta",
-      "from": 13,
-      "to": 10
+      "name": "Luis Gustavo Oliveira da Silva",
+      "from": 30,
+      "to": 29
     },
     {
-      "name": "Marcos Nogueira",
-      "from": 10,
-      "to": 11
+      "name": "Flávio Malta",
+      "from": 31,
+      "to": 30
     },
     {
-      "name": "Douglas Kuada",
-      "from": 11,
-      "to": 12
+      "name": "Edmur Terruel Manzano",
+      "from": 32,
+      "to": 31
     },
     {
-      "name": "Henrique Carelli",
-      "from": 12,
-      "to": 13
+      "name": "Marcelo Alexandrino",
+      "from": 33,
+      "to": 32
+    },
+    {
+      "name": "Felipe Uesugui Santana",
+      "from": 29,
+      "to": 33
     }
   ],
   "players": [
@@ -731,31 +737,6 @@
     },
     {
       "rank": 29,
-      "name": "Felipe Uesugui Santana",
-      "status": "Ativo",
-      "games": 7,
-      "wins": 2,
-      "losses": 4,
-      "pct": 28.57,
-      "balance": -2,
-      "sets": {
-        "balance": 0,
-        "won": 6,
-        "lost": 6
-      },
-      "gamesStat": {
-        "balance": 5,
-        "won": 49,
-        "lost": 44
-      },
-      "tiebreaks": {
-        "balance": -2,
-        "won": 0,
-        "lost": 2
-      }
-    },
-    {
-      "rank": 30,
       "name": "Luis Gustavo Oliveira da Silva",
       "status": "Ativo",
       "games": 3,
@@ -780,7 +761,7 @@
       }
     },
     {
-      "rank": 31,
+      "rank": 30,
       "name": "Flávio Malta",
       "status": "Ativo",
       "games": 9,
@@ -805,7 +786,7 @@
       }
     },
     {
-      "rank": 32,
+      "rank": 31,
       "name": "Edmur Terruel Manzano",
       "status": "Ativo",
       "games": 4,
@@ -830,7 +811,7 @@
       }
     },
     {
-      "rank": 33,
+      "rank": 32,
       "name": "Marcelo Alexandrino",
       "status": "Ativo",
       "games": 5,
@@ -852,6 +833,31 @@
         "balance": 0,
         "won": 0,
         "lost": 0
+      }
+    },
+    {
+      "rank": 33,
+      "name": "Felipe Uesugui Santana",
+      "status": "Ativo",
+      "games": 7,
+      "wins": 2,
+      "losses": 4,
+      "pct": 28.57,
+      "balance": -2,
+      "sets": {
+        "balance": 0,
+        "won": 6,
+        "lost": 6
+      },
+      "gamesStat": {
+        "balance": 5,
+        "won": 49,
+        "lost": 44
+      },
+      "tiebreaks": {
+        "balance": -2,
+        "won": 0,
+        "lost": 2
       }
     }
   ]

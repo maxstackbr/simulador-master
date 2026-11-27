@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-27T17:05:50.692Z",
+  "updatedAt": "2026-11-27T22:45:23.184Z",
   "matches": [
     {
       "id": 10918897,
@@ -436,6 +436,55 @@
       "wo": false
     },
     {
+      "id": 10696185,
+      "round": 9,
+      "date": "27/11/26",
+      "when": "Sexta, 27/11/26",
+      "place": "",
+      "players": [
+        {
+          "name": "Felipe Santana",
+          "won": false,
+          "lost": true,
+          "sets": [
+            {
+              "games": 0,
+              "tb": null
+            },
+            {
+              "games": 0,
+              "tb": null
+            },
+            {
+              "games": 0,
+              "tb": null
+            }
+          ]
+        },
+        {
+          "name": "Leandro Fanti",
+          "won": true,
+          "lost": false,
+          "sets": [
+            {
+              "games": 0,
+              "tb": null
+            },
+            {
+              "games": 0,
+              "tb": null
+            },
+            {
+              "games": 0,
+              "tb": null
+            }
+          ]
+        }
+      ],
+      "played": true,
+      "wo": true
+    },
+    {
       "id": 10645381,
       "round": 9,
       "date": "17/10/26",
@@ -786,6 +835,55 @@
       ],
       "played": true,
       "wo": false
+    },
+    {
+      "id": 10380768,
+      "round": 8,
+      "date": "27/11/26",
+      "when": "Sexta, 27/11/26",
+      "place": "",
+      "players": [
+        {
+          "name": "Felipe Santana",
+          "won": false,
+          "lost": true,
+          "sets": [
+            {
+              "games": 0,
+              "tb": null
+            },
+            {
+              "games": 0,
+              "tb": null
+            },
+            {
+              "games": 0,
+              "tb": null
+            }
+          ]
+        },
+        {
+          "name": "Marcos Hamamura",
+          "won": true,
+          "lost": false,
+          "sets": [
+            {
+              "games": 0,
+              "tb": null
+            },
+            {
+              "games": 0,
+              "tb": null
+            },
+            {
+              "games": 0,
+              "tb": null
+            }
+          ]
+        }
+      ],
+      "played": true,
+      "wo": true
     },
     {
       "id": 10359167,
