@@ -80,6 +80,13 @@ Diagnóstico: cada run deixa em `sync/` (ignorado pelo git) o resumo, o `result.
 página. Mudanças no sync devem ser testadas no runner do GitHub, não só localmente: de IP residencial o
 Letzplay nem desafia, o que mascara problemas.
 
+## Convites do Master (`.github/workflows/convites-master.yml`)
+Manual (botão "Run workflow"): manda ao grupo do Telegram uma mensagem por classificado (16 primeiros ativos de
+`public/data/ranking.json`) pedindo a confirmação prévia, cada uma com o botão "Abrir no WhatsApp" com o texto
+preenchido; falta escolher o atleta e enviar. Texto em `scripts/lib/convite.js` (sem emoji, sem saudação de horário).
+Inputs: `excluir` (padrão `Max D'angelo`) e `apenas` (reenviar só para alguns). Para ver os textos sem enviar:
+`node scripts/send-convites.mjs --dry-run`.
+
 ## Atualização manual (plano B)
 Se o Letzplay mudar o HTML ou a leitura falhar de vez:
 1. exporte a planilha do Letzplay e rode `npm run update -- planilha.xlsx --label "Classificação de 1º/dez"`;

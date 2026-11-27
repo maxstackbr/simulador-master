@@ -6,6 +6,7 @@ const TITLES = {
   test: '🧪 Teste de notificação',
   error: '❌ Falha na leitura do ranking',
   stalled: '⚠️ Sincronização travada',
+  convite: 'Convite do Master',
 }
 
 const esc = (s) => s.replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' })[c])
@@ -16,7 +17,8 @@ export const toTelegramHtml = (s) => esc(s).replace(/\*([^*\n\s](?:[^*\n]*[^*\n\
 // Token colado do Windows no WSL pode trazer \r ou espaço no fim, e a API responde 404.
 export const cleanToken = (t) => (t ?? '').replace(/\s+/g, '')
 
-export function buildTelegram({ status, summary, chatId, runUrl = null, siteUrl = 'https://maxstack.com.br/ranking/' }) {
+// title: substitui o título padrão do status (ex.: convite com o nome do atleta).
+export function buildTelegram({ status, summary, chatId, runUrl = null, siteUrl = 'https://maxstack.com.br/ranking/', title = null }) {
   const kind = TITLES[status] ? status : 'error'
   // Falha e trava são para quem mantém o sync, não para o grupo do WhatsApp: o botão leva à execução.
   const button = kind === 'error' || kind === 'stalled'
@@ -24,7 +26,7 @@ export function buildTelegram({ status, summary, chatId, runUrl = null, siteUrl 
     : { text: 'Abrir no WhatsApp', url: `https://wa.me/?text=${encodeURIComponent(summary)}` }
   return {
     chat_id: chatId,
-    text: `<b>${TITLES[kind]}</b>\n\n${toTelegramHtml(summary)}`,
+    text: `<b>${esc(title ?? TITLES[kind])}</b>\n\n${toTelegramHtml(summary)}`,
     parse_mode: 'HTML',
     link_preview_options: { is_disabled: true },
     reply_markup: { inline_keyboard: [[button]] },
