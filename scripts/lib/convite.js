@@ -3,8 +3,6 @@
 // WhatsApp de cada atleta, um por um. Sem "bom dia"/"boa tarde": pode ser enviada a qualquer hora.
 import { CATEGORIES, COURTS } from '../../src/lib/schedule.js'
 
-const SITE = 'https://maxstack.com.br/ranking/'
-
 // "08:00" → "8h", "09:30" → "9h30"
 export const fmtHour = (t) => {
   const [h, m] = t.split(':').map(Number)
@@ -22,19 +20,14 @@ export function slotFor(rank) {
   return { category: cat.id, time: match.time, court: COURTS[match.court].name, finalTime: final.time }
 }
 
-export function formatConvite(player, { siteUrl = SITE } = {}) {
-  const slot = slotFor(player.rank)
-  const quadra = slot.court.replace(/^Quadra /, 'quadra ')
+// Sem posição, categoria, horário ou quadra: a organização ainda pode ajustar a chave.
+export function formatConvite(player) {
   return [
     `Fala, ${firstName(player.name)}! Tudo certo?`,
     '',
-    `Estou fechando a organização do Master, que vai ser nos dias 12 e 13 de dezembro. Pela classificação de hoje você está em ${player.rank}º, na Categoria ${slot.category}.`,
+    'Estou fechando a organização do Master, que vai ser nos dias 12 e 13 de dezembro, e pela classificação de hoje você está entre os classificados.',
     '',
-    `O ranking só fecha no dia 1º, então ainda pode mudar, mas se ficar assim seu primeiro jogo seria sábado (12) às ${fmtHour(slot.time)}, na ${quadra}. A semifinal é sábado à tarde e a final no domingo às ${fmtHour(slot.finalTime)}, com churrasco depois.`,
-    '',
-    'Queria saber desde já se posso contar com você. A confirmação oficial vai até dia 3, mas se você me der um retorno antes já me ajuda bastante a fechar as chaves.',
-    '',
-    `A chave e os horários estão aqui: ${siteUrl}`,
+    'O ranking só fecha no dia 1º, mas queria saber desde já se posso contar com você. A confirmação oficial vai até dia 3, mas se você me der um retorno antes já me ajuda bastante a organizar os jogos.',
     '',
     'Valeu!',
   ].join('\n')
@@ -46,7 +39,7 @@ const norm = (s) => s.normalize('NFD').replace(/\p{M}/gu, '').toLowerCase().trim
  * Um convite por classificado (16 primeiros ativos), na ordem do ranking.
  * exclude: nomes que não recebem (ex.: o próprio organizador). only: se não vazio, só esses nomes.
  */
-export function buildConvites(players, { exclude = [], only = [], siteUrl = SITE } = {}) {
+export function buildConvites(players, { exclude = [], only = [] } = {}) {
   const ex = new Set(exclude.map(norm).filter(Boolean))
   const on = new Set(only.map(norm).filter(Boolean))
   return players
@@ -54,7 +47,7 @@ export function buildConvites(players, { exclude = [], only = [], siteUrl = SITE
     .slice(0, 16)
     .map((p, i) => ({ ...p, rank: i + 1 }))
     .filter((p) => !ex.has(norm(p.name)) && (!on.size || on.has(norm(p.name))))
-    .map((p) => ({ player: p, category: slotFor(p.rank).category, text: formatConvite(p, { siteUrl }) }))
+    .map((p) => ({ player: p, category: slotFor(p.rank).category, text: formatConvite(p) }))
 }
 
 /** Lista separada por vírgula ou quebra de linha (input do workflow). */

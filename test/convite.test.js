@@ -32,9 +32,9 @@ describe('convites do Master', () => {
   it('texto pessoal: primeiro nome, sem emoji, sem saudação de horário', () => {
     const t = formatConvite({ rank: 9, name: 'Thiago Atilio' })
     expect(t.startsWith('Fala, Thiago!')).toBe(true)
-    expect(t).toContain('você está em 9º, na Categoria B')
-    expect(t).toContain('sábado (12) às 9h30, na quadra Tucano')
-    expect(t).toContain('final no domingo às 8h')
+    expect(t).toContain('12 e 13 de dezembro')
+    // sem posição, categoria, horário ou quadra: a chave ainda pode ser ajustada
+    expect(t).not.toMatch(/9º|Categoria|\d+h|quadra|Tucano|Beija/i)
     expect(t).not.toMatch(/\p{Extended_Pictographic}/u)
     expect(t).not.toMatch(/bom dia|boa tarde|boa noite/i)
   })
