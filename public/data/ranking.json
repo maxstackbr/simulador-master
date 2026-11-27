@@ -1,51 +1,26 @@
 {
-  "id": "2026-11-23T07-48-47",
-  "label": "Letzplay 23 de nov. 04:48",
-  "generatedAt": "2026-11-23T07:48:47.149Z",
+  "id": "2026-11-27T04-18-11",
+  "label": "Letzplay 27 de nov. 01:18",
+  "generatedAt": "2026-11-27T04:18:11.767Z",
   "source": "https://embed.letzplay.me/ibiaram/rankings/47608/table",
   "newMatches": [
-    10907484
+    10916575
   ],
   "changes": [
     {
-      "name": "Franco Gonçales",
-      "from": 23,
-      "to": 16
+      "name": "Fabrício Costa",
+      "from": 9,
+      "to": 7
     },
     {
-      "name": "Alexandre Scarpato",
-      "from": 16,
-      "to": 17
+      "name": "Max D'angelo",
+      "from": 7,
+      "to": 8
     },
     {
-      "name": "Andre Santana",
-      "from": 17,
-      "to": 18
-    },
-    {
-      "name": "Hugo Branquinho",
-      "from": 18,
-      "to": 19
-    },
-    {
-      "name": "Caio Anjos",
-      "from": 19,
-      "to": 20
-    },
-    {
-      "name": "Rafael Patz",
-      "from": 20,
-      "to": 21
-    },
-    {
-      "name": "Almir Bortolim",
-      "from": 21,
-      "to": 22
-    },
-    {
-      "name": "Marcelo Zampieri",
-      "from": 22,
-      "to": 23
+      "name": "Thiago Atilio",
+      "from": 8,
+      "to": 9
     }
   ],
   "players": [
@@ -201,22 +176,47 @@
     },
     {
       "rank": 7,
-      "name": "Max D'angelo",
+      "name": "Fabrício Costa",
       "status": "Ativo",
-      "games": 14,
-      "wins": 8,
-      "losses": 5,
-      "pct": 57.14,
-      "balance": 3,
+      "games": 13,
+      "wins": 6,
+      "losses": 6,
+      "pct": 46.15,
+      "balance": 0,
       "sets": {
-        "balance": 6,
-        "won": 14,
-        "lost": 8
+        "balance": -2,
+        "won": 10,
+        "lost": 12
       },
       "gamesStat": {
-        "balance": 19,
-        "won": 100,
-        "lost": 81
+        "balance": -16,
+        "won": 75,
+        "lost": 91
+      },
+      "tiebreaks": {
+        "balance": 0,
+        "won": 2,
+        "lost": 2
+      }
+    },
+    {
+      "rank": 8,
+      "name": "Max D'angelo",
+      "status": "Ativo",
+      "games": 15,
+      "wins": 8,
+      "losses": 6,
+      "pct": 53.33,
+      "balance": 2,
+      "sets": {
+        "balance": 4,
+        "won": 14,
+        "lost": 10
+      },
+      "gamesStat": {
+        "balance": 15,
+        "won": 109,
+        "lost": 94
       },
       "tiebreaks": {
         "balance": 2,
@@ -225,7 +225,7 @@
       }
     },
     {
-      "rank": 8,
+      "rank": 9,
       "name": "Thiago Atilio",
       "status": "Ativo",
       "games": 11,
@@ -247,31 +247,6 @@
         "balance": -1,
         "won": 3,
         "lost": 4
-      }
-    },
-    {
-      "rank": 9,
-      "name": "Fabrício Costa",
-      "status": "Ativo",
-      "games": 12,
-      "wins": 5,
-      "losses": 6,
-      "pct": 41.67,
-      "balance": -1,
-      "sets": {
-        "balance": -4,
-        "won": 8,
-        "lost": 12
-      },
-      "gamesStat": {
-        "balance": -20,
-        "won": 62,
-        "lost": 82
-      },
-      "tiebreaks": {
-        "balance": 0,
-        "won": 2,
-        "lost": 2
       }
     },
     {
