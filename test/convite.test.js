@@ -33,6 +33,8 @@ describe('convites do Master', () => {
     const t = formatConvite({ rank: 9, name: 'Thiago Atilio' })
     expect(t.startsWith('Fala, Thiago!')).toBe(true)
     expect(t).toContain('12 e 13 de dezembro')
+    expect(t).toContain('churrasco')
+    expect(t).toContain('Se for levar alguém')
     // sem posição, categoria, horário ou quadra: a chave ainda pode ser ajustada
     expect(t).not.toMatch(/9º|Categoria|\d+h|quadra|Tucano|Beija/i)
     expect(t).not.toMatch(/\p{Extended_Pictographic}/u)

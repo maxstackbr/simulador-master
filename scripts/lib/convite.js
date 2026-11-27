@@ -29,6 +29,8 @@ export function formatConvite(player) {
     '',
     'O ranking só fecha no dia 1º, mas queria saber desde já se posso contar com você. A confirmação oficial vai até dia 3, mas se você me der um retorno antes já me ajuda bastante a organizar os jogos.',
     '',
+    'E no domingo, depois da final, vai ter o nosso churrasco no Quiosque do Campo. Você vai participar? Se for levar alguém, me fala quantas pessoas.',
+    '',
     'Valeu!',
   ].join('\n')
 }
