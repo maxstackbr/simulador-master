@@ -1,0 +1,33 @@
+name: Convites do Master (Telegram)
+
+# Manual: manda ao grupo do Telegram uma mensagem por classificado (A e B) com o botão "Abrir no WhatsApp".
+on:
+  workflow_dispatch:
+    inputs:
+      excluir:
+        description: 'Quem não recebe (nomes como no ranking, separados por vírgula)'
+        type: string
+        default: "Max D'angelo"
+      apenas:
+        description: 'Reenviar só para estes (vazio = todos os classificados)'
+        type: string
+        default: ''
+
+permissions:
+  contents: read
+
+jobs:
+  convites:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - name: Enviar convites
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          EXCLUIR: ${{ inputs.excluir }}
+          APENAS: ${{ inputs.apenas }}
+        run: node scripts/send-convites.mjs
