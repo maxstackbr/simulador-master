@@ -1,26 +1,31 @@
 {
-  "id": "2026-11-27T04-18-11",
-  "label": "Letzplay 27 de nov. 01:18",
-  "generatedAt": "2026-11-27T04:18:11.767Z",
+  "id": "2026-11-27T17-05-50",
+  "label": "Letzplay 27 de nov. 14:05",
+  "generatedAt": "2026-11-27T17:05:50.692Z",
   "source": "https://embed.letzplay.me/ibiaram/rankings/47608/table",
   "newMatches": [
-    10916575
+    10907279
   ],
   "changes": [
     {
-      "name": "Fabrício Costa",
-      "from": 9,
-      "to": 7
+      "name": "Marco Tempesta",
+      "from": 13,
+      "to": 10
     },
     {
-      "name": "Max D'angelo",
-      "from": 7,
-      "to": 8
+      "name": "Marcos Nogueira",
+      "from": 10,
+      "to": 11
     },
     {
-      "name": "Thiago Atilio",
-      "from": 8,
-      "to": 9
+      "name": "Douglas Kuada",
+      "from": 11,
+      "to": 12
+    },
+    {
+      "name": "Henrique Carelli",
+      "from": 12,
+      "to": 13
     }
   ],
   "players": [
@@ -251,13 +256,38 @@
     },
     {
       "rank": 10,
+      "name": "Marco Tempesta",
+      "status": "Ativo",
+      "games": 15,
+      "wins": 6,
+      "losses": 9,
+      "pct": 40,
+      "balance": -3,
+      "sets": {
+        "balance": -9,
+        "won": 8,
+        "lost": 17
+      },
+      "gamesStat": {
+        "balance": -21,
+        "won": 94,
+        "lost": 115
+      },
+      "tiebreaks": {
+        "balance": -4,
+        "won": 1,
+        "lost": 5
+      }
+    },
+    {
+      "rank": 11,
       "name": "Marcos Nogueira",
       "status": "Ativo",
-      "games": 12,
+      "games": 13,
       "wins": 4,
-      "losses": 6,
-      "pct": 33.33,
-      "balance": -2,
+      "losses": 7,
+      "pct": 30.77,
+      "balance": -3,
       "sets": {
         "balance": -4,
         "won": 5,
@@ -275,7 +305,7 @@
       }
     },
     {
-      "rank": 11,
+      "rank": 12,
       "name": "Douglas Kuada",
       "status": "Ativo",
       "games": 15,
@@ -300,7 +330,7 @@
       }
     },
     {
-      "rank": 12,
+      "rank": 13,
       "name": "Henrique Carelli",
       "status": "Ativo",
       "games": 15,
@@ -322,31 +352,6 @@
         "balance": -2,
         "won": 2,
         "lost": 4
-      }
-    },
-    {
-      "rank": 13,
-      "name": "Marco Tempesta",
-      "status": "Ativo",
-      "games": 14,
-      "wins": 5,
-      "losses": 9,
-      "pct": 35.71,
-      "balance": -4,
-      "sets": {
-        "balance": -9,
-        "won": 8,
-        "lost": 17
-      },
-      "gamesStat": {
-        "balance": -21,
-        "won": 94,
-        "lost": 115
-      },
-      "tiebreaks": {
-        "balance": -4,
-        "won": 1,
-        "lost": 5
       }
     },
     {
