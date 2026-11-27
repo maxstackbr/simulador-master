@@ -14,9 +14,9 @@ const STORAGE_KEY = 'master-ibi-aram-sim'
 const loadSim = () => {
   try {
     const s = JSON.parse(localStorage.getItem(STORAGE_KEY))
-    return { withdrawn: new Set(s?.withdrawn ?? []), winners: s?.winners ?? {}, swaps: s?.swaps ?? [] }
+    return { withdrawn: new Set(s?.withdrawn ?? []), winners: s?.winners ?? {}, swaps: s?.swaps ?? [], revived: s?.revived ?? [] }
   } catch {
-    return { withdrawn: new Set(), winners: {}, swaps: [] }
+    return { withdrawn: new Set(), winners: {}, swaps: [], revived: [] }
   }
 }
 
@@ -25,10 +25,13 @@ export default function App() {
   const [version, setVersion] = useState(null) // { id, label, generatedAt, players }
   const [error, setError] = useState(null)
   const [sim, setSim] = useState(loadSim)
+  // Desistências confirmadas pelos atletas (data/desistencias.json): aplicadas por padrão.
+  // Quem visita pode desmarcar uma para simular a volta do atleta (fica em sim.revived).
+  const [confirmed, setConfirmed] = useState([])
 
   useEffect(() => {
     try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify({ withdrawn: [...sim.withdrawn], winners: sim.winners, swaps: sim.swaps }))
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({ withdrawn: [...sim.withdrawn], winners: sim.winners, swaps: sim.swaps, revived: sim.revived }))
     } catch {}
   }, [sim])
 
@@ -44,6 +47,10 @@ export default function App() {
       })
       .then(setVersion)
       .catch((e) => setError(e.message))
+    fetch(`${DATA}desistencias.json`, { cache: 'no-cache' })
+      .then((r) => (r.ok ? r.json() : { nomes: [] }))
+      .then((d) => setConfirmed(Array.isArray(d.nomes) ? d.nomes : []))
+      .catch(() => setConfirmed([]))
   }, [])
 
   const selectVersion = async (id) => {
@@ -58,10 +65,16 @@ export default function App() {
   }
 
   const players = version?.players ?? []
-  const bracket = useMemo(() => buildBracket(players, sim), [players, sim])
+  const confirmedOut = useMemo(() => confirmed.filter((n) => !sim.revived.includes(n)), [confirmed, sim.revived])
+  const withdrawn = useMemo(() => new Set([...confirmedOut, ...sim.withdrawn]), [confirmedOut, sim.withdrawn])
+  const bracket = useMemo(() => buildBracket(players, { ...sim, withdrawn }), [players, sim, withdrawn])
 
   const toggleWithdrawn = (name) =>
     setSim((s) => {
+      if (confirmed.includes(name)) {
+        const revived = s.revived.includes(name) ? s.revived.filter((n) => n !== name) : [...s.revived, name]
+        return { ...s, revived }
+      }
       const withdrawn = new Set(s.withdrawn)
       withdrawn.has(name) ? withdrawn.delete(name) : withdrawn.add(name)
       return { ...s, withdrawn }
@@ -77,7 +90,7 @@ export default function App() {
 
   const swapPlayers = (a, b) => setSim((s) => ({ ...s, swaps: [...s.swaps, [a, b]] }))
 
-  const resetSim = () => setSim({ withdrawn: new Set(), winners: {}, swaps: [] })
+  const resetSim = () => setSim({ withdrawn: new Set(), winners: {}, swaps: [], revived: [] })
 
   return (
     <div className="app">
@@ -92,7 +105,9 @@ export default function App() {
 
         {version && (
           <SimulationBar
-            withdrawn={[...sim.withdrawn]}
+            withdrawn={[...sim.withdrawn].filter((n) => !confirmed.includes(n))}
+            confirmed={confirmed}
+            revived={sim.revived}
             winnersCount={Object.keys(sim.winners).length}
             swapsCount={sim.swaps.length}
             onRemove={toggleWithdrawn}
@@ -103,7 +118,7 @@ export default function App() {
         {version && (
           <div className="layout">
             <div id="ranking" className="layout-ranking">
-              <RankingTable players={bracket.players} seeds={bracket.seeds} withdrawn={sim.withdrawn} onToggle={toggleWithdrawn} onSwap={swapPlayers} />
+              <RankingTable players={bracket.players} seeds={bracket.seeds} withdrawn={withdrawn} confirmed={confirmedOut} onToggle={toggleWithdrawn} onSwap={swapPlayers} />
             </div>
             <div id="chave" className="layout-bracket">
               <Bracket bracket={bracket} onPickWinner={setWinner} />

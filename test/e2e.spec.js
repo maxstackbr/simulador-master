@@ -14,6 +14,7 @@ test.beforeEach(async ({ page }) => {
   await page.route('**/data/index.json', (route) => route.fulfill({ json: E2E_INDEX }))
   await page.route('**/data/ranking.json', (route) => route.fulfill({ body: fixture('e2e-ranking.json'), contentType: 'application/json' }))
   await page.route('**/data/history/*.json', (route) => route.fulfill({ body: fixture('e2e-ranking.json'), contentType: 'application/json' }))
+  await page.route('**/data/desistencias.json', (route) => route.fulfill({ json: { nomes: [] } }))
   await page.goto('/')
   await page.waitForSelector('.match')
   await page.evaluate(() => localStorage.removeItem('master-ibi-aram-sim'))
@@ -159,4 +160,22 @@ test('layout: sem rolagem horizontal e alvos de toque ≥ 44px', async ({ page }
   const box = await page.locator('tbody tr').first().locator('.switch').boundingBox()
   const vw = await page.evaluate(() => window.innerWidth)
   expect(box.x + box.width).toBeLessThanOrEqual(vw)
+})
+
+test('desistências confirmadas (data/desistencias.json) vêm aplicadas e podem ser desfeitas', async ({ page }) => {
+  await page.route('**/data/desistencias.json', (route) => route.fulfill({ json: { nomes: ['Leonardo Belchior', 'Marcos Nogueira', 'Andre Santana'] } }))
+  await page.reload()
+  await page.waitForSelector('.match')
+  await expect(page.locator('tr:has-text("Leonardo Belchior") .tag-confirmed')).toHaveText('não joga')
+  await expect(page.locator('tr:has-text("Leonardo Belchior") .switch input')).toBeChecked()
+  for (const n of ['Leonardo Belchior', 'Marcos Nogueira', 'Andre Santana']) {
+    await expect(page.locator('.slot-name', { hasText: n })).toHaveCount(0)
+  }
+  await expect(page.locator('.chip-confirmed')).toHaveCount(3)
+  // não conta como simulação; desfazer uma é simulação e "Limpar" volta ao padrão
+  await expect(page.locator('.simbar')).not.toHaveClass(/simbar-active/)
+  await page.click('.chip-confirmed:has-text("Leonardo Belchior")')
+  await expect(page.locator('.slot-name', { hasText: 'Leonardo Belchior' })).toHaveCount(1)
+  await page.click('text=Limpar simulação')
+  await expect(page.locator('.slot-name', { hasText: 'Leonardo Belchior' })).toHaveCount(0)
 })

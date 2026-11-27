@@ -104,7 +104,8 @@ const fmtDate = (d) =>
   d.toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo', day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' }).replace(',', ' às')
 
 /** Mensagem pronta para colar no WhatsApp. */
-export function formatWhatsApp({ now = new Date(), players, newMatches = [], changes = [], siteUrl = 'https://maxstack.com.br/ranking/' }) {
+// withdrawn: desistências confirmadas (public/data/desistencias.json), fora da lista de classificados.
+export function formatWhatsApp({ now = new Date(), players, newMatches = [], changes = [], withdrawn = [], siteUrl = 'https://maxstack.com.br/ranking/' }) {
   const L = []
   L.push(`🎾 *Ranking Ibi Aram 2026* — atualização ${fmtDate(now)}`)
   L.push('')
@@ -131,10 +132,14 @@ export function formatWhatsApp({ now = new Date(), players, newMatches = [], cha
   }
   L.push('')
   L.push('*Classificados para o Master (hoje):*')
-  L.push('🅰️ ' + players.slice(0, 8).map((p) => `${p.rank}. ${p.name}`).join(' · '))
-  L.push('🅱️ ' + players.slice(8, 16).map((p) => `${p.rank}. ${p.name}`).join(' · '))
-  const next = players.slice(16, 18)
+  const out = new Set(withdrawn)
+  const eligible = players.filter((p) => !out.has(p.name))
+  L.push('🅰️ ' + eligible.slice(0, 8).map((p) => `${p.rank}. ${p.name}`).join(' · '))
+  L.push('🅱️ ' + eligible.slice(8, 16).map((p) => `${p.rank}. ${p.name}`).join(' · '))
+  const next = eligible.slice(16, 18)
   if (next.length) L.push('⏳ Na fila: ' + next.map((p) => `${p.rank}. ${p.name}`).join(' · '))
+  const gone = players.filter((p) => out.has(p.name))
+  if (gone.length) L.push('🚫 Desistências confirmadas: ' + gone.map((p) => p.name).join(' · '))
   L.push('')
   L.push(`Simule o chaveamento do Master: ${siteUrl}`)
   return L.join('\n')
