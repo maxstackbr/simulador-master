@@ -12,7 +12,7 @@ import { resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { chromium } from '@playwright/test'
 import { URLS, parseTable, parseMatches, diffRanking, formatWhatsApp } from './lib/letzplay.js'
-import { readCurrent, writeVersion } from './lib/version.js'
+import { readCurrent, readWithdrawn, writeVersion } from './lib/version.js'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const args = new Set(process.argv.slice(2))
@@ -114,7 +114,7 @@ try {
     writeFileSync(matchesPath, JSON.stringify({ updatedAt: now.toISOString(), matches: [...merged.values()].sort((a, b) => b.id - a.id) }, null, 2))
   }
 
-  const summary = formatWhatsApp({ now, players, newMatches, changes })
+  const summary = formatWhatsApp({ now, players, newMatches, changes, withdrawn: readWithdrawn(root) })
   const status = testNotify ? 'test' : changed ? 'changed' : 'unchanged'
   finish({
     status,

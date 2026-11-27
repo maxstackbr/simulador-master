@@ -3,7 +3,7 @@ import { swapTargets } from '../lib/bracket.js'
 
 const isActive = (p) => /^ativ/i.test(p.status)
 
-export default function RankingTable({ players, seeds, withdrawn, onToggle, onSwap }) {
+export default function RankingTable({ players, seeds, withdrawn, confirmed = [], onToggle, onSwap }) {
   const [selected, setSelected] = useState(null) // nome do jogador em modo troca
   const seedByName = new Map(seeds.map((s) => [s.name, s.seed]))
   const nextInLine = players.find((p) => !seedByName.has(p.name) && !withdrawn.has(p.name) && isActive(p))
@@ -85,6 +85,7 @@ export default function RankingTable({ players, seeds, withdrawn, onToggle, onSw
                       </span>
                     )}
                     {inactive && <span className="tag tag-muted">{p.status}</span>}
+                    {confirmed.includes(p.name) && <span className="tag tag-muted tag-confirmed">não joga</span>}
                     {nextInLine?.name === p.name && <span className="tag tag-next">próximo</span>}
                     {targets.has(p.name) && <span className="tag tag-swap">trocar</span>}
                   </td>

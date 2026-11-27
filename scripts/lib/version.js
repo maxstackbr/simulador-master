@@ -30,3 +30,11 @@ export function writeVersion(root, { players, label, source, now = new Date(), e
   writeFileSync(indexPath, JSON.stringify(index, null, 2))
   return { version, count: index.versions.length }
 }
+
+/** Desistências confirmadas (public/data/desistencias.json); lista vazia se não houver. */
+export function readWithdrawn(root) {
+  const p = resolve(root, 'public/data/desistencias.json')
+  if (!existsSync(p)) return []
+  const nomes = JSON.parse(readFileSync(p, 'utf8')).nomes
+  return Array.isArray(nomes) ? nomes : []
+}

@@ -317,6 +317,18 @@ main {
   text-decoration: line-through;
   color: var(--muted);
 }
+.confirmed {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.375rem;
+  width: 100%;
+}
+.chip-revived {
+  text-decoration: none;
+  color: var(--text);
+  border-style: dashed;
+}
 .chip span {
   text-decoration: none;
   color: var(--text);

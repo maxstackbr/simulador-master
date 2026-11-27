@@ -80,6 +80,12 @@ Diagnóstico: cada run deixa em `sync/` (ignorado pelo git) o resumo, o `result.
 página. Mudanças no sync devem ser testadas no runner do GitHub, não só localmente: de IP residencial o
 Letzplay nem desafia, o que mascara problemas.
 
+## Desistências confirmadas (`public/data/desistencias.json`)
+Lista `nomes` (exatamente como no ranking) de quem avisou que não joga. O site aplica por padrão (marcados como
+"não joga", quem está abaixo sobe); o visitante pode desfazer uma para simular, e "Limpar simulação" volta ao padrão.
+O resumo do sync tira essas pessoas dos classificados e os convites passam para o próximo da fila. Como o site lê os
+dados do GitHub, mudar a lista não exige deploy.
+
 ## Convites do Master (`.github/workflows/convites-master.yml`)
 Manual (botão "Run workflow"): manda ao grupo do Telegram uma mensagem por classificado (16 primeiros ativos de
 `public/data/ranking.json`) pedindo a confirmação prévia, cada uma com o botão "Abrir no WhatsApp" com o texto

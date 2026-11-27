@@ -9,10 +9,13 @@ import { resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { buildConvites, parseNames } from './lib/convite.js'
 import { buildTelegram, cleanToken } from './lib/telegram.js'
+import { readWithdrawn } from './lib/version.js'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const ranking = JSON.parse(readFileSync(resolve(root, 'public/data/ranking.json'), 'utf8'))
-const convites = buildConvites(ranking.players, {
+// Desistências confirmadas saem da lista e quem está abaixo sobe (o 17º passa a receber).
+const out = new Set(readWithdrawn(root))
+const convites = buildConvites(ranking.players.filter((p) => !out.has(p.name)), {
   exclude: parseNames(process.env.EXCLUIR),
   only: parseNames(process.env.APENAS),
 })

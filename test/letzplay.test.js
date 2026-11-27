@@ -73,6 +73,15 @@ describe('diffRanking e formatWhatsApp', () => {
     expect(txt).toContain('⏳ Na fila: 17. Caio Anjos · 18. Henrique Carelli')
     expect(txt.endsWith('\n\nSimule o chaveamento do Master: https://maxstack.com.br/ranking/')).toBe(true)
   })
+  it('desistência confirmada sai dos classificados e quem está abaixo sobe', () => {
+    const players = mk(Array.from({ length: 20 }, (_, i) => `J${i + 1}`))
+    const txt = formatWhatsApp({ now: new Date('2026-11-27T12:00:00Z'), players, withdrawn: ['J3', 'J10'] })
+    expect(txt).toContain('🅰️ 1. J1 · 2. J2 · 4. J4 · 5. J5 · 6. J6 · 7. J7 · 8. J8 · 9. J9')
+    expect(txt).toContain('🅱️ 11. J11')
+    expect(txt).toContain('· 18. J18\n')
+    expect(txt).toContain('⏳ Na fila: 19. J19 · 20. J20')
+    expect(txt).toContain('🚫 Desistências confirmadas: J3 · J10')
+  })
 })
 
 describe('jogo decidido por W.O.', () => {
